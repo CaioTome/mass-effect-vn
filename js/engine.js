@@ -113,6 +113,11 @@ class VNEngine {
     if (this.dom.btnRestart) {
       this.dom.btnRestart.addEventListener("click", () => {
         this.readChoices.clear();
+        const initialBg = this.chapter.nodes[this.chapter.startNode]?.background || this.chapter.background;
+        if (initialBg) {
+          this.dom.bg.src = initialBg;
+          this.dom.bg.setAttribute("src", initialBg);
+        }
         this.loadScene(this.chapter.startNode);
       });
     }
@@ -127,6 +132,11 @@ class VNEngine {
     this.chapter = chapterData;
     this.hasStarted = true;
     this.readChoices.clear();
+    const initialBg = this.chapter.nodes[this.chapter.startNode]?.background || this.chapter.background;
+    if (initialBg) {
+      this.dom.bg.src = initialBg;
+      this.dom.bg.setAttribute("src", initialBg);
+    }
     this.loadScene(this.chapter.startNode);
   }
 
@@ -144,14 +154,17 @@ class VNEngine {
       this.dom.chapterTitle.textContent = this.chapter.title;
     }
 
-    // Update background if specified on node or chapter
-    const targetBg = this.currentNode.background || this.chapter.background;
-    if (targetBg) {
+    // Update background if specified on node (persists active background across dialogues)
+    if (this.currentNode.background) {
+      const targetBg = this.currentNode.background;
       const currentBg = this.dom.bg.getAttribute("src");
       if (currentBg !== targetBg) {
         this.dom.bg.src = targetBg;
         this.dom.bg.setAttribute("src", targetBg);
       }
+    } else if (!this.dom.bg.getAttribute("src") && this.chapter.background) {
+      this.dom.bg.src = this.chapter.background;
+      this.dom.bg.setAttribute("src", this.chapter.background);
     }
 
     // 1. Update character stage layout & dynamic lighting

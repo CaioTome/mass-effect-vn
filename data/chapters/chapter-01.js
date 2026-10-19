@@ -2,7 +2,7 @@
 export const chapter01 = {
   id: "chapter_01_third_chance",
   title: "A Third Chance",
-  background: "assets/backgrounds/black.jpg",
+  background: "assets/backgrounds/reaper_chamber.jpg",
   startNode: "awakening_01",
   nodes: {
     // -----------------------------------------------------------------
@@ -20,7 +20,7 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[A wet biomechanical snap echoes. Your body drops onto a freezing metal grating, coughing violently as your lungs burn with the first agonizing intake of oxygen.]",
+      text: "[A wet biomechanical snap echoes. My body drops onto a freezing metal grating, coughing violently as my lungs burn with the first agonizing intake of oxygen.]",
       next: "awakening_03"
     },
 
@@ -28,7 +28,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[You force your eyes open through the blur of amniotic fluid. Behind you lies a grotesque mass of greyish plant tendrils fused into Reaper conduits.] A Thorian nodule... assimilated into Reaper cybernetics? Where am I?",
+      text: "[I force my eyes open through the blur of amniotic fluid. Behind me lies a grotesque mass of greyish plant tendrils fused into Reaper conduits.] A Thorian nodule... assimilated into Reaper cybernetics? Where am I?",
       next: "awakening_04"
     },
 
@@ -36,18 +36,26 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[The floor plates thrum with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper ship. Did the Crucible fail? What happened to Earth... what happened to Tali?",
-      next: "hackett_entry_01"
+      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper ship. Did the Crucible fail? What happened to Earth... what happened to all of us?",
+      next: "hackett_beam_appear"
     },
 
     // -----------------------------------------------------------------
     // PHASE 2: THE FAMILIAR PROJECTION (Admiral Hackett Appears)
     // -----------------------------------------------------------------
+    "hackett_beam_appear": {
+      background: "assets/backgrounds/reaper_chamber.jpg",
+      present: ["hackett"],
+      speaker: "shepard",
+      text: "[A cyan holographic beam strikes the deck behind me, solidifying into Admiral Steven Hackett in full Alliance dress uniform.]",
+      next: "hackett_entry_01"
+    },
+
     "hackett_entry_01": {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: ["hackett"],
       speaker: "hackett",
-      text: "[A cyan holographic beam strikes the deck behind you, solidifying into Admiral Steven Hackett in full Alliance dress uniform.] On your feet, Commander. Lying on the deck never saved the galaxy, and it won't start now.",
+      text: "On your feet, Commander. Lying on the deck never saved the galaxy, and it won't start now.",
       next: "shepard_hackett_01"
     },
 
@@ -179,14 +187,21 @@ export const chapter01 = {
     "renegade_interrupt_farsa": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[Your eyes narrow. As the reports droned on, your N7 combat instincts pierced the fog.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade. Who are you really?!",
+      text: "[My eyes narrow. As the reports drone on, my N7 combat instincts pierce the fog.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade. Who are you really?!",
+      next: "renegade_catalyst_shift"
+    },
+
+    "renegade_catalyst_shift": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[The warmth in Hackett's eyes vanishes before me, replaced by a cold cyan resonance. His vocal cadence turns polyphonic and synthesized.]",
       next: "renegade_catalyst_reveal_01"
     },
 
     "renegade_catalyst_reveal_01": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "[The warmth in Hackett's eyes vanishes, replaced by a cold cyan resonance. The vocal cadence turns polyphonic and synthesized.] Flawless tactical deduction, Commander. Our neural simulations predicted an organic mind would require four additional minutes to isolate the scenario's incongruities.",
+      text: "Flawless tactical deduction, Commander. Our neural simulations predicted an organic mind would require four additional minutes to isolate the scenario's incongruities.",
       next: "renegade_catalyst_reveal_02"
     },
 
@@ -229,7 +244,7 @@ export const chapter01 = {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
       text: "Reapers possess immense firepower, but zero stealth capability. A frontal approach guarantees the hostages' immediate execution. Furthermore, if Cerberus discovers you survived, they will slaughter Tali out of sheer retribution. You must operate as an untraceable ghost.",
-      next: "equipment_transition"
+      next: "equipment_pedestal_rises"
     },
 
     // -----------------------------------------------------------------
@@ -245,7 +260,7 @@ export const chapter01 = {
     "normal_crisis_shepard_tali": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[Your breath catches in your throat.] Rannoch...? Admiral, was Tali on that transport?",
+      text: "[My breath catches in my throat.] Rannoch...? Admiral, was Tali on that transport?",
       next: "normal_crisis_hostages"
     },
 
@@ -267,20 +282,27 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "shepard",
       text: "Then deploy the Fifth Fleet immediately, Admiral! Lock down their staging perimeter and burn their compound to slag!",
+      next: "normal_catalyst_shift"
+    },
+
+    "normal_catalyst_shift": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[The projection's posture remains rigid before me, but Hackett's eyes fade into a spectral cyan chill.]",
       next: "normal_reveal_catalyst"
     },
 
     "normal_reveal_catalyst": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "[The projection's posture remains rigid, but Hackett's eyes fade into spectral cyan.] The Fifth Fleet cannot intervene, Shepard. And Steven Hackett is not aboard this vessel.",
+      text: "The Fifth Fleet cannot intervene, Shepard. And Steven Hackett is not aboard this vessel.",
       next: "normal_shepard_shock"
     },
 
     "normal_shepard_shock": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[You take a stunned step back.] What...?",
+      text: "[I take a stunned step back.] What...?",
       next: "normal_catalyst_identity"
     },
 
@@ -302,23 +324,30 @@ export const chapter01 = {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
       text: "Your former vessel was atomized. This biological form was synthesized from an assimilated Thorian node, guided by your genetic catalog from Project Lazarus. Your neural matrix was mapped directly from your ascension. You are free of indoctrination, Shepard. But Cerberus will slaughter Tali if they learn you live. You must be a ghost.",
-      next: "equipment_transition"
+      next: "equipment_pedestal_rises"
     },
 
     // -----------------------------------------------------------------
     // PHASE 4: THE WEIGHT OF MORTAL FLESH (No Cybernetics)
     // -----------------------------------------------------------------
+    "equipment_pedestal_rises": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[A mechanical pedestal rises from the deck in front of me, displaying unmarked composite armor plating, an M-3 Predator heavy pistol, and an enclosed helm with a polarized mirror visor.]",
+      next: "equipment_transition"
+    },
+
     "equipment_transition": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "[A mechanical pedestal rises from the deck, displaying unmarked composite armor plating, an M-3 Predator heavy pistol, and an enclosed helm with a polarized mirror visor.] Your operational gear has been synthesized for black-ops stealth.",
+      text: "Your operational gear has been synthesized for black-ops stealth.",
       next: "shepard_armor_realization"
     },
 
     "shepard_armor_realization": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[You strap the composite plates over your torso. Your joints ache with unfamiliar friction. Each breath burns without synthetic filters.] The armor... it feels twice as heavy as I remember. My muscles are dragging.",
+      text: "[I strap the composite plates over my torso. My joints ache with unfamiliar friction. Each breath burns without synthetic filters.] The armor... it feels twice as heavy as I remember. My muscles are dragging.",
       next: "catalyst_flesh_speech"
     },
 
@@ -339,7 +368,7 @@ export const chapter01 = {
     "shepard_pistol_resolve": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[You grip the M-3 Predator. The cold steel transmits the heavy thud of your own racing pulse.] Flesh and bone... That's all I've ever needed to bring my people back alive.",
+      text: "[I grip the M-3 Predator. The cold steel transmits the heavy thud of my own racing pulse.] Flesh and bone... That's all I need to get Tali out of there.",
       next: "biometrics_console"
     },
 
@@ -356,14 +385,14 @@ export const chapter01 = {
     "shepard_id_scanned": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[A laser grid scans your palm with a sharp chime.] Registered. Just another decommissioned marine hunting bounty contracts in the Terminus.",
+      text: "[A laser grid scans my palm with a sharp chime.] Registered. Just another decommissioned marine hunting bounty contracts in the Terminus.",
       next: "helm_sealed"
     },
 
     "helm_sealed": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[You lift the helmet over your head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Where do I begin the hunt?",
+      text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Where do I begin the hunt?",
       next: "catalyst_liara_order"
     },
 
@@ -378,26 +407,33 @@ export const chapter01 = {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
       text: "An unmarked long-range shuttle awaits in the lower ventral airlock. Find Liara, assemble what strength you need, and bring the Quarian leadership home.",
+      next: "catalyst_salute"
+    },
+
+    "catalyst_salute": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[The projection raises a crisp, formal Alliance salute in front of me as its cyan particles begin to dissolve into light.]",
       next: "catalyst_hackett_out"
     },
 
     "catalyst_hackett_out": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "[The projection raises a crisp, formal Alliance salute as its particles begin to dissolve into light.] It was an honor serving with you, Commander. Live the mortal life that remains to you... Hackett out.",
+      text: "It was an honor serving with you, Commander. Live the mortal life that remains to you... Hackett out.",
       next: "departure_final"
     },
 
     "departure_final": {
       present: [],
       speaker: "shepard",
-      text: "[The holographic light dissipates into absolute silence. Massive hydraulic airlock doors grind open, exposing the dark silhouette of the stealth shuttle against the void.] Hang on, Tali. I'm coming for you.",
+      text: "[The holographic light dissipates into absolute silence. Massive hydraulic airlock doors grind open before me, exposing the dark silhouette of the stealth shuttle against the void.] Hang on, Tali. I'm coming for you.",
       next: "chapter_01_end"
     },
 
     "chapter_01_end": {
       present: [],
-      speaker: "shepard",
+      speaker: "system",
       text: "[End of Chapter 1: A Third Chance. Continue to Chapter 2: Dossier: Shadow Broker via the Chapters Archive.]",
       next: null
     }

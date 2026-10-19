@@ -89,6 +89,7 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
 ### 4.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
 Para preservar a identidade personalizada de cada jogador (rosto customizado, gênero e escolhas da trilogia) e maximizar a imersão visual novel:
 - **Shepard em 1ª Pessoa (Atrás da Câmera):** Shepard nunca aparece como sprite na tela. Ele é a visão/câmera do jogador.
+- **Narração e Percepção Estritamente em 1ª Pessoa:** Toda descrição de ação, ambiente ou evento de cena entre colchetes `[...]` deve ser narrada a partir do ponto de vista e percepção direta de John Shepard (ex: `"[A cyan holographic beam strikes the deck behind me, solidifying into Admiral Steven Hackett in full Alliance dress uniform.]"`). Nunca usar 2ª pessoa ("Your body", "You see") e nunca fazer com que NPCs narrem em terceira pessoa descrições visuais sobre si mesmos.
 - **Cena Solo (Shepard + 1 Interlocutor):**
   - O interlocutor fica **centralizado** no palco (`#stage.mode-single`), com presença imponente e foco total.
   - Quando o interlocutor fala: 100% iluminado (`.speaking`).
@@ -196,8 +197,12 @@ Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíbli
 - **Tratar caminhos como relativos:** Garantir que imagens, áudios e scripts funcionem em qualquer subdiretório do GitHub Pages.
 - **Garantir acessibilidade e responsividade:** O leitor deve conseguir jogar tanto no mouse quanto via atalhos de teclado (ex: teclas 1 a 9 para a lista de diálogo, Espaço/Enter para avançar, Q/E para interrupts).
 - **Padronizar código e roteiro em inglês:** Toda a redação de nós, diálogos, comentários e identificadores deve ser mantida em língua inglesa.
+- **Manter narração e ações em 1ª Pessoa:** Descrever todos os eventos, reações corporais e ambiente estritamente pelos olhos de Shepard ("behind me", "my palms", "I step forward").
+- **Finalização de Áudio/SFX na reta final:** O foco primário no momento é a robustez literária, os ramais e a estrutura de nós; a implementação detalhada de efeitos sonoros avançados (SFX) e trilha ambiente (BGM) será finalizada na reta final do projeto.
 
 ### O que NUNCA fazer:
+- **NUNCA usar 2ª pessoa ("You / Your") para Shepard:** Manter sempre o foco na experiência direta em 1ª pessoa ("I / My").
+- **NUNCA colocar NPCs narrando suas próprias ações de cena:** Se houver um evento visual ou transição de personagem, ela deve ser percebida e descrita da perspectiva de Shepard (`[... behind me ...]`).
 - **NUNCA usar letras amarelas para sinalizar avanço de cena:** Deixar o leitor deduzir o avanço naturalmente através do contexto narrativo.
 - **NUNCA truncar a fala do protagonista:** As opções na lista de diálogo devem exibir o texto completo que Shepard irá falar (estilo Baldur's Gate).
 - **NUNCA adicionar timers regressivos nos Interrupts:** A proposta é leitura confortável sem estresse de tempo.

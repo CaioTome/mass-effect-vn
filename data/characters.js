@@ -22,7 +22,7 @@ export const characters = {
     name: "Tali'Zorah",
     title: "Quarian Admiral",
     sprite: "assets/portraits/Tali.png"
-  }
+  },
 
   // Command & Projections
   "hackett": {
@@ -34,5 +34,12 @@ export const characters = {
     name: "The Catalyst",
     title: "Synthesized Projection",
     sprite: "assets/portraits/hackett.png"
+  },
+
+  // System & Telemetry (No sprite on screen)
+  "system": {
+    name: "N7 // ARCHIVE",
+    title: "Mission Telemetry",
+    isPlayer: false
   }
 };
