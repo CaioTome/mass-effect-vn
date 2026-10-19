@@ -1,11 +1,16 @@
 // js/engine.js - Mass Effect Visual Novel Engine (Baldur's Gate Style Dialogue & POV Camera)
 import { characters } from "../data/characters.js";
+import { stories } from "../data/stories.js";
 import { testScene } from "../data/chapters/test-scene.js";
 import { audio } from "./audio.js";
 
 class VNEngine {
   constructor() {
-    this.chapter = testScene;
+    this.currentStoryIndex = 0;
+    const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
+    const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
+    this.chapter = defaultChapter.data;
+
     this.currentNodeId = null;
     this.currentNode = null;
     this.readChoices = new Set();
@@ -48,9 +53,21 @@ class VNEngine {
     this.dom.paragonLabel = document.getElementById("paragon-label");
     this.dom.renegadeLabel = document.getElementById("renegade-label");
 
+    this.dom.btnChapters = document.getElementById("btn-chapters");
     this.dom.btnMute = document.getElementById("btn-mute");
     this.dom.btnRestart = document.getElementById("btn-restart");
     this.dom.chapterTitle = document.getElementById("chapter-title");
+
+    // Chapter & Story Selector Modal
+    this.dom.chapterModal = document.getElementById("chapter-modal");
+    this.dom.btnCloseModal = document.getElementById("btn-close-modal");
+    this.dom.storyCover = document.getElementById("story-cover");
+    this.dom.storyTitle = document.getElementById("story-title");
+    this.dom.storySubtitle = document.getElementById("story-subtitle");
+    this.dom.storyAuthor = document.getElementById("story-author");
+    this.dom.storyTags = document.getElementById("story-tags");
+    this.dom.storySynopsis = document.getElementById("story-synopsis");
+    this.dom.chaptersList = document.getElementById("chapters-list");
   }
 
   bindEvents() {
@@ -59,6 +76,14 @@ class VNEngine {
 
     // Keyboard controls
     window.addEventListener("keydown", (e) => this.handleKeyDown(e));
+
+    // Chapter selector modal triggers
+    if (this.dom.btnChapters) {
+      this.dom.btnChapters.addEventListener("click", () => this.openChapterModal());
+    }
+    if (this.dom.btnCloseModal) {
+      this.dom.btnCloseModal.addEventListener("click", () => this.closeChapterModal());
+    }
 
     // Top HUD controls
     if (this.dom.btnMute) {
@@ -79,6 +104,13 @@ class VNEngine {
     // Interrupt click handlers
     this.dom.interruptParagon.addEventListener("click", () => this.triggerInterrupt("paragon"));
     this.dom.interruptRenegade.addEventListener("click", () => this.triggerInterrupt("renegade"));
+  }
+
+  loadChapter(chapterData) {
+    if (!chapterData) return;
+    this.chapter = chapterData;
+    this.readChoices.clear();
+    this.loadScene(this.chapter.startNode);
   }
 
   loadScene(nodeId) {
@@ -392,9 +424,104 @@ class VNEngine {
   }
 
   // -----------------------------------------------------------------
+  // 📂 CHAPTER & MISSION SELECTOR MODAL
+  // -----------------------------------------------------------------
+  openChapterModal() {
+    audio.playHover();
+    this.renderChapterModal();
+    if (this.dom.chapterModal) {
+      this.dom.chapterModal.classList.add("visible");
+    }
+  }
+
+  closeChapterModal() {
+    audio.playSelect();
+    if (this.dom.chapterModal) {
+      this.dom.chapterModal.classList.remove("visible");
+    }
+  }
+
+  renderChapterModal() {
+    const story = stories[this.currentStoryIndex];
+    if (!story) return;
+
+    // Populate story details
+    if (this.dom.storyCover) this.dom.storyCover.src = story.cover || "assets/backgrounds/shadow_broker_sanctum.jpg";
+    if (this.dom.storyTitle) this.dom.storyTitle.textContent = story.title;
+    if (this.dom.storySubtitle) this.dom.storySubtitle.textContent = story.originalTitle || "";
+    if (this.dom.storyAuthor) this.dom.storyAuthor.textContent = `Written by ${story.author || "Caio"}`;
+    if (this.dom.storySynopsis) this.dom.storySynopsis.textContent = story.synopsis;
+
+    // Populate tags
+    if (this.dom.storyTags) {
+      this.dom.storyTags.innerHTML = "";
+      (story.tags || []).forEach(tag => {
+        const tagSpan = document.createElement("span");
+        tagSpan.className = "story-tag";
+        tagSpan.textContent = tag;
+        this.dom.storyTags.appendChild(tagSpan);
+      });
+    }
+
+    // Populate chapters list
+    if (this.dom.chaptersList) {
+      this.dom.chaptersList.innerHTML = "";
+      story.chapters.forEach(ch => {
+        const card = document.createElement("div");
+        card.className = `chapter-card ${ch.available ? "playable" : "locked"}`;
+        if (this.chapter && this.chapter.id === ch.id) {
+          card.classList.add("active");
+        }
+
+        const isCurrentlyLoaded = this.chapter && this.chapter.id === ch.id;
+
+        card.innerHTML = `
+          <div class="card-top">
+            <span class="chapter-number">${ch.number}</span>
+            <span class="chapter-status-badge ${ch.available ? "badge-playable" : "badge-locked"}">
+              ${ch.status || (ch.available ? "PLAYABLE" : "LOCKED")}
+            </span>
+          </div>
+          <h4 class="chapter-title">${ch.title}</h4>
+          <p class="chapter-summary">${ch.summary}</p>
+          <div class="card-actions">
+            ${ch.available 
+              ? `<button class="btn-launch">${isCurrentlyLoaded ? "▶ Resume Chapter" : "▶ Launch Mission"}</button>`
+              : `<button class="btn-locked" disabled>Locked</button>`
+            }
+          </div>
+        `;
+
+        if (ch.available && ch.data) {
+          const launchBtn = card.querySelector(".btn-launch");
+          if (launchBtn) {
+            launchBtn.addEventListener("click", () => {
+              audio.playSelect();
+              this.loadChapter(ch.data);
+              this.closeChapterModal();
+            });
+          }
+        }
+
+        this.dom.chaptersList.appendChild(card);
+      });
+    }
+  }
+
+  // -----------------------------------------------------------------
   // ⌨️ KEYBOARD CONTROLS
   // -----------------------------------------------------------------
   handleKeyDown(e) {
+    // Key Escape: toggle or close chapter modal
+    if (e.key === "Escape") {
+      if (this.dom.chapterModal && this.dom.chapterModal.classList.contains("visible")) {
+        this.closeChapterModal();
+      } else {
+        this.openChapterModal();
+      }
+      return;
+    }
+
     // Space or Enter: advance dialogue
     if (e.code === "Space" || e.code === "Enter") {
       e.preventDefault();

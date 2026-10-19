@@ -22,8 +22,9 @@
         <span id="chapter-title">Loading Scene...</span>
       </div>
       <div class="hud-right">
+        <button id="btn-chapters" class="hud-btn" title="Open Chapter & Mission Selector">📁 Chapters</button>
         <button id="btn-mute" class="hud-btn" title="Toggle Sound Effects">🔊 Audio On</button>
-        <button id="btn-restart" class="hud-btn" title="Restart Test Scene">↺ Restart</button>
+        <button id="btn-restart" class="hud-btn" title="Restart Scene">↺ Restart</button>
       </div>
     </header>
 
@@ -74,6 +75,48 @@
         </div>
       </div>
     </footer>
+    <!-- Chapter & Fanfic Selector Modal -->
+    <div id="chapter-modal">
+      <div class="modal-box">
+        <header class="modal-header">
+          <div class="modal-title-box">
+            <span class="hud-logo">N7 ARCHIVES</span>
+            <span class="modal-title">// MISSION & CHAPTER SELECTOR</span>
+          </div>
+          <button id="btn-close-modal" class="hud-btn" title="Close Selector (Esc)">✕ Close</button>
+        </header>
+
+        <div class="modal-content">
+          <!-- Left Panel: Story / Fanfic Overview -->
+          <div class="story-panel">
+            <div class="story-cover-box">
+              <img id="story-cover" src="assets/backgrounds/shadow_broker_sanctum.jpg" alt="Story Cover">
+              <div class="cover-overlay"></div>
+            </div>
+            <h2 id="story-title" class="story-title">By the homeworld I hope to see one day with you</h2>
+            <div class="story-meta">
+              <span id="story-subtitle" class="story-subtitle">Mass Effect: Ghost in the Flesh</span>
+              <span id="story-author" class="story-author">Written by Caio</span>
+            </div>
+            <div id="story-tags" class="story-tags">
+              <!-- Dynamically populated tags -->
+            </div>
+            <p id="story-synopsis" class="story-synopsis"></p>
+          </div>
+
+          <!-- Right Panel: Chapter Selection List -->
+          <div class="chapters-panel">
+            <div class="panel-header">
+              <h3>MISSION LOGS & CHAPTERS</h3>
+              <span class="panel-subtitle">Select an unlocked mission record to load telemetry</span>
+            </div>
+            <div id="chapters-list" class="chapters-list">
+              <!-- Dynamically populated chapter cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Engine Controller ES Module -->
