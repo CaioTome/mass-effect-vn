@@ -82,6 +82,25 @@ class VNEngine {
       this.dom.btnCloseModal.addEventListener("click", () => this.closeChapterModal());
     }
 
+    // Event delegation on chapter list for infallible click handling
+    if (this.dom.chaptersList) {
+      this.dom.chaptersList.addEventListener("click", (e) => {
+        const row = e.target.closest(".chapter-row.playable");
+        if (!row) return;
+        e.preventDefault();
+        const num = parseInt(row.getAttribute("data-number"), 10);
+        const story = stories[this.currentStoryIndex];
+        if (story) {
+          const ch = story.chapters.find(c => c.number === num);
+          if (ch && ch.available && ch.data) {
+            try { audio.playSelect(); } catch (err) {}
+            this.loadChapter(ch.data);
+            this.closeChapterModal();
+          }
+        }
+      });
+    }
+
     // Top HUD controls
     if (this.dom.btnMute) {
       this.dom.btnMute.addEventListener("click", () => {
@@ -484,16 +503,16 @@ class VNEngine {
         `;
 
         if (isPlayable) {
-          row.addEventListener("click", () => {
-            audio.playSelect();
-            if (!isCurrentlyActive) {
-              this.loadChapter(ch.data);
-            }
+          row.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            try { audio.playSelect(); } catch (err) {}
+            this.loadChapter(ch.data);
             this.closeChapterModal();
           });
         } else {
           row.addEventListener("click", () => {
-            audio.playLocked();
+            try { audio.playLocked(); } catch (err) {}
           });
         }
 
@@ -563,9 +582,15 @@ class VNEngine {
   }
 }
 
-// Auto-initialize on DOM load
-document.addEventListener("DOMContentLoaded", () => {
+// Auto-initialize on DOM load or immediately if already loaded
+function startEngine() {
   const engine = new VNEngine();
   engine.init();
   window.vnEngine = engine;
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startEngine);
+} else {
+  startEngine();
+}
