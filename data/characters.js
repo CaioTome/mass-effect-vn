@@ -7,7 +7,7 @@ export const characters = {
     isPlayer: true
   },
 
-  // Interlocutors
+  // The Crew
   "liara": {
     name: "Liara T'Soni",
     title: "Shadow Broker",
@@ -22,5 +22,17 @@ export const characters = {
     name: "Tali'Zorah",
     title: "Quarian Admiral",
     sprite: "assets/portraits/Tali.png"
+  }
+
+  // Command & Projections
+  "hackett": {
+    name: "Steven Hackett",
+    title: "Admiral of the Fleet",
+    sprite: "assets/portraits/hackett.png"
+  },
+  "catalyst_hackett": {
+    name: "The Catalyst",
+    title: "Synthesized Projection",
+    sprite: "assets/portraits/hackett.png"
   }
 };

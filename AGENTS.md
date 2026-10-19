@@ -4,7 +4,7 @@
 > **Diretor Criativo & Roteirista:** Caio  
 > **Papel do Agente:** Desenvolvedor Web Especialista em Front-end, Engenheiro de Jogos Web & Coautor Narrativo  
 > **Hospedagem & Plataforma:** Web nativa (HTML5 / Vanilla CSS / Vanilla ES Modules) para publicação estática no **GitHub Pages**  
-> **Documentos de Referência:** [`docs/engine.md`](docs/engine.md) (Arquitetura Técnica) e [`docs/Ideia Inicial.md`](docs/Ideia%20Inicial.md) (Bíblia Narrativa)
+> **Documentos de Referência:** [`docs/engine.md`](docs/engine.md) (Arquitetura Técnica) e [`docs/planejamento.md`](docs/planejamento.md) (Bíblia Narrativa)
 
 ---
 
@@ -21,7 +21,29 @@ A aplicação reproduz com alta fidelidade a icônica **Roda de Diálogo de 8 po
 
 ---
 
-## 🏛️ 2. Estrutura de Pastas e Responsabilidades
+## 🔄 2. Fluxo de Desenvolvimento: Ideia ➔ Roteiro ➔ Implementação
+
+Para garantir qualidade literária, coesão de lore e produtividade máxima sem atrito técnico, todo novo capítulo ou arco narrativo deve seguir estritamente o pipeline de três etapas:
+
+1. **💡 Etapa 1: Ideia (Conceito & Planejamento)**
+   - Brainstorming de premissas, conflitos dramáticos, stakes e arcos de personagens.
+   - Documentado em português nos arquivos de planejamento e bíblia narrativa (`docs/planejamento.md` / `docs/`).
+   - Alinhamento de referências de lore de Mass Effect e mecânicas interativas necessárias.
+
+2. **📝 Etapa 2: Roteiro (Escrita Literária Estruturada em Markdown)**
+   - Redação integral da cena em **português** em `docs/capitulos/*.md`.
+   - Foco absoluto na prosa, diálogos autênticos, ritmo emocional, escolhas completas (estilo Baldur's Gate) e marcações claras de *Interrupts* morais (`[Paragon [Q]]` / `[Renegade [E]]`).
+   - Leitura fluida e aprovação direta com o Diretor Criativo antes de tocar em código.
+   - **Regra de Idioma:** Os documentos de apoio, planejamento e roteiros em Markdown são redigidos em **português** para manter a fluidez de escrita e revisão do autor.
+
+3. **💻 Etapa 3: Implementação (Código & Engine)**
+   - Tradução e conversão do roteiro aprovado para a estrutura de dados JavaScript da engine (`data/chapters/*.js`).
+   - Registro de novos personagens/sprites em `data/characters.js` e configuração do capítulo em `data/stories.js`.
+   - **Regra de Idioma:** No código-fonte da engine, arquivos de dados executáveis do jogo (`data/chapters/*.js`) e interface do usuário, o texto final e identificadores são mantidos em **inglês** para o jogo.
+
+---
+
+## 🏛️ 3. Estrutura de Pastas e Responsabilidades
 
 ```
 mass-effect-vn/
@@ -34,7 +56,7 @@ mass-effect-vn/
 ├── data/
 │   ├── characters.js       # Catálogo unificado de personagens e IDs de expressão
 │   └── chapters/           # Roteiros desacoplados divididos por nós e capítulos
-├── docs/                   # Especificação técnica (engine.md) e bíblia narrativa (Ideia Inicial.md)
+├── docs/                   # Especificação técnica (engine.md) e bíblia narrativa (planejamento.md)
 ├── js/                     # Lógica da engine (state, wheel, dialogue, audio, ui)
 ├── index.html              # Ponto de entrada da aplicação
 └── AGENTS.md               # Este documento de governança e memória técnica
@@ -42,11 +64,11 @@ mass-effect-vn/
 
 ---
 
-## 🎡 3. Mecânicas Centrais da Engine (Especificação Rígida)
+## 🎡 4. Mecânicas Centrais da Engine (Especificação Rígida)
 
 Qualquer implementação ou modificação no código deve aderir estritamente aos seguintes pilares documentados em [`docs/engine.md`](docs/engine.md):
 
-### 3.1. Sistema de Escolhas de Diálogo em Texto Completo (Estilo Baldur's Gate)
+### 4.1. Sistema de Escolhas de Diálogo em Texto Completo (Estilo Baldur's Gate)
 Para garantir profundidade narrativa, clareza e permitir linhas de fala completas e expressivas (sem as limitações de espaço da antiga roda circular):
 - **Lista Numerada Vertical (Estilo Baldur's Gate / Classic RPG):**
   - As opções do jogador são exibidas como uma lista vertical numerada: `1. [Texto completo da fala do Shepard]`, `2. [Texto completo da fala do Shepard]`, etc.
@@ -55,7 +77,7 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
   - **Sem Destaques Artificiais (Sem Letras Amarelas):** Não utilizamos cores especiais para indicar avanço de cena. O próprio jogador deduz a progressão e as consequências através do contexto dramático do diálogo.
   - **Opções Exploradas:** Linhas de investigação já visitadas ganham sutil atenuação visual (`.read`), permanecendo acessíveis para releitura.
 
-### 3.2. Interrupts Paragon & Renegade Sem Timer (Leitura Pura)
+### 4.2. Interrupts Paragon & Renegade Sem Timer (Leitura Pura)
 - **Zero Pressão de Tempo:** Não implementar contadores regressivos ou QTEs estressantes.
 - Durante nós que contêm gatilho de interrupt:
   - O ícone **Paragon (Azul)** surge no canto inferior esquerdo (atalho: `[Q]`).
@@ -64,7 +86,7 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
   - **Avançar normalmente (Ignorar):** Clicar na caixa de texto ou no botão de avançar dá continuidade ao fluxo padrão da conversa.
   - **Acionar Interrupt:** Clicar no botão ou acionar a tecla dispara imediatamente o ramo exclusivo daquela ação moral (`targetNode`).
 
-### 3.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
+### 4.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
 Para preservar a identidade personalizada de cada jogador (rosto customizado, gênero e escolhas da trilogia) e maximizar a imersão visual novel:
 - **Shepard em 1ª Pessoa (Atrás da Câmera):** Shepard nunca aparece como sprite na tela. Ele é a visão/câmera do jogador.
 - **Cena Solo (Shepard + 1 Interlocutor):**
@@ -84,7 +106,7 @@ Para preservar a identidade personalizada de cada jogador (rosto customizado, g�
 
 ---
 
-## 📜 4. Schema Padrão de Roteiro (`data/chapters/*.js`) e Padrão em Inglês
+## 📜 5. Schema Padrão de Roteiro (`data/chapters/*.js`) e Padrão em Inglês
 
 Todo o código-fonte, identificadores, comentários e o roteiro narrativo são padronizados em **inglês** para universalidade e reuso pela comunidade.
 
@@ -145,9 +167,9 @@ export const chapter1 = {
 
 ---
 
-## 🌌 5. Contexto Narrativo & Cânone: *Consciência e Carne*
+## 🌌 6. Contexto Narrativo & Cânone: *Consciência e Carne*
 
-Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíblia Narrativa em [`docs/Ideia Inicial.md`](docs/Ideia%20Inicial.md):
+Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíblia Narrativa em [`docs/planejamento.md`](docs/planejamento.md):
 
 1. **Premissa Central (A Terceira Chance):**
    - **1ª Chance:** Soldado mortal da Aliança (Earthborn / War Hero de Elysium / Infiltrator analógico).
@@ -166,10 +188,10 @@ Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíbli
 
 ---
 
-## 🛡️ 6. Diretrizes e Protocolos de Execução para Agentes de IA
+## 🛡️ 7. Diretrizes e Protocolos de Execução para Agentes de IA
 
 ### O que SEMPRE fazer:
-- **Consultar a documentação antes de codificar:** Ler [`docs/engine.md`](docs/engine.md) e [`docs/Ideia Inicial.md`](docs/Ideia%20Inicial.md) para garantir que qualquer nova funcionalidade ou nó respeite o design.
+- **Consultar a documentação antes de codificar:** Ler [`docs/engine.md`](docs/engine.md) e [`docs/planejamento.md`](docs/planejamento.md) para garantir que qualquer nova funcionalidade ou nó respeite o design.
 - **Manter fidelidade estética sci-fi:** Utilizar a paleta holográfica Mass Effect (tons escuros espaciais, linhas holográficas ciano/azul `#00d8ff`, cantos chanfrados e tipografia tecnológica).
 - **Tratar caminhos como relativos:** Garantir que imagens, áudios e scripts funcionem em qualquer subdiretório do GitHub Pages.
 - **Garantir acessibilidade e responsividade:** O leitor deve conseguir jogar tanto no mouse quanto via atalhos de teclado (ex: teclas 1 a 9 para a lista de diálogo, Espaço/Enter para avançar, Q/E para interrupts).

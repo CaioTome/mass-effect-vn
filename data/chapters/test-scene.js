@@ -1,7 +1,7 @@
-// data/chapters/test-scene.js - Test Chapter: Contact at the Shadow Broker Sanctum (English)
+// data/chapters/test-scene.js - Chapter 2: Dossier: Shadow Broker (English)
 export const testScene = {
-  id: "test_scene_sanctum",
-  title: "Chapter 1: Contact at the Shadow Broker Sanctum",
+  id: "chapter_02_shadow_broker",
+  title: "Dossier: Shadow Broker",
   background: "assets/backgrounds/shadow_broker_sanctum.jpg",
   startNode: "liara_intro_01",
   nodes: {
@@ -218,14 +218,14 @@ export const testScene = {
       present: ["liara", "garrus"],
       speaker: "liara",
       text: "It is good to have you leading us again, John. The galaxy feels somewhat less terrifying with you at our head.",
-      next: "choice_duo_planning"
+      next: "node_conclusion_test"
     },
 
     "node_heavy_strike": {
       present: ["liara", "garrus"],
       speaker: "garrus",
       text: "My sniper rifle is chambered with high-velocity tungsten rounds. It will be a distinct pleasure settling accounts with Cerberus once and for all.",
-      next: "choice_duo_planning"
+      next: "node_conclusion_test"
     },
 
     "node_conclusion_test": {

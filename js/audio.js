@@ -158,6 +158,25 @@ class AudioManager {
       osc.stop(now + 0.45);
     } catch (e) {}
   }
+
+  playLocked() {
+    if (this.isMuted) return;
+    this.init();
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.setValueAtTime(110, now + 0.08);
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(now + 0.16);
+    } catch (e) {}
+  }
 }
 
 export const audio = new AudioManager();

@@ -11,6 +11,7 @@ class VNEngine {
     const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
     this.chapter = defaultChapter.data;
 
+    this.hasStarted = false;
     this.currentNodeId = null;
     this.currentNode = null;
     this.readChoices = new Set();
@@ -27,7 +28,8 @@ class VNEngine {
   init() {
     this.cacheDOM();
     this.bindEvents();
-    this.loadScene(this.chapter.startNode);
+    this.renderChapterModal();
+    this.openChapterModal();
   }
 
   cacheDOM() {
@@ -61,12 +63,7 @@ class VNEngine {
     // Chapter & Story Selector Modal
     this.dom.chapterModal = document.getElementById("chapter-modal");
     this.dom.btnCloseModal = document.getElementById("btn-close-modal");
-    this.dom.storyCover = document.getElementById("story-cover");
     this.dom.storyTitle = document.getElementById("story-title");
-    this.dom.storySubtitle = document.getElementById("story-subtitle");
-    this.dom.storyAuthor = document.getElementById("story-author");
-    this.dom.storyTags = document.getElementById("story-tags");
-    this.dom.storySynopsis = document.getElementById("story-synopsis");
     this.dom.chaptersList = document.getElementById("chapters-list");
   }
 
@@ -109,6 +106,7 @@ class VNEngine {
   loadChapter(chapterData) {
     if (!chapterData) return;
     this.chapter = chapterData;
+    this.hasStarted = true;
     this.readChoices.clear();
     this.loadScene(this.chapter.startNode);
   }
@@ -127,9 +125,14 @@ class VNEngine {
       this.dom.chapterTitle.textContent = this.chapter.title;
     }
 
-    // Update background if specified
-    if (this.chapter.background && this.dom.bg.src !== this.chapter.background) {
-      this.dom.bg.src = this.chapter.background;
+    // Update background if specified on node or chapter
+    const targetBg = this.currentNode.background || this.chapter.background;
+    if (targetBg) {
+      const currentBg = this.dom.bg.getAttribute("src");
+      if (currentBg !== targetBg) {
+        this.dom.bg.src = targetBg;
+        this.dom.bg.setAttribute("src", targetBg);
+      }
     }
 
     // 1. Update character stage layout & dynamic lighting
@@ -424,7 +427,7 @@ class VNEngine {
   }
 
   // -----------------------------------------------------------------
-  // 📂 CHAPTER & MISSION SELECTOR MODAL
+  // 📂 CHAPTERS SCREEN & TERMINAL
   // -----------------------------------------------------------------
   openChapterModal() {
     audio.playHover();
@@ -439,71 +442,62 @@ class VNEngine {
     if (this.dom.chapterModal) {
       this.dom.chapterModal.classList.remove("visible");
     }
+    // If scene hasn't started yet, launch default playable chapter
+    if (!this.hasStarted) {
+      const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
+      const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
+      if (defaultChapter && defaultChapter.data) {
+        this.loadChapter(defaultChapter.data);
+      }
+    }
   }
 
   renderChapterModal() {
     const story = stories[this.currentStoryIndex];
     if (!story) return;
 
-    // Populate story details
-    if (this.dom.storyCover) this.dom.storyCover.src = story.cover || "assets/backgrounds/shadow_broker_sanctum.jpg";
-    if (this.dom.storyTitle) this.dom.storyTitle.textContent = story.title;
-    if (this.dom.storySubtitle) this.dom.storySubtitle.textContent = story.originalTitle || "";
-    if (this.dom.storyAuthor) this.dom.storyAuthor.textContent = `Written by ${story.author || "Caio"}`;
-    if (this.dom.storySynopsis) this.dom.storySynopsis.textContent = story.synopsis;
-
-    // Populate tags
-    if (this.dom.storyTags) {
-      this.dom.storyTags.innerHTML = "";
-      (story.tags || []).forEach(tag => {
-        const tagSpan = document.createElement("span");
-        tagSpan.className = "story-tag";
-        tagSpan.textContent = tag;
-        this.dom.storyTags.appendChild(tagSpan);
-      });
+    if (this.dom.storyTitle) {
+      this.dom.storyTitle.textContent = story.title;
     }
 
-    // Populate chapters list
     if (this.dom.chaptersList) {
       this.dom.chaptersList.innerHTML = "";
       story.chapters.forEach(ch => {
-        const card = document.createElement("div");
-        card.className = `chapter-card ${ch.available ? "playable" : "locked"}`;
-        if (this.chapter && this.chapter.id === ch.id) {
-          card.classList.add("active");
+        const isPlayable = ch.available && ch.data;
+        const row = document.createElement(isPlayable ? "button" : "div");
+        row.className = `chapter-row ${isPlayable ? "playable" : "locked"}`;
+        row.setAttribute("data-number", ch.number);
+
+        const isCurrentlyActive = this.hasStarted && this.chapter && this.chapter.id === ch.id;
+        if (isCurrentlyActive) {
+          row.classList.add("active");
         }
 
-        const isCurrentlyLoaded = this.chapter && this.chapter.id === ch.id;
+        const badgeText = isPlayable
+          ? (isCurrentlyActive ? "▶ Resume" : "▶ Play")
+          : (ch.status || "Coming Soon");
 
-        card.innerHTML = `
-          <div class="card-top">
-            <span class="chapter-number">${ch.number}</span>
-            <span class="chapter-status-badge ${ch.available ? "badge-playable" : "badge-locked"}">
-              ${ch.status || (ch.available ? "PLAYABLE" : "LOCKED")}
-            </span>
-          </div>
-          <h4 class="chapter-title">${ch.title}</h4>
-          <p class="chapter-summary">${ch.summary}</p>
-          <div class="card-actions">
-            ${ch.available 
-              ? `<button class="btn-launch">${isCurrentlyLoaded ? "▶ Resume Chapter" : "▶ Launch Mission"}</button>`
-              : `<button class="btn-locked" disabled>Locked</button>`
-            }
-          </div>
+        row.innerHTML = `
+          <span class="chapter-row-num">${ch.number}.</span>
+          <span class="chapter-row-title">${ch.title}</span>
+          <span class="chapter-row-badge ${isPlayable ? "badge-play" : "badge-coming-soon"}">${badgeText}</span>
         `;
 
-        if (ch.available && ch.data) {
-          const launchBtn = card.querySelector(".btn-launch");
-          if (launchBtn) {
-            launchBtn.addEventListener("click", () => {
-              audio.playSelect();
+        if (isPlayable) {
+          row.addEventListener("click", () => {
+            audio.playSelect();
+            if (!isCurrentlyActive) {
               this.loadChapter(ch.data);
-              this.closeChapterModal();
-            });
-          }
+            }
+            this.closeChapterModal();
+          });
+        } else {
+          row.addEventListener("click", () => {
+            audio.playLocked();
+          });
         }
 
-        this.dom.chaptersList.appendChild(card);
+        this.dom.chaptersList.appendChild(row);
       });
     }
   }
@@ -512,12 +506,27 @@ class VNEngine {
   // ⌨️ KEYBOARD CONTROLS
   // -----------------------------------------------------------------
   handleKeyDown(e) {
+    const isModalOpen = this.dom.chapterModal && this.dom.chapterModal.classList.contains("visible");
+
     // Key Escape: toggle or close chapter modal
     if (e.key === "Escape") {
-      if (this.dom.chapterModal && this.dom.chapterModal.classList.contains("visible")) {
+      if (isModalOpen) {
         this.closeChapterModal();
       } else {
         this.openChapterModal();
+      }
+      return;
+    }
+
+    // Number keys 1-4 while chapter modal is open
+    if (isModalOpen) {
+      const num = parseInt(e.key, 10);
+      if (num >= 1 && num <= 4) {
+        const targetRow = this.dom.chaptersList.querySelector(`.chapter-row[data-number="${num}"]`);
+        if (targetRow) {
+          targetRow.click();
+          return;
+        }
       }
       return;
     }
