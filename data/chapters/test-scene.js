@@ -26,7 +26,7 @@ export const testScene = {
       present: ["liara"],
       speaker: "liara",
       text: "Shadow Broker surveillance intercepted high-priority distress telemetry from the Terminus Systems. The diplomatic vessel carrying Tali'Zorah and the Quarian Admiralty was ambushed by rogue Cerberus guerrilla cells.",
-      
+
       // Moral Interrupt without countdown timer
       interrupt: {
         paragon: {
@@ -147,7 +147,7 @@ export const testScene = {
       present: ["liara", "garrus"],
       speaker: "garrus",
       text: "[A grim smirk plays across Garrus's mandibles.] Hunting Cerberus remnants keeps my calibrations sharp. My task force intercepted their logistics convoys bordering the Perseus Veil.",
-      
+
       // Moral Interrupt without countdown timer
       interrupt: {
         renegade: {
@@ -238,7 +238,7 @@ export const testScene = {
     "node_final": {
       present: ["liara", "garrus"],
       speaker: "liara",
-      text: "[Test scene completed. The Baldur's Gate style full-text dialogue list, first-person POV, Solo/Dual dynamic lighting transitions, and non-timer moral interrupts are fully functional!]",
+      text: "Test scene completed",
       next: null
     }
   }
