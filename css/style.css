@@ -1,0 +1,511 @@
+/* css/style.css - Visual Novel Engine: Mass Effect Sci-Fi HUD */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --color-bg-dark: #040911;
+  --color-hud-cyan: #00d8ff;
+  --color-hud-cyan-dim: rgba(0, 216, 255, 0.25);
+  --color-hud-blue: #0066cc;
+  --color-hud-yellow: #ffd200;
+  --color-paragon-blue: #00aaff;
+  --color-renegade-red: #ff3344;
+  --color-text-white: #eef6ff;
+  --color-text-dim: #7f99b2;
+  
+  --font-title: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
+  font-family: var(--font-body);
+  color: var(--color-text-white);
+}
+
+/* ==========================================================================
+   🎮 CONTAINER PRINCIPAL (CANVAS SCI-FI)
+   ========================================================================== */
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Fundo Cenário */
+#scene-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.65) contrast(1.1);
+  transition: filter 0.8s ease;
+}
+
+/* Overlay de Scanlines e Vinheta Mass Effect */
+.scanlines-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    radial-gradient(circle at center, transparent 40%, rgba(0, 10, 25, 0.85) 100%);
+  background-size: 100% 4px, 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   🛰️ BARRA DE STATUS SUPERIOR (HUD)
+   ========================================================================== */
+#top-hud {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: linear-gradient(180deg, rgba(3, 12, 24, 0.9) 0%, rgba(3, 12, 24, 0) 100%);
+  border-bottom: 1px solid var(--color-hud-cyan-dim);
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-logo {
+  font-family: var(--font-title);
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: var(--color-hud-cyan);
+  background: rgba(0, 216, 255, 0.12);
+  padding: 4px 10px;
+  border-left: 3px solid var(--color-hud-cyan);
+  text-shadow: 0 0 8px rgba(0, 216, 255, 0.6);
+}
+
+#chapter-title {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+}
+
+.hud-right {
+  display: flex;
+  gap: 12px;
+}
+
+.hud-btn {
+  background: rgba(0, 25, 50, 0.6);
+  border: 1px solid var(--color-hud-cyan-dim);
+  color: var(--color-text-white);
+  font-family: var(--font-title);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 6px 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.hud-btn:hover {
+  background: rgba(0, 216, 255, 0.25);
+  border-color: var(--color-hud-cyan);
+  box-shadow: 0 0 10px rgba(0, 216, 255, 0.5);
+  color: #fff;
+}
+
+/* ==========================================================================
+   🎭 PALCO DE PERSONAGENS (SOLO & DUO COM ILUMINAÇÃO DINÂMICA)
+   ========================================================================== */
+#stage {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 210px);
+  z-index: 2;
+  display: flex;
+  pointer-events: none;
+}
+
+.portrait {
+  position: absolute;
+  bottom: 0;
+  height: 82%;
+  max-height: 720px;
+  object-fit: contain;
+  transition: filter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.4s ease;
+}
+
+/* ILUMINAÇÃO DINÂMICA (SOMBRA VS FALA) */
+.portrait.speaking {
+  filter: brightness(1.05) saturate(1.1) drop-shadow(0 0 25px rgba(0, 216, 255, 0.45));
+  opacity: 1;
+  transform: scale(1.02);
+  z-index: 4;
+}
+
+.portrait.dimmed {
+  filter: brightness(0.35) saturate(0.55) contrast(1.1);
+  opacity: 0.78;
+  transform: scale(0.97);
+  z-index: 2;
+}
+
+/* MODO SOLO: Centralizado */
+#stage.mode-single #portrait-center {
+  left: 50%;
+  transform: translateX(-50%) scale(0.97);
+}
+
+#stage.mode-single #portrait-center.speaking {
+  transform: translateX(-50%) scale(1.02);
+}
+
+/* MODO DUO: Esquerda & Direita */
+#stage.mode-dual #portrait-left {
+  left: 25%;
+  transform: translateX(-50%) scale(0.97);
+}
+
+#stage.mode-dual #portrait-left.speaking {
+  transform: translateX(-50%) scale(1.02);
+}
+
+#stage.mode-dual #portrait-right {
+  left: 75%;
+  transform: translateX(-50%) scale(0.97);
+}
+
+#stage.mode-dual #portrait-right.speaking {
+  transform: translateX(-50%) scale(1.02);
+}
+
+/* ==========================================================================
+   💬 CAIXA DE DIÁLOGO
+   ========================================================================== */
+#dialogue-layer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 40px 24px 40px;
+}
+
+#dialogue-box {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  min-height: 140px;
+  background: rgba(5, 14, 26, 0.88);
+  border: 1px solid var(--color-hud-cyan);
+  box-shadow: 
+    0 0 20px rgba(0, 216, 255, 0.2),
+    inset 0 0 15px rgba(0, 216, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 18px 28px;
+  cursor: pointer;
+  clip-path: polygon(
+    0 12px, 12px 0,
+    calc(100% - 12px) 0, 100% 12px,
+    100% calc(100% - 12px), calc(100% - 12px) 100%,
+    12px 100%, 0 calc(100% - 12px)
+  );
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#dialogue-box:hover {
+  border-color: #55e6ff;
+  box-shadow: 0 0 25px rgba(0, 216, 255, 0.35);
+}
+
+.speaker-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--color-hud-cyan-dim);
+  padding-bottom: 6px;
+}
+
+#speaker-name {
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-hud-cyan);
+  text-shadow: 0 0 10px rgba(0, 216, 255, 0.6);
+  text-transform: uppercase;
+}
+
+#speaker-title {
+  font-size: 14px;
+  color: var(--color-text-dim);
+  letter-spacing: 1px;
+}
+
+#dialogue-text {
+  font-size: 21px;
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  color: var(--color-text-white);
+  min-height: 58px;
+}
+
+#advance-prompt {
+  position: absolute;
+  right: 24px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-title);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--color-hud-cyan);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#advance-prompt.visible {
+  opacity: 0.9;
+  animation: pulsePrompt 1.4s infinite ease-in-out;
+}
+
+.prompt-arrow {
+  display: inline-block;
+  font-size: 14px;
+}
+
+@keyframes pulsePrompt {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+/* ==========================================================================
+   ⚡ INTERRUPTS MORAIS SEM TIMER (PARAGON / RENEGADE)
+   ========================================================================== */
+.interrupt-btn {
+  position: absolute;
+  bottom: 175px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(3, 10, 22, 0.9);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interrupt-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.interrupt-icon-box {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interrupt-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.interrupt-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.interrupt-key {
+  font-family: var(--font-title);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+
+.interrupt-label {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* PARAGON (Azul - Canto Inferior Esquerdo) */
+#interrupt-paragon {
+  left: 40px;
+  border: 1px solid var(--color-paragon-blue);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+#interrupt-paragon:hover {
+  background: rgba(0, 132, 255, 0.25);
+  box-shadow: 0 0 25px rgba(0, 170, 255, 0.75);
+  transform: scale(1.05);
+}
+
+#interrupt-paragon .interrupt-key {
+  color: var(--color-paragon-blue);
+}
+
+/* RENEGADE (Vermelho - Canto Inferior Direito) */
+#interrupt-renegade {
+  right: 40px;
+  border: 1px solid var(--color-renegade-red);
+  box-shadow: 0 0 15px rgba(255, 51, 68, 0.4);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+}
+
+#interrupt-renegade:hover {
+  background: rgba(255, 51, 68, 0.25);
+  box-shadow: 0 0 25px rgba(255, 51, 68, 0.75);
+  transform: scale(1.05);
+}
+
+#interrupt-renegade .interrupt-key {
+  color: var(--color-renegade-red);
+}
+
+/* ==========================================================================
+   📜 BALDUR'S GATE STYLE DIALOGUE CHOICE LIST
+   ========================================================================== */
+#choice-container {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 90%;
+  max-width: 980px;
+  z-index: 25;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#choice-container.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+#choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(4, 13, 26, 0.94);
+  border: 1px solid var(--color-hud-cyan);
+  box-shadow: 0 0 25px rgba(0, 216, 255, 0.25), inset 0 0 15px rgba(0, 216, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 16px 20px;
+  clip-path: polygon(
+    0 10px, 10px 0,
+    calc(100% - 10px) 0, 100% 10px,
+    100% calc(100% - 10px), calc(100% - 10px) 100%,
+    10px 100%, 0 calc(100% - 10px)
+  );
+}
+
+.choice-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  background: rgba(8, 22, 42, 0.6);
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-left: 3px solid rgba(0, 216, 255, 0.4);
+  padding: 10px 16px;
+  color: var(--color-text-white);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border-radius: 2px;
+}
+
+.choice-item:hover {
+  background: rgba(0, 216, 255, 0.2);
+  border-color: var(--color-hud-cyan);
+  border-left: 4px solid var(--color-hud-cyan);
+  box-shadow: 0 0 15px rgba(0, 216, 255, 0.4);
+  transform: translateX(6px);
+  color: #fff;
+}
+
+.choice-num {
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-hud-cyan);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.choice-text {
+  flex-grow: 1;
+  letter-spacing: 0.5px;
+}
+
+/* Opções já exploradas */
+.choice-item.read {
+  opacity: 0.65;
+  color: #8da4be;
+  border-left-color: rgba(120, 150, 180, 0.3);
+}
+
+/* Responsividade Básica */
+@media (max-width: 900px) {
+  #dialogue-layer {
+    padding: 0 16px 16px 16px;
+  }
+  #dialogue-text {
+    font-size: 18px;
+  }
+  #wheel-container {
+    width: 380px;
+    height: 230px;
+  }
+  .wheel-slot {
+    font-size: 11px;
+    padding: 6px 10px;
+    max-width: 160px;
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mass Effect: Ghost in the Flesh - Visual Novel Engine</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/icons/paragon.png">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Background Scene -->
+    <img id="scene-background" src="assets/backgrounds/shadow_broker_sanctum.jpg" alt="Background Scene">
+    
+    <!-- Scanlines & Sci-Fi Vignette Overlay -->
+    <div class="scanlines-overlay"></div>
+
+    <!-- Top HUD Status Bar -->
+    <header id="top-hud">
+      <div class="hud-left">
+        <span class="hud-logo">N7 // ARCHIVE</span>
+        <span id="chapter-title">Loading Scene...</span>
+      </div>
+      <div class="hud-right">
+        <button id="btn-mute" class="hud-btn" title="Toggle Sound Effects">🔊 Audio On</button>
+        <button id="btn-restart" class="hud-btn" title="Restart Test Scene">↺ Restart</button>
+      </div>
+    </header>
+
+    <!-- Character Stage (Solo Centered & Dual Left/Right with Dynamic Lighting) -->
+    <main id="stage" class="mode-single">
+      <img id="portrait-center" class="portrait" src="" alt="Solo Character">
+      <img id="portrait-left" class="portrait" src="" alt="Left Character">
+      <img id="portrait-right" class="portrait" src="" alt="Right Character">
+    </main>
+
+    <!-- Moral Interrupts Without Timers (Paragon & Renegade) -->
+    <aside id="interrupt-paragon" class="interrupt-btn" title="Press [Q] or Click to trigger Paragon Action">
+      <div class="interrupt-icon-box">
+        <img src="assets/icons/paragon.png" alt="Paragon Icon">
+      </div>
+      <div class="interrupt-text-box">
+        <span class="interrupt-key">[Q] PARAGON</span>
+        <span id="paragon-label" class="interrupt-label">Comfort Liara</span>
+      </div>
+    </aside>
+
+    <aside id="interrupt-renegade" class="interrupt-btn" title="Press [E] or Click to trigger Renegade Action">
+      <div class="interrupt-text-box" style="text-align: right;">
+        <span class="interrupt-key">[E] RENEGADE</span>
+        <span id="renegade-label" class="interrupt-label">Demand Focus</span>
+      </div>
+      <div class="interrupt-icon-box">
+        <img src="assets/icons/renegate.png" alt="Renegade Icon">
+      </div>
+    </aside>
+
+    <!-- Baldur's Gate Style Dialogue Choice List -->
+    <section id="choice-container">
+      <nav id="choice-list"></nav>
+    </section>
+
+    <!-- Dialogue Layer -->
+    <footer id="dialogue-layer">
+      <div id="dialogue-box">
+        <div class="speaker-header">
+          <span id="speaker-name">COMMANDER SHEPARD</span>
+          <span id="speaker-title">// N7 Infiltrator</span>
+        </div>
+        <p id="dialogue-text">Initializing holographic comms...</p>
+        <div id="advance-prompt">
+          <span>ADVANCE [SPACE]</span>
+          <span class="prompt-arrow">▶</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Engine Controller ES Module -->
+  <script type="module" src="js/engine.js"></script>
+</body>
+</html>

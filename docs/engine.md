@@ -10,80 +10,67 @@
 
 A proposta foi refinada para priorizar uma **experiência pura de leitura interativa (estilo Visual Novel cinematográfica)**, simplificando a implementação técnica e removendo barreiras de gameplay:
 
-1. **Expressões como Personagens Independentes:**
-   * Em vez de sistemas complexos de *layers* ou estados dinâmicos de sprite, **cada variação de Shepard e de seus interlocutores é tratada como um ID de personagem próprio** (ex: `shepard_mercenario`, `shepard_neutro`, `shepard_serio`, `liara_chocada`).
-   * A engine simplesmente busca o ID no catálogo (`characters.js`) e exibe a imagem e o nome correspondentes.
-2. **Roda de Diálogo Clássica de 8 Posições (Sentido Horário):**
-   * Disposta no centro inferior da tela como no jogo original.
-   * **Cor do Texto na Roda:** As opções utilizam a tipografia holográfica padrão uniforme (branco / ciano claro clássico da interface), sem colorir o texto de azul ou vermelho na roda.
-   * **Posição 1 (12:00 - Topo):** Neutra / Direta / Opção de Continuidade.
-   * **Posição 2 (01:30 - Topo-Direita):** Opção de tom **Paragon** (Diplomática / Empática — texto padrão, sem cor azul na roda).
-   * **Posição 3 (03:00 - Direita):** **Vazio** na Roda Principal; na Roda de Investigação, torna-se a opção **"Voltar"** para retornar ao menu anterior.
-   * **Posição 4 (04:30 - Baixo-Direita):** Opção de tom **Renegade** (Agressiva / Pragmática — texto padrão, sem cor vermelha na roda).
-   * **Posição 5 (06:00 - Baixo):** Neutra / Alternativa.
-   * **Posição 6 (07:30 - Baixo-Esquerda):** Pergunta extra.
-   * **Posição 7 (09:00 - Esquerda):** Opção **"Investigar"** (abre a sub-roda de diálogo com perguntas aprofundadas sobre o assunto).
-   * **Posição 8 (10:30 - Topo-Esquerda):** Contexto ou lore adicional.
-   * **Opção Amarela (#ffd200) - O Próximo Diálogo ou Cena:** O destaque colorido na roda é exclusivo para a opção que avança para o próximo diálogo, assunto principal ou transição de cena.
-3. **Leitura Sem Pressa (Sem Timers):**
-   * **Zero estresse de QTE:** Os gatilhos de *Paragon Interrupt* (azul inferior esquerdo) e *Renegade Interrupt* (vermelho inferior direito) **não possuem contador regressivo**.
+1. **Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco:**
+   * **Shepard em 1ª Pessoa:** Shepard não tem sprite fixo na tela, atuando como o ponto de vista do jogador (preservando rostos personalizados, gênero e escolhas da trilogia).
+   * **Cena Solo (Shepard + 1 Interlocutor):** O interlocutor fica **centralizado** no palco com foco visual total.
+   * **Cena Duo (Shepard + 2 Interlocutores, ex: Liara e Garrus):** O palco posiciona os personagens nos lados esquerdo e direito.
+   * **Iluminação Dinâmica (Foco de Voz):** Quem fala fica 100% iluminado e em destaque suave (`.speaking`). O interlocutor em silêncio fica sombreado na penumbra (`.dimmed`). Quando Shepard fala, ambos ficam sombreados ouvindo a câmera.
+2. **Sistema de Diálogo Estilo Baldur's Gate (Lista de Texto Completo):**
+   * Em vez de pequenos snippets comprimidos em uma roda circular, o jogador tem uma **lista numerada vertical com o texto completo da fala**:
+     ```
+     1. [Linha completa de fala ou intenção de Shepard]
+     2. [Linha alternativa de tom diplomático / empático]
+     3. [Linha agressiva / assertiva]
+     4. [Pergunta investigativa...]
+     ```
+   * **Sem Destaques Artificiais (Sem Letras Amarelas):** O leitor percebe o avanço para a próxima cena pelo contexto narrativo natural, garantindo maior imersão e surpresa.
+   * Seleção ágil por clique ou teclas numéricas (`1` a `9`).
+3. **Leitura Sem Pressa (Interrupts Sem Timer):**
+   * **Zero estresse de QTE:** Os gatilhos de *Paragon Interrupt* (azul inferior esquerdo, atalho `[Q]`) e *Renegade Interrupt* (vermelho inferior direito, atalho `[E]`) **não possuem contador regressivo**.
    * Eles aparecem como opções contextuais durante a fala/cena. O leitor pode ler no seu próprio ritmo e escolher:
      * Clicar no **Interrupt** para disparar o evento especial moral;
      * Ou simplesmente clicar na caixa de diálogo / avançar para continuar o diálogo normal sem interrupção.
-4. **Desacoplamento Total (Engine vs. Roteiro):**
+4. **Desacoplamento Total (Engine vs. Roteiro) & Padrão em Inglês:**
    * A engine em HTML/CSS/JS é fixa e reutilizável.
-   * O roteiro completo de cada capítulo é escrito em arquivos de dados isolados (`data/chapters/capitulo-1.js`), permitindo criar, editar ou revisar diálogos sem tocar em código de interface.
+   * O código, arquitetura de dados e roteiros são redigidos em **inglês**, permitindo distribuição internacional e modularidade.
 
 ---
 
-## 📐 2. Wireframe da Interface & Mapa da Roda
+## 📐 2. Wireframe da Interface
 
-### 2.1. Composição em Tela
+### 2.1. Composição em Tela (Modo Duo: Garrus & Liara)
 
 ```
 +-------------------------------------------------------------------------+
-| [Cenário de Fundo: Sanctum da Shadow Broker / Cabine / Rannoch]         |
+| [Cenário de Fundo: Sanctum da Shadow Broker / Ponte / Rannoch]          |
 |                                                                         |
 |      +----------------+                         +----------------+      |
-|      |                |                         |                |      |
-|      |  JOHN SHEPARD  |                         |  INTERLOCUTOR  |      |
-|      |   (À Esquerda) |                         |  (À Direita)   |      |
-|      |    [Sempre]    |                         | [Entra quando] |      |
-|      | [Sprite do ID] |                         |    [fala]      |      |
+|      |  INTERLOCUTOR  |                         |  INTERLOCUTOR  |      |
+|      |    (ESQUERDA)  |                         |    (DIREITA)   |      |
+|      |  [ILUMINADO se |                         |  [SOMBREADO se |      |
+|      |   estiver com  |                         |   estiver só   |      |
+|      |    a palavra]  |                         |    ouvindo]    |      |
 |      +----------------+                         +----------------+      |
+|                                                                         |
+|                 +-------------------------------------+                 |
+|                 | 1. [Opção de fala completa 1]       |                 |
+|                 | 2. [Opção de fala completa 2]       |                 |
+|                 | 3. [Opção investigativa completa]   |                 |
+|                 +-------------------------------------+                 |
 |                                                                         |
 |                 +-------------------------------------+                 |
 |                 | [Nome]: "Fala do personagem atual..."|                 |
 |                 +-------------------------------------+                 |
 |                                                                         |
-| (AZUL - Sem Timer)           [ RODA 8 SLOTS ]     (VERMELHO - Sem Timer)|
-| +------------------+         [    CENTRAL   ]     +--------------------+|
-| | PARAGON INTERRUPT|         [              ]     | RENEGADE INTERRUPT ||
-| | (Clique se quiser|                              | (Clique se quiser  ||
-| |  a ação heróica) |                              |  a ação agressiva) ||
-| +------------------+                              +--------------------+|
+| (AZUL - Sem Timer)                                 (VERMELHO - Sem Timer)|
+| +------------------+                                +--------------------+|
+| | PARAGON INTERRUPT|                                | RENEGADE INTERRUPT ||
+| |  [Q] Ação Moral  |                                |  [E] Ação Direta   ||
+| +------------------+                                +--------------------+|
 +-------------------------------------------------------------------------+
 ```
 
-### 2.2. Mapa da Roda de 8 Posições (Sentido Horário)
-
-```
-                       [1] TOPO (Neutra / Direta)
-                                 ▲
-          [8] Topo-Esq.         │         [2] Topo-Dir. (Tom Paragon / Diplomático)
-                   ↖            │            ↗
-                     \          │          /
-                       \        │        /
- [7] ESQUERDA ──────────  [ CENTRO ]  ────────── [3] DIREITA (Vazio na principal /
- (INVESTIGAR)          /        │        \               VOLTAR na de investigação)
-                     /          │          \
-                   ↙            │            ↘
-         [6] Baixo-Esq.         │         [4] Baixo-Dir. (Tom Renegade / Firme)
-                                 ▼
-                       [5] BAIXO (Neutra / Alt.)
-
- * NOTA: Textos na roda usam cor holográfica padrão.
- * A opção que avança para o próximo diálogo ou cena é destacada em AMARELO (#ffd200).
+*(Nota: No Modo Solo com apenas 1 personagem em cena, o sprite fica centralizado horizontalmente no palco com presença total).*
 ```
 
 ---
