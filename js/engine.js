@@ -32,6 +32,7 @@ class VNEngine {
     this.dom.portraitLeft = document.getElementById("portrait-left");
     this.dom.portraitRight = document.getElementById("portrait-right");
 
+    this.dom.dialogueLayer = document.getElementById("dialogue-layer");
     this.dom.dialogueBox = document.getElementById("dialogue-box");
     this.dom.speakerName = document.getElementById("speaker-name");
     this.dom.speakerTitle = document.getElementById("speaker-title");
@@ -342,14 +343,12 @@ class VNEngine {
   renderChoices(node) {
     const choices = node.choices || [];
     this.dom.choiceList.innerHTML = "";
-    this.dom.choiceContainer.classList.add("visible");
 
-    // Also update speaker header to Shepard (POV)
-    const playerChar = characters["shepard"] || { name: "Commander Shepard", title: "N7 Infiltrator" };
-    this.dom.speakerName.textContent = playerChar.name;
-    this.dom.speakerTitle.textContent = playerChar.title ? `// ${playerChar.title}` : "";
-    this.dom.dialogueText.textContent = "Select your response:";
-    this.dom.advancePrompt.classList.remove("visible");
+    // Hide dialogue box so the choices cleanly take focus without redundant prompts
+    if (this.dom.dialogueLayer) {
+      this.dom.dialogueLayer.style.display = "none";
+    }
+    this.dom.choiceContainer.classList.add("visible");
 
     choices.forEach((choice, index) => {
       const choiceBtn = document.createElement("button");
@@ -376,6 +375,9 @@ class VNEngine {
 
   hideChoices() {
     this.dom.choiceContainer.classList.remove("visible");
+    if (this.dom.dialogueLayer) {
+      this.dom.dialogueLayer.style.display = "flex";
+    }
   }
 
   selectChoice(choice) {

@@ -448,10 +448,10 @@ body, html {
    ========================================================================== */
 #choice-container {
   position: absolute;
-  bottom: 180px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: 90%;
+  width: calc(100% - 80px);
   max-width: 980px;
   z-index: 25;
   opacity: 0;
@@ -535,16 +535,15 @@ body, html {
   #dialogue-layer {
     padding: 0 16px 16px 16px;
   }
+  #choice-container {
+    bottom: 16px;
+    width: calc(100% - 32px);
+  }
   #dialogue-text {
     font-size: 18px;
   }
-  #wheel-container {
-    width: 380px;
-    height: 230px;
-  }
-  .wheel-slot {
-    font-size: 11px;
-    padding: 6px 10px;
-    max-width: 160px;
+  .choice-item {
+    font-size: 16px;
+    padding: 8px 12px;
   }
 }
