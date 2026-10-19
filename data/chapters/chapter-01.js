@@ -36,7 +36,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper ship. Did the Crucible fail? What happened to Earth... what happened to all of us?",
+      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper ship. Did the Crucible fail? What happened to us... what happened to Tali",
       next: "hackett_beam_appear"
     },
 
@@ -62,21 +62,21 @@ export const chapter01 = {
     "shepard_hackett_01": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "Admiral Hackett?! Sir... did we win? Did Earth make it through?",
+      text: "Admiral Hackett?! Sir... what happened? Did we win?",
       next: "hackett_calm_01"
     },
 
     "hackett_calm_01": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Draw a steady breath, John. Your vital signs are erratic; neural shock takes time to settle. I am here to bring you up to speed on galactic telemetry before we issue your next directive.",
+      text: "Take a deep breath, Shepard. Your vital signs are erratic; neural shock takes time to settle. I am here to help you.",
       next: "hackett_status_intro"
     },
 
     "hackett_status_intro": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Two months have passed since the Battle of Earth. The war is over. The Reapers have ceased all hostilities, and their harvest directives have been permanently revoked.",
+      text: "We won. Kind of. Two months have passed since the Battle of Earth. The war is over. The Reapers have ceased all hostilities.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -128,7 +128,7 @@ export const chapter01 = {
     "node_reapers_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "The Reapers are actively assisting in galactic reconstruction. Capital ships are hauling raw alloys, stabilizing damaged planetary magnetospheres on Earth and Palaven, and restoring orbital platforms. Citadel fleets maintain cautious sentry lines, but peace holds.",
+      text: "The Reapers are actively assisting in galactic reconstruction. Capital ships are hauling raw alloys, stabilizing infrastructure, and restoring orbital platforms and the relays. Citadel fleets maintain sentry lines, but peace holds.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",

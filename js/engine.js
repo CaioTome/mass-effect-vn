@@ -52,8 +52,6 @@ class VNEngine {
 
     this.dom.interruptParagon = document.getElementById("interrupt-paragon");
     this.dom.interruptRenegade = document.getElementById("interrupt-renegade");
-    this.dom.paragonLabel = document.getElementById("paragon-label");
-    this.dom.renegadeLabel = document.getElementById("renegade-label");
 
     this.dom.btnChapters = document.getElementById("btn-chapters");
     this.dom.btnMute = document.getElementById("btn-mute");
@@ -375,13 +373,11 @@ class VNEngine {
       let playedCue = false;
 
       if (node.interrupt.paragon) {
-        this.dom.paragonLabel.textContent = node.interrupt.paragon.label || "Paragon";
         this.dom.interruptParagon.classList.add("visible");
         playedCue = true;
       }
 
       if (node.interrupt.renegade) {
-        this.dom.renegadeLabel.textContent = node.interrupt.renegade.label || "Renegade";
         this.dom.interruptRenegade.classList.add("visible");
         playedCue = true;
       }
