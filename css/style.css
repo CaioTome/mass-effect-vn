@@ -206,6 +206,45 @@ body, html {
   transform: translateX(-50%) scale(1.02);
 }
 
+/* MODO TRIO: Esquerda, Centro & Direita */
+#stage.mode-trio .portrait {
+  height: 76%;
+  max-height: 680px;
+}
+
+#stage.mode-trio #portrait-left {
+  left: 18%;
+  transform: translateX(-50%) scale(0.96);
+  z-index: 2;
+}
+
+#stage.mode-trio #portrait-left.speaking {
+  transform: translateX(-50%) scale(1.02);
+  z-index: 5;
+}
+
+#stage.mode-trio #portrait-center {
+  left: 50%;
+  transform: translateX(-50%) scale(0.96);
+  z-index: 3;
+}
+
+#stage.mode-trio #portrait-center.speaking {
+  transform: translateX(-50%) scale(1.02);
+  z-index: 5;
+}
+
+#stage.mode-trio #portrait-right {
+  left: 82%;
+  transform: translateX(-50%) scale(0.96);
+  z-index: 2;
+}
+
+#stage.mode-trio #portrait-right.speaking {
+  transform: translateX(-50%) scale(1.02);
+  z-index: 5;
+}
+
 /* ==========================================================================
    💬 CAIXA DE DIÁLOGO
    ========================================================================== */

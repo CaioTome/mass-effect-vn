@@ -64,7 +64,7 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
   - **Avançar normalmente (Ignorar):** Clicar na caixa de texto ou no botão de avançar dá continuidade ao fluxo padrão da conversa.
   - **Acionar Interrupt:** Clicar no botão ou acionar a tecla dispara imediatamente o ramo exclusivo daquela ação moral (`targetNode`).
 
-### 3.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo)
+### 3.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
 Para preservar a identidade personalizada de cada jogador (rosto customizado, gênero e escolhas da trilogia) e maximizar a imersão visual novel:
 - **Shepard em 1ª Pessoa (Atrás da Câmera):** Shepard nunca aparece como sprite na tela. Ele é a visão/câmera do jogador.
 - **Cena Solo (Shepard + 1 Interlocutor):**
@@ -73,10 +73,13 @@ Para preservar a identidade personalizada de cada jogador (rosto customizado, g�
   - Quando Shepard fala: o interlocutor permanece na tela, mas entra em tom de escuta/sombra sutil (`.dimmed`).
 - **Cena Duo (Shepard + 2 Interlocutores, ex: Liara e Garrus):**
   - O palco transiciona suavemente para o modo duplo (`#stage.mode-dual`), posicionando um personagem à esquerda e o outro à direita.
-  - **Foco por Iluminação Dinâmica:**
-    - Quem estiver falando fica 100% iluminado e em destaque suave (`.speaking`).
-    - O outro personagem fica sombreado na penumbra (`.dimmed`, `filter: brightness(0.35) saturate(0.55)`), indicando escuta atenta.
-    - Quando Shepard fala (POV): **ambos** os interlocutores ficam sombreados (`.dimmed`), voltados em direção ao jogador enquanto ouvem suas palavras.
+  - Quem estiver falando fica 100% iluminado e em destaque suave (`.speaking`).
+  - O outro personagem fica sombreado na penumbra (`.dimmed`, `filter: brightness(0.35) saturate(0.55)`).
+  - Quando Shepard fala (POV): **ambos** os interlocutores ficam sombreados (`.dimmed`).
+- **Cena Trio (Shepard + 3 Interlocutores, ex: Liara, Tali e Garrus):**
+  - O palco adota a composição tripla (`#stage.mode-trio`), distribuindo os três personagens em: **Esquerda (18%)**, **Centro (50%)** e **Direita (82%)**.
+  - **Foco por Iluminação Dinâmica:** O personagem com a palavra se ilumina (`.speaking`), enquanto os outros dois interlocutores recuam para a sombra (`.dimmed`).
+  - Quando Shepard fala (POV): **todos os três** interlocutores ficam sombreados (`.dimmed`), voltados em direção ao jogador em silêncio atento.
 - **Catálogo de Personagens (`characters.js`):** Cada traje ou expressão é registrada por ID com seu nome e sprite correspondente.
 
 ---

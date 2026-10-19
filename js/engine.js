@@ -115,13 +115,13 @@ class VNEngine {
   }
 
   // -----------------------------------------------------------------
-  // 🎭 STAGE MANAGEMENT: Solo / Dual Mode & Dynamic Lighting
+  // 🎭 STAGE MANAGEMENT: Solo / Dual / Trio Mode & Dynamic Lighting
   // -----------------------------------------------------------------
   updateStage(node) {
     const present = node.present || [];
     const speakerId = node.speaker;
 
-    this.dom.stage.classList.remove("mode-single", "mode-dual");
+    this.dom.stage.classList.remove("mode-single", "mode-dual", "mode-trio");
 
     if (present.length <= 1) {
       // SOLO MODE: Single character centered on screen
@@ -149,7 +149,7 @@ class VNEngine {
       this.dom.portraitLeft.style.display = "none";
       this.dom.portraitRight.style.display = "none";
 
-    } else {
+    } else if (present.length === 2) {
       // DUAL MODE: 2 characters (Left & Right)
       this.dom.stage.classList.add("mode-dual");
       this.dom.portraitCenter.style.display = "none";
@@ -193,6 +193,49 @@ class VNEngine {
       if (speakerId === "shepard") {
         this.dom.portraitLeft.classList.remove("speaking");
         this.dom.portraitLeft.classList.add("dimmed");
+        this.dom.portraitRight.classList.remove("speaking");
+        this.dom.portraitRight.classList.add("dimmed");
+      }
+
+    } else {
+      // TRIO MODE: 3 characters (Left, Center & Right)
+      this.dom.stage.classList.add("mode-trio");
+
+      const leftCharId = present[0];
+      const centerCharId = present[1];
+      const rightCharId = present[2];
+
+      const slots = [
+        { id: leftCharId, el: this.dom.portraitLeft },
+        { id: centerCharId, el: this.dom.portraitCenter },
+        { id: rightCharId, el: this.dom.portraitRight }
+      ];
+
+      slots.forEach(slot => {
+        if (slot.id && characters[slot.id]) {
+          const char = characters[slot.id];
+          slot.el.src = char.sprite;
+          slot.el.alt = char.name;
+          slot.el.style.display = "block";
+
+          if (speakerId === slot.id) {
+            slot.el.classList.add("speaking");
+            slot.el.classList.remove("dimmed");
+          } else {
+            slot.el.classList.remove("speaking");
+            slot.el.classList.add("dimmed");
+          }
+        } else {
+          slot.el.style.display = "none";
+        }
+      });
+
+      // If Shepard (POV) speaks, ALL THREE interlocutors are dimmed into listening shadows
+      if (speakerId === "shepard") {
+        this.dom.portraitLeft.classList.remove("speaking");
+        this.dom.portraitLeft.classList.add("dimmed");
+        this.dom.portraitCenter.classList.remove("speaking");
+        this.dom.portraitCenter.classList.add("dimmed");
         this.dom.portraitRight.classList.remove("speaking");
         this.dom.portraitRight.classList.add("dimmed");
       }

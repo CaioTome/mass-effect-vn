@@ -232,14 +232,46 @@ export const testScene = {
       present: ["liara", "garrus"],
       speaker: "shepard",
       text: "Seal your armor seals and double-check your comm frequencies. Next stop: Trakis Asteroid Belt. We bring Tali home.",
+      next: "tali_comms_intercept"
+    },
+
+    // ----------------------------------------------------
+    // PHASE 3: TRIO MODE (Liara on Left, Tali Center, Garrus on Right)
+    // ----------------------------------------------------
+    "tali_comms_intercept": {
+      present: ["liara", "tali", "garrus"],
+      speaker: "tali",
+      text: "[Static crackles across the holographic console as Tali's frequency pierces through.] Shepard... if you can hear this... they are moving the containment pods to the lower mining shaft... Keelah, hurry!",
+      next: "garrus_trio_response"
+    },
+
+    "garrus_trio_response": {
+      present: ["liara", "tali", "garrus"],
+      speaker: "garrus",
+      text: "Her signal is locked! Liara, patch the coordinates directly into my nav-computer. We're Oscar Mike.",
+      next: "liara_trio_response"
+    },
+
+    "liara_trio_response": {
+      present: ["liara", "tali", "garrus"],
+      speaker: "liara",
+      text: "Channel scrambled and secured to avoid Cerberus tracing. We are ready when you are, Commander.",
+      next: "shepard_trio_order"
+    },
+
+    "shepard_trio_order": {
+      present: ["liara", "tali", "garrus"],
+      speaker: "shepard",
+      text: "Hold on, Tali. We're coming.",
       next: "node_final"
     },
 
     "node_final": {
-      present: ["liara", "garrus"],
+      present: ["liara", "tali", "garrus"],
       speaker: "liara",
       text: "Test scene completed",
       next: null
     }
   }
 };
+

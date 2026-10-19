@@ -2,8 +2,8 @@
 export const characters = {
   // First-person protagonist (POV - no body sprite on screen)
   "shepard": {
-    name: "Commander Shepard",
-    title: "N7 Infiltrator",
+    name: "Shepard",
+    title: "Commander",
     isPlayer: true
   },
 
