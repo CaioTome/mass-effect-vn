@@ -44,7 +44,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[My vision blurs and finally locks onto the biomechanical cavity I was expelled from: a grotesque mass of greyish plant tendrils fused into pulsating bio-organic conduits and synthetic cables.] A Thorian nodule? Wired into conduits... Reaper conduits?",
+      text: "[My vision blurs and finally locks onto the biomechanical cavity I was expelled from: a grotesque mass of greyish plant tendrils fused into pulsating bio-organic conduits and synthetic cables.] A Thorian? Wired into conduits... Reaper conduits?",
       next: "awakening_06"
     },
 
@@ -179,7 +179,7 @@ export const chapter01 = {
     "node_krogans_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Urdnot Wrex and Bakara hold the clans with steady authority. A population boom is underway, but with star charts provided by the Reapers and newly opened colony sectors, expansion is being channeled through peaceful diplomacy.",
+      text: "Urdnot Wrex still holds the clans with steady authority. A population boom is underway, but with star charts provided by the Reapers, a safe expansion is being channeled through peaceful diplomacy.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -193,7 +193,7 @@ export const chapter01 = {
     "node_relays_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent in their oceanic abyss, well aware that the synthetic network now answers to a higher guiding will.",
+      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -356,7 +356,7 @@ export const chapter01 = {
     "normal_catalyst_recriacao_explain": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Your original vessel did perish. This biological form was cultivated through accelerated synthesis of a Thorian nodule, structured upon the molecular blueprints Cerberus cataloged during Project Lazarus. Your memories, personality, and free will were imprinted from the neural matrix recorded during your ascension. You are not indoctrinated. You are yourself.",
+      text: "Your original vessel did perish. This biological form was cultivated through accelerated synthesis of a Thorian, structured upon the molecular blueprints Cerberus cataloged during Project Lazarus. Your memories, personality, and free will were imprinted from the neural matrix recorded during your ascension. You are not indoctrinated. You are yourself.",
       next: "normal_shepard_why_revive"
     },
 
@@ -487,7 +487,7 @@ export const chapter01 = {
     "shepard_id_scanned": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[A laser grid scans my palm with a sharp chime.] Registered. John Moreau, just another decommissioned marine hunting bounty contracts in the Terminus.",
+      text: "[A laser grid scans my palm with a sharp chime. Then I Read: 'Registered. John Moreau', just another decommissioned marine hunting bounty contracts in the Terminus.]",
       next: "helm_sealed"
     },
 
@@ -509,20 +509,6 @@ export const chapter01 = {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
       text: "An unmarked long-range shuttle awaits in the lower ventral airlock. Find Liara, assemble what strength you need, and bring the Quarian leadership home.",
-      next: "catalyst_salute"
-    },
-
-    "catalyst_salute": {
-      present: ["catalyst_hackett"],
-      speaker: "shepard",
-      text: "[The projection raises a crisp, formal Alliance salute in front of me as its cyan particles begin to dissolve into light.]",
-      next: "catalyst_hackett_out"
-    },
-
-    "catalyst_hackett_out": {
-      present: ["catalyst_hackett"],
-      speaker: "catalyst_hackett",
-      text: "It was an honor serving with you, Commander. Live the life that remains to you... Catalyst out.",
       next: "departure_final"
     },
 
@@ -530,14 +516,7 @@ export const chapter01 = {
       present: [],
       speaker: "shepard",
       text: "[The holographic light dissipates into absolute silence. Massive hydraulic airlock doors grind open before me, exposing the dark silhouette of the stealth shuttle against the void.] Hang on, Tali. I'm coming for you.",
-      next: "chapter_01_end"
-    },
-
-    "chapter_01_end": {
-      present: [],
-      speaker: "system",
-      text: "[End of Chapter 1: A Third Chance. Chapter 2: Dossier: Shadow Broker — Coming Soon.]",
       next: null
-    }
+    },
   }
 };
