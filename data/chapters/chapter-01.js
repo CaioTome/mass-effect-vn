@@ -6,13 +6,13 @@ export const chapter01 = {
   startNode: "awakening_01",
   nodes: {
     // -----------------------------------------------------------------
-    // PHASE 1: THE AWAKENING (Pitch Black -> Vision Clears in Reaper Core)
+    // PHASE 1: THE AWAKENING (Pitch Black -> Sensory Shock & Mortal Frailty)
     // -----------------------------------------------------------------
     "awakening_01": {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "Cold... A wet, viscous, suffocating cold. The last sensation seared into my memory was pure fire—the Crucible melting my skin, every synthetic implant burning to ash. But this... this is like drowning in the dark.",
+      text: "Cold... A wet, viscous, suffocating cold. The last sensation seared into my memory was pure fire—the Crucible consuming my bones, the ozone stench of every cybernetic circuit melting beneath my skin, the agony of having my consciousness ripped away. I saw my entire life burn. But I never imagined death would be like this: frozen, dark, and suffocating.",
       next: "awakening_02"
     },
 
@@ -20,15 +20,15 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[A wet biomechanical snap echoes. My body drops onto a freezing metal grating, coughing violently as my lungs burn with the first agonizing intake of air.]",
+      text: "[A wet biomechanical snap echoes. A tissue membrane tears. My naked body drops from a short height, hitting the frozen alloy decking with a dull, heavy thud.]",
       next: "awakening_03"
     },
 
     "awakening_03": {
-      background: "assets/backgrounds/reaper_chamber.jpg",
+      background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[I force my eyes open through the blur of amniotic fluid. Behind me lies a grotesque mass of greyish plant tendrils fused into Reaper conduits.] A Thorian... assimilated into Reaper cybernetics? Where am I?",
+      text: "[My bare palms and knees slam against the freezing metal floor plates. The thermal shock rips a violent spasm through my raw skin. I gasp in panic, but draw in only thick fluid. Coughing violently, I purge a mouthful of yellowish amniotic fluid across the deck. The first real intake of oxygen burns my throat like shattered glass.]",
       next: "awakening_04"
     },
 
@@ -36,7 +36,23 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper. Did the Crucible fail? What happened to us... what happened to Tali",
+      text: "[I try to push myself up, but my wrists buckle. My muscles feel like dead lead, as if they've spent a century in deep atrophy. My teeth chatter violently. I stare at my wet, trembling hands: no gauntlets, no surgical scars, no glowing Lazarus veins. Just pale, vulnerable, mortal skin. I drag myself back until my naked spine hits a freezing bulkhead.] Where... where the hell am I?",
+      next: "awakening_05"
+    },
+
+    "awakening_05": {
+      background: "assets/backgrounds/reaper_chamber.jpg",
+      present: [],
+      speaker: "shepard",
+      text: "[My vision blurs and finally locks onto the biomechanical cavity I was expelled from: a grotesque mass of greyish plant tendrils fused into pulsating bio-organic conduits and synthetic cables.] A Thorian nodule? Wired into antimatter conduits...?",
+      next: "awakening_06"
+    },
+
+    "awakening_06": {
+      background: "assets/backgrounds/reaper_chamber.jpg",
+      present: [],
+      speaker: "shepard",
+      text: "[The subharmonic hum that vibrates the hexagonal deck resonates directly in my naked bones.] The architecture... This is a Reaper. Did the Crucible fail? Earth... what happened to all of us?!",
       next: "hackett_beam_appear"
     },
 
@@ -47,7 +63,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: ["hackett"],
       speaker: "shepard",
-      text: "[A cyan holographic beam strikes the deck behind me, solidifying into Admiral Steven Hackett in full Alliance dress uniform.]",
+      text: "[A vertical cyan beam pierces the gloom of the chamber, blinding my unadjusted eyes. I throw up a trembling forearm to shield my face. In the center of the beam, a life-sized holographic projection stabilizes: Admiral Steven Hackett in full Alliance dress uniform, hands clasped behind his back, solemn and commanding.]",
       next: "hackett_entry_01"
     },
 
@@ -55,28 +71,35 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: ["hackett"],
       speaker: "hackett",
-      text: "On your feet, Commander. Lying on the deck never saved the galaxy, and it won't start now.",
+      text: "On your feet, Commander. Lying huddled on the deck never saved the galaxy, and it won't start now.",
       next: "shepard_hackett_01"
     },
 
     "shepard_hackett_01": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "Admiral Hackett?! Sir... what happened? Did we win?",
+      text: "[I force my eyes open, dazed. My heart pounds against my ribs. I try to pull myself up against the bulkhead, but my legs fail and I collapse back onto one knee, gasping for breath.] Admiral...? Sir... is that really you? Did we... did we win? Was Earth saved?",
       next: "hackett_calm_01"
     },
 
     "hackett_calm_01": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Take a deep breath, Shepard. Your vital signs are erratic; neural shock takes time to settle. I'm here to help you.",
+      text: "Control your breathing, John. Your vitals are emerging from synaptic shock. Your nervous system just rebooted after a catastrophic overload. Stay where you are until your muscle tone stabilizes.",
+      next: "shepard_hackett_02"
+    },
+
+    "shepard_hackett_02": {
+      present: ["hackett"],
+      speaker: "shepard",
+      text: "[Clutching my bare chest, feeling the erratic, heavy pounding of my heart.] I saw the Citadel ignite... I felt my flesh burn to the bone. Why am I inside a Reaper ship? What happened to the fleet?",
       next: "hackett_status_intro"
     },
 
     "hackett_status_intro": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "We won. Kind of. Two months have passed since the Battle of Earth. The war is over. The Reapers have ceased all hostilities.",
+      text: "The invasion is over, Commander. Two months have passed since the Battle of Earth. The Reapers have ceased all hostilities. I am here to bring you up to speed on the galaxy before we address what comes next.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -119,8 +142,8 @@ export const chapter01 = {
           targetNode: "node_relays_status"
         },
         {
-          text: "I have heard enough of the galactic overview, Admiral. What is my mission?",
-          targetNode: "normal_crisis_01"
+          text: "What about me, Admiral? How in the hell am I breathing... and what am I doing here?",
+          targetNode: "normal_shepard_question_alive"
         }
       ]
     },
@@ -128,7 +151,7 @@ export const chapter01 = {
     "node_reapers_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "The Reapers are actively assisting in galactic reconstruction. Capital ships are hauling raw alloys, stabilizing infrastructure, and restoring orbital platforms and the relays. Citadel fleets maintain sentry lines, but peace holds.",
+      text: "The Reapers are actively assisting in galactic reconstruction. Capital ships are hauling raw alloys, stabilizing planetary atmospheres, and restoring orbital platforms and the relays. Citadel fleets maintain sentry lines, but peace holds.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -142,7 +165,7 @@ export const chapter01 = {
     "node_rannoch_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "At an exemplary pace. To dispel historical dread and facilitate formal entry into the Citadel community, the Geth were demilitarized. Their platforms now operate in ecological engineering and agricultural synthesis alongside Quarian engineers.",
+      text: "At an exemplary pace. To dispel historical dread and facilitate formal entry into the Citadel community, the Geth voluntarily underwent comprehensive demilitarization. Their platforms now operate in ecological engineering and agricultural synthesis alongside Quarian engineers.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -156,7 +179,7 @@ export const chapter01 = {
     "node_krogans_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Urdnot Wrex still holds the clans with steady authority. A population boom will happen, but with star charts provided by the Reapers, a safe expansion is being channeled through peaceful diplomacy.",
+      text: "Urdnot Wrex and Bakara hold the clans with steady authority. A population boom is underway, but with star charts provided by the Reapers and newly opened colony sectors, expansion is being channeled through peaceful diplomacy.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -170,7 +193,7 @@ export const chapter01 = {
     "node_relays_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent.",
+      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent in their oceanic abyss, well aware that the synthetic network now answers to a higher guiding will.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -187,143 +210,211 @@ export const chapter01 = {
     "renegade_interrupt_farsa": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[My eyes narrow. As the reports drone on, my N7 combat instincts pierce the fog.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade. Who are you really?!",
+      text: "[My eyes narrow. As the reports drone on, my N7 combat instincts pierce the fog.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade right now. I want to know who you really are!",
       next: "renegade_catalyst_shift"
     },
 
     "renegade_catalyst_shift": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[The warmth in Hackett's eyes vanishes before me, replaced by a cold cyan resonance. His vocal cadence turns polyphonic and synthesized.]",
+      text: "[Hackett's posture freezes. The human warmth in his eyes vanishes, replaced by a crystalline cyan pulse. A faint, analytical smile touches the projection's lips.]",
       next: "renegade_catalyst_reveal_01"
     },
 
     "renegade_catalyst_reveal_01": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Flawless tactical deduction, Commander. Our neural simulations predicted an organic mind would require four additional minutes to isolate the scenario's incongruities.",
-      next: "renegade_catalyst_reveal_02"
-    },
-
-    "renegade_catalyst_reveal_02": {
-      present: ["catalyst_hackett"],
-      speaker: "catalyst_hackett",
-      text: "I am the directing consciousness you assumed at the Crucible. Projecting Steven Hackett was a calibrated measure to prevent cognitive dissociation upon waking. But you broke the predictive model. Since you demand the unvarnished truth, you shall have it.",
-      next: "renegade_cloning_explanation"
-    },
-
-    "renegade_cloning_explanation": {
-      present: ["catalyst_hackett"],
-      speaker: "catalyst_hackett",
-      text: "Your original body was disintegrated at the Crucible. You were reconstructed utilizing biomass from an assimilated Thorian node, paired with the genomic blueprints Cerberus cataloged during Project Lazarus. Your memories were transferred via direct synaptic resonance, no indoctrination, no control. Pure organic flesh.",
+      text: "Fascinating. Our probabilistic models predicted an organic mind newly revived would require four additional minutes and twelve seconds to isolate the logical anomalies of this environment. You exceeded the simulations, Shepard. Your tactical instincts remain razor sharp.",
       next: "renegade_shepard_demand"
     },
 
     "renegade_shepard_demand": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "Then why bring me back?! To use me as your private instrument?!",
+      text: "You're the Catalyst. The Crucible's AI. Cut the mind games and speak plain: what do you want from me?!",
       next: "renegade_tali_crisis"
     },
 
     "renegade_tali_crisis": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Because Tali'Zorah vas Normandy has been abducted.",
+      text: "Direct to the core, as always. A diplomatic transport from Rannoch was intercepted in the Terminus Systems. Tali'Zorah vas Normandy has been abducted.",
+      next: "renegade_shepard_fury"
+    },
+
+    "renegade_shepard_fury": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[The blow hits me like a kinetic slug. I step forward, fists clenched, jaw locked tight.] Tali?! If you're lying to me—",
       next: "renegade_crisis_details"
     },
 
     "renegade_crisis_details": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "A rogue Cerberus splinter cell in the Terminus Systems ambushed the Quarian diplomatic transport. They intend to indoctrinate Tali and the Admiralty using the neurological control research the Illusive Man developed during the war. With the Geth demilitarized and obedient to their Creators, controlling the Admiralty means seizing the entire synthetic race.",
-      next: "renegade_stealth_imperative"
+      text: "There is no deception. Rogue Cerberus splinter cells captured her alongside the Admiralty. Since the Geth are demilitarized and place blind trust in the Quarians, Cerberus will employ the Illusive Man's neural indoctrination technology on Tali to subjugate the entire synthetic consensus.",
+      next: "choice_renegade_hub"
     },
 
-    "renegade_stealth_imperative": {
+    "choice_renegade_hub": {
+      type: "choice",
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      choices: [
+        {
+          text: "How the hell am I standing here if my body was vaporized at the Crucible?",
+          targetNode: "node_renegade_cloning_info"
+        },
+        {
+          text: "Why don't you resolve this yourself with the Reaper armada?",
+          targetNode: "node_renegade_reaper_limit"
+        },
+        {
+          text: "I don't trust a single word you say. But I'll collaborate for now... for Tali.",
+          targetNode: "renegade_pact_node"
+        }
+      ]
+    },
+
+    "node_renegade_cloning_info": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Reapers possess immense firepower, but zero stealth capability. A frontal approach guarantees the hostages' immediate execution. Furthermore, if Cerberus discovers you survived, they will slaughter Tali out of sheer retribution. You must operate as an untraceable ghost.",
+      text: "You were synthesized utilizing accelerated biomass from an assimilated Thorian nodule, reconstructed with the cellular blueprints Cerberus cataloged during Project Lazarus. Your memories and will were transferred without corruption from your neural map seared into the Crucible at ascension. You are pure organic flesh. No leashes, no cybernetics, no indoctrination.",
+      next: "choice_renegade_hub"
+    },
+
+    "node_renegade_reaper_limit": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "If a Reaper warship enters the system, the Quarians will be executed within seconds before a single kinetic shot can be fired. And if Cerberus discovers Shepard lives, Tali will die simply to rob you of your triumph. She will only survive if no one knows you have returned.",
+      next: "choice_renegade_hub"
+    },
+
+    "renegade_pact_node": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[I squeeze my hands into fists so tight the knuckles turn white.] I don't trust a single word out of this projection. But I am not gambling Tali's life. I will collaborate for now... only until she is safe.",
+      next: "renegade_catalyst_accepts"
+    },
+
+    "renegade_catalyst_accepts": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "A pragmatically sound agreement, Shepard. Mutual cooperation is the sole vector that ensures her survival. To begin tracking, you will need the Shadow Broker. Doctor Liara T'Soni is already operating a clandestine intelligence redoubt on the Citadel.",
       next: "equipment_pedestal_rises"
     },
 
     // -----------------------------------------------------------------
-    // BRANCH B: NORMAL PATH (Briefing Finishes -> Crisis Unfolds -> Revelation)
+    // BRANCH B: NORMAL PATH (Briefing Finishes -> Gradual Revelation)
     // -----------------------------------------------------------------
-    "normal_crisis_01": {
-      present: ["hackett"],
-      speaker: "hackett",
-      text: "Not all of the galaxy embraced the dawn, Shepard. Cerberus sleeper guerrillas entrenched in the Terminus fringes ambushed the diplomatic transport from Rannoch.",
-      next: "normal_crisis_shepard_tali"
-    },
-
-    "normal_crisis_shepard_tali": {
+    "normal_shepard_question_alive": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[My breath catches in my throat.] Rannoch...? Admiral, was Tali on that transport?",
-      next: "normal_crisis_hostages"
+      text: "What about me, Admiral? You speak of galactic reconstruction, but I remember burning to ash at the Crucible. How am I drawing breath right now? And why have you kept me locked inside a Reaper?",
+      next: "normal_catalyst_reveal_01"
     },
 
-    "normal_crisis_hostages": {
-      present: ["hackett"],
-      speaker: "hackett",
-      text: "Tali'Zorah vas Normandy and the Quarian Admiralty were taken alive. They were en route to the Citadel to present the formal petition granting independent sovereignty to the Geth.",
-      next: "normal_crisis_plan"
-    },
-
-    "normal_crisis_plan": {
-      present: ["hackett"],
-      speaker: "hackett",
-      text: "Cerberus seeks total subjugation of the synthetic network. Since the Geth demilitarized and place absolute faith in their Creators, Cerberus intends to indoctrinate the Admiralty. The Geth will obey compromised leaders without firing a single defensive shot.",
-      next: "normal_shepard_fleet_demand"
-    },
-
-    "normal_shepard_fleet_demand": {
-      present: ["hackett"],
-      speaker: "shepard",
-      text: "Then deploy the Fifth Fleet immediately, Admiral! Lock down their staging perimeter and burn their compound to slag!",
-      next: "normal_catalyst_shift"
-    },
-
-    "normal_catalyst_shift": {
-      present: ["catalyst_hackett"],
-      speaker: "shepard",
-      text: "[The projection's posture remains rigid before me, but Hackett's eyes fade into a spectral cyan chill.]",
-      next: "normal_reveal_catalyst"
-    },
-
-    "normal_reveal_catalyst": {
+    "normal_catalyst_reveal_01": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "The Fifth Fleet cannot intervene, Shepard. And Steven Hackett is not aboard this vessel.",
+      text: "[Hackett's holographic projection doesn't flinch. The human warmth leaves his features, and his voice shifts into a serene, polyphonic resonance.] Your biological telemetry and emotional responses are completely within predicted simulations, Shepard. Steven Hackett is not aboard this vessel.",
       next: "normal_shepard_shock"
     },
 
     "normal_shepard_shock": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[I take a stunned step back.] What...?",
-      next: "normal_catalyst_identity"
+      text: "[I stumble back against the bulkhead, eyes wide.] What...? You... you're the intelligence from the Crucible.",
+      next: "normal_catalyst_no_malice"
     },
 
-    "normal_catalyst_identity": {
+    "normal_catalyst_no_malice": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "I am the intelligence you reshaped at the Crucible. Steven Hackett was a visual protocol utilized to anchor your psychological stability. A conventional military strike will result in the immediate summary execution of Tali'Zorah before drop pods even breach atmosphere.",
-      next: "normal_shepard_alive_question"
+      text: "I am the directing consciousness you assumed at the peak of the Crucible. There was no intent to deceive out of malice. Projecting the face and voice of the man who led your species was the protocol required to anchor your organic mind and prevent dissociative collapse upon awakening.",
+      next: "normal_shepard_body_question"
     },
 
-    "normal_shepard_alive_question": {
+    "normal_shepard_body_question": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "How am I breathing? I felt every cell in my body vaporize at the control console!",
-      next: "normal_cloning_explanation"
+      text: "My body was atomized! I felt my bones turn to slag! What did you do?!",
+      next: "normal_catalyst_recriacao_explain"
     },
 
-    "normal_cloning_explanation": {
+    "normal_catalyst_recriacao_explain": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Your former vessel was atomized. This biological form was synthesized from an assimilated Thorian node, guided by your genetic catalog from Project Lazarus. Your neural matrix was mapped directly from your ascension. You are free of indoctrination, Shepard. But Cerberus will slaughter Tali if they learn you live. You must be a ghost.",
+      text: "Your original vessel did perish. This biological form was cultivated through accelerated synthesis of a Thorian nodule, structured upon the molecular blueprints Cerberus cataloged during Project Lazarus. Your memories, personality, and free will were imprinted from the neural matrix recorded during your ascension. You are not indoctrinated. You are yourself.",
+      next: "normal_shepard_why_revive"
+    },
+
+    "normal_shepard_why_revive": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[I stare at my bare, trembling chest, vertigo seizing my thoughts.] Why do this...? You already command the Reapers! Why rip me out of death and shove me back into a cage of flesh?!",
+      next: "normal_catalyst_tali_bomb"
+    },
+
+    "normal_catalyst_tali_bomb": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "Because two weeks ago, Tali'Zorah vas Normandy was abducted.",
+      next: "normal_shepard_tali_gasp"
+    },
+
+    "normal_shepard_tali_gasp": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[The floor drops out from beneath me. The breath freezes in my throat.] Tali...? What do you mean abducted?! By who?!",
+      next: "choice_normal_crisis_hub"
+    },
+
+    "choice_normal_crisis_hub": {
+      type: "choice",
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      choices: [
+        {
+          text: "Who took Tali? What do they intend to do with her?",
+          targetNode: "node_normal_cerberus_plan"
+        },
+        {
+          text: "Why don't the Reapers or the Alliance storm their facility?",
+          targetNode: "node_normal_stealth_reason"
+        },
+        {
+          text: "I've heard enough. I won't let Cerberus touch her. Where do I begin?",
+          targetNode: "node_normal_lead_to_liara"
+        }
+      ]
+    },
+
+    "node_normal_cerberus_plan": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "Cerberus remnants operating clandestine sleeper cells in the Terminus fringes. With the Geth voluntarily demilitarized and integrated into Quarian society, Cerberus intends to utilize the mind-control technology the Illusive Man refined during the war to enslave Tali and the Admiralty. If they succeed, they will control the entire synthetic network through the unquestioned trust the Geth place in their Creators.",
+      next: "choice_normal_crisis_hub"
+    },
+
+    "node_normal_stealth_reason": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "Reapers do not execute surgical infiltrations. Any capital ship mobilization will prompt the immediate summary execution of the hostages before atmospheric entry. And if Cerberus discovers Commander Shepard survived, Tali will be slaughtered out of sheer spite against their greatest enemy. This rescue demands absolute discretion. It demands a ghost.",
+      next: "choice_normal_crisis_hub"
+    },
+
+    "node_normal_lead_to_liara": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "I've heard enough. I am not letting Cerberus lay a hand on her. Where do I begin?",
+      next: "normal_catalyst_gives_liara"
+    },
+
+    "normal_catalyst_gives_liara": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "To track the abducted convoy, you will need the intelligence network of the Shadow Broker. Doctor Liara T'Soni maintains a clandestine central hub on the Citadel. Our telemetry intercepted encrypted distress micro-bursts that Tali dispersed across the extranet before total containment; Liara is the only operative capable of deciphering those frequencies.",
       next: "equipment_pedestal_rises"
     },
 
@@ -420,7 +511,7 @@ export const chapter01 = {
     "catalyst_hackett_out": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "It was an honor serving with you, Commander. Live the mortal life that remains to you... Hackett out.",
+      text: "It was an honor serving with you, Commander. Live the life that remains to you... Catalyst out.",
       next: "departure_final"
     },
 
