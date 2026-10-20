@@ -1,5 +1,5 @@
 // data/stories.js - Story & Chapter Registry (Mass Effect Visual Novel Engine)
-import { chapter01 } from "./chapters/chapter-01.js";
+import { chapter01 } from "./chapters/1.a-third-chance/index.js";
 
 export const stories = [
   {

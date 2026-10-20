@@ -521,22 +521,44 @@ class VNEngine {
 
       // Locked choices stay visible but cannot be picked
       const locked = !this.meetsRequirements(choice.requires);
+      let badgeHtml = "";
       if (locked) {
         choiceBtn.classList.add("locked");
         choiceBtn.disabled = true;
+        if (choice.requires?.temp) {
+          const parts = Object.entries(choice.requires.temp).map(([k, req]) => {
+            const cur = (this.state.temp && this.state.temp[k]) || 0;
+            return `${cur}/${req}`;
+          });
+          badgeHtml = ` <span class="choice-req-badge">[Investigate more (${parts.join(", ")})]</span>`;
+        } else if (choice.requires?.paragon) {
+          badgeHtml = ` <span class="choice-req-badge">[Requires ${choice.requires.paragon} Paragon]</span>`;
+        } else if (choice.requires?.renegade) {
+          badgeHtml = ` <span class="choice-req-badge">[Requires ${choice.requires.renegade} Renegade]</span>`;
+        } else {
+          badgeHtml = ` <span class="choice-req-badge">[Locked]</span>`;
+        }
       }
       if (choice.type === "paragon" || choice.type === "renegade") {
         choiceBtn.dataset.alignment = choice.type;
       }
 
-      // Number badge + full spoken line
+      // Number badge + full spoken line + locked requirement indicator
       choiceBtn.innerHTML = `
         <span class="choice-num">${index + 1}.</span>
-        <span class="choice-text">${choice.text}</span>
+        <span class="choice-text">${choice.text}${badgeHtml}</span>
       `;
 
-      choiceBtn.addEventListener("mouseenter", () => audio.playHover());
-      choiceBtn.addEventListener("click", () => this.selectChoice(choice));
+      choiceBtn.addEventListener("mouseenter", () => {
+        if (!locked) audio.playHover();
+      });
+      choiceBtn.addEventListener("click", () => {
+        if (locked) {
+          try { audio.playLocked(); } catch (err) {}
+          return;
+        }
+        this.selectChoice(choice);
+      });
 
       this.dom.choiceList.appendChild(choiceBtn);
     });
@@ -680,13 +702,13 @@ class VNEngine {
     }
 
     // Key Q: trigger Paragon Interrupt if available
-    if ((e.key === "q" || e.key === "Q") && this.dom.interruptParagon.classList.contains("visible")) {
+    if ((e.key === "q" || e.key === "Q" || e.code === "KeyQ") && this.dom.interruptParagon.classList.contains("visible")) {
       this.triggerInterrupt("paragon");
       return;
     }
 
     // Key E: trigger Renegade Interrupt if available
-    if ((e.key === "e" || e.key === "E") && this.dom.interruptRenegade.classList.contains("visible")) {
+    if ((e.key === "e" || e.key === "E" || e.code === "KeyE") && this.dom.interruptRenegade.classList.contains("visible")) {
       this.triggerInterrupt("renegade");
       return;
     }
@@ -696,8 +718,10 @@ class VNEngine {
       const num = parseInt(e.key, 10);
       if (num >= 1 && num <= 9) {
         const choiceBtn = this.dom.choiceList.querySelector(`.choice-item[data-index="${num}"]`);
-        if (choiceBtn) {
+        if (choiceBtn && !choiceBtn.disabled && !choiceBtn.classList.contains("locked")) {
           choiceBtn.click();
+        } else if (choiceBtn && choiceBtn.classList.contains("locked")) {
+          try { audio.playLocked(); } catch (err) {}
         }
       }
     }
