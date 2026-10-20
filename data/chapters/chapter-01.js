@@ -28,15 +28,15 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[My bare palms and knees slam against the freezing metal floor plates. The thermal shock rips a violent spasm through my raw skin. I gasp in panic, but draw in only thick fluid. Coughing violently, I purge a mouthful of yellowish amniotic fluid across the deck. The first real intake of oxygen burns my throat like shattered glass.]",
+      text: "[My bare palms and knees slam against the freezing metal floor plates. The thermal shock rips a violent spasm through my raw skin. I gasp in panic, but draw in only thick fluid. Coughing violently, I purge a mouthful of yellowish fluid across the deck. The first real intake of oxygen burns my throat like shattered glass.]",
       next: "awakening_04"
     },
 
     "awakening_04": {
-      background: "assets/backgrounds/reaper_chamber.jpg",
+      background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[I try to push myself up, but my wrists buckle. My muscles feel like dead lead, as if they've spent a century in deep atrophy. My teeth chatter violently. I stare at my wet, trembling hands: no gauntlets, no surgical scars, no glowing Lazarus veins. Just pale, vulnerable, mortal skin. I drag myself back until my naked spine hits a freezing bulkhead.] Where... where the hell am I?",
+      text: "[I try to push myself up, but my wrists buckle. My muscles feel like dead lead, as if they've spent a century in deep atrophy. My teeth chatter violently. I stare at my wet, trembling hands: no gauntlets, no surgical scars, no glowing Lazarus veins. Just my skin. I drag myself back until my naked spine hits a freezing bulkhead.] Where... where the hell am I?",
       next: "awakening_05"
     },
 
@@ -44,7 +44,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[My vision blurs and finally locks onto the biomechanical cavity I was expelled from: a grotesque mass of greyish plant tendrils fused into pulsating bio-organic conduits and synthetic cables.] A Thorian nodule? Wired into antimatter conduits...?",
+      text: "[My vision blurs and finally locks onto the biomechanical cavity I was expelled from: a grotesque mass of greyish plant tendrils fused into pulsating bio-organic conduits and synthetic cables.] A Thorian nodule? Wired into conduits... Reaper conduits?",
       next: "awakening_06"
     },
 
@@ -52,7 +52,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[The subharmonic hum that vibrates the hexagonal deck resonates directly in my naked bones.] The architecture... This is a Reaper. Did the Crucible fail? Earth... what happened to all of us?!",
+      text: "[The subharmonic hum that vibrates the hexagonal deck resonates directly in my naked bones.] The architecture... This is a Reaper. Did the Crucible fail? Earth... what happened to Tali?!",
       next: "hackett_beam_appear"
     },
 
@@ -85,7 +85,7 @@ export const chapter01 = {
     "hackett_calm_01": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Control your breathing, John. Your vitals are emerging from synaptic shock. Your nervous system just rebooted after a catastrophic overload. Stay where you are until your muscle tone stabilizes.",
+      text: "Control your breathing, Shepard. Your vitals are emerging from synaptic shock. Your nervous system just rebooted after a catastrophic overload. Stay where you are until your muscle tone stabilizes.",
       next: "shepard_hackett_02"
     },
 
@@ -99,7 +99,7 @@ export const chapter01 = {
     "hackett_status_intro": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "The invasion is over, Commander. Two months have passed since the Battle of Earth. The Reapers have ceased all hostilities. I am here to bring you up to speed on the galaxy before we address what comes next.",
+      text: "The invasion is over, Commander. The Reapers were defeated. Two months have passed since the Battle of Earth. I am here to bring you up to speed on the galaxy before we address what comes next.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -210,7 +210,7 @@ export const chapter01 = {
     "renegade_interrupt_farsa": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[My eyes narrow. As the reports drone on, my N7 combat instincts pierce the fog.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade right now. I want to know who you really are!",
+      text: "[My eyes narrow. As the reports drone on, my instincts awaken.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade right now. I want to know who you really are!",
       next: "renegade_catalyst_shift"
     },
 
@@ -224,7 +224,7 @@ export const chapter01 = {
     "renegade_catalyst_reveal_01": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Fascinating. Our probabilistic models predicted an organic mind newly revived would require four additional minutes and twelve seconds to isolate the logical anomalies of this environment. You exceeded the simulations, Shepard. Your tactical instincts remain razor sharp.",
+      text: "Fascinating. Our probabilistic models predicted you would require four additional minutes and twelve seconds to isolate the logical anomalies of this environment. You exceeded the simulations, Shepard. Your tactical instincts remain razor sharp.",
       next: "renegade_shepard_demand"
     },
 
@@ -262,6 +262,10 @@ export const chapter01 = {
       speaker: "shepard",
       choices: [
         {
+          text: "Why Hackett's face? Why use his likeness to deceive me?",
+          targetNode: "node_renegade_why_hackett"
+        },
+        {
           text: "How the hell am I standing here if my body was vaporized at the Crucible?",
           targetNode: "node_renegade_cloning_info"
         },
@@ -276,10 +280,17 @@ export const chapter01 = {
       ]
     },
 
+    "node_renegade_why_hackett": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "Projecting the face and voice of the man who led your species was the calibrated protocol to anchor your mind and prevent cognitive dissociation upon waking. But your tactical deduction shattered that illusion ahead of schedule.",
+      next: "choice_renegade_hub"
+    },
+
     "node_renegade_cloning_info": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "You were synthesized utilizing accelerated biomass from an assimilated Thorian nodule, reconstructed with the cellular blueprints Cerberus cataloged during Project Lazarus. Your memories and will were transferred without corruption from your neural map seared into the Crucible at ascension. You are pure organic flesh. No leashes, no cybernetics, no indoctrination.",
+      text: "You were synthesized utilizing accelerated biomass from an assimilated Thorian, reconstructed with the cellular blueprints Cerberus cataloged during Project Lazarus. Your memories and will were transferred without corruption from your neural map seared into the Crucible at ascension. You are pure organic flesh. No leashes, no cybernetics, no indoctrination.",
       next: "choice_renegade_hub"
     },
 
@@ -393,14 +404,14 @@ export const chapter01 = {
     "node_normal_cerberus_plan": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Cerberus remnants operating clandestine sleeper cells in the Terminus fringes. With the Geth voluntarily demilitarized and integrated into Quarian society, Cerberus intends to utilize the mind-control technology the Illusive Man refined during the war to enslave Tali and the Admiralty. If they succeed, they will control the entire synthetic network through the unquestioned trust the Geth place in their Creators.",
+      text: "Cerberus remnants operating clandestine sleeper cells. With the Geth voluntarily demilitarized and integrated into Quarian society, Cerberus intends to utilize the mind-control technology the Illusive Man refined during the war to enslave Tali and the Admiralty. If they succeed, they will control the entire synthetic network through the unquestioned trust the Geth place in their Creators.",
       next: "choice_normal_crisis_hub"
     },
 
     "node_normal_stealth_reason": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Reapers do not execute surgical infiltrations. Any capital ship mobilization will prompt the immediate summary execution of the hostages before atmospheric entry. And if Cerberus discovers Commander Shepard survived, Tali will be slaughtered out of sheer spite against their greatest enemy. This rescue demands absolute discretion. It demands a ghost.",
+      text: "Reapers do not execute surgical infiltrations. Any capital ship mobilization will prompt the immediate summary execution of the hostages before atmospheric entry. And if Cerberus discovers Commander Shepard survived, Tali will be slaughtered out of sheer spite against their greatest enemy. This rescue demands absolute discretion. It demands someone with expertise in covert infiltration. A Spectre. You.",
       next: "choice_normal_crisis_hub"
     },
 
@@ -424,7 +435,7 @@ export const chapter01 = {
     "equipment_pedestal_rises": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[A mechanical pedestal rises from the deck in front of me, displaying unmarked composite armor plating, an M-3 Predator heavy pistol, and an enclosed helm with a polarized mirror visor.]",
+      text: "[A mechanical pedestal rises from the deck in front of me, displaying unmarked composite armor plating, my favorite pistol, and an enclosed helm with a polarized mirror visor.]",
       next: "equipment_transition"
     },
 
@@ -452,14 +463,14 @@ export const chapter01 = {
     "catalyst_flesh_warning": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Some would say you are more original now than when Cerberus remade you. But it carries a price: take a high-velocity tungsten slug without shields, and you will bleed and perish like any other mortal.",
+      text: "Some would say you are more original now than when Cerberus remade you. But it carries a price: take a high-velocity tungsten slug without shields, and you will bleed and perish like any other.",
       next: "shepard_pistol_resolve"
     },
 
     "shepard_pistol_resolve": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[I grip the M-3 Predator. The cold steel transmits the heavy thud of my own racing pulse.] Flesh and bone... That's all I need to get Tali out of there.",
+      text: "[I grip the pistol. The cold steel transmits the heavy thud of my own racing pulse.] Flesh and bone...",
       next: "biometrics_console"
     },
 
@@ -476,21 +487,21 @@ export const chapter01 = {
     "shepard_id_scanned": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[A laser grid scans my palm with a sharp chime.] Registered. Just another decommissioned marine hunting bounty contracts in the Terminus.",
+      text: "[A laser grid scans my palm with a sharp chime.] Registered. John Moreau, just another decommissioned marine hunting bounty contracts in the Terminus.",
       next: "helm_sealed"
     },
 
     "helm_sealed": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Where do I begin the hunt?",
+      text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Very Funny. Where do I begin?",
       next: "catalyst_liara_order"
     },
 
     "catalyst_liara_order": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "The Shadow Broker. Doctor Liara T'Soni maintains a secure intelligence redoubt on the Citadel. Our telemetry indicates Tali broadcast encrypted distress micro-bursts before total containment. Liara is the only operative with the processing power to triangulate her trail.",
+      text: "The Shadow Broker. Doctor Liara T'Soni maintains a secure intelligence redoubt on the Citadel.",
       next: "catalyst_final_salute"
     },
 
