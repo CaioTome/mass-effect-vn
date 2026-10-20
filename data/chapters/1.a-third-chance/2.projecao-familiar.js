@@ -36,14 +36,14 @@ export const nodesPart2 = {
   "hackett_calm_01": {
     present: ["hackett"],
     speaker: "hackett",
-    text: "Control your breathing, Shepard. Your vitals are emerging from synaptic shock. Your nervous system just rebooted after a catastrophic overload. Stay where you are until your muscle tone stabilizes.",
+    text: "Breathe, Shepard. Your vitals are a mess. You just awoke. Stay where you are until regain your balance.",
     next: "shepard_hackett_02"
   },
 
   "shepard_hackett_02": {
     present: ["hackett"],
     speaker: "shepard",
-    text: "[Clutching my bare chest, feeling the erratic, heavy pounding of my heart.] I saw the Citadel ignite... I felt my flesh burn to the bone. Why am I inside a Reaper ship? What happened to the fleet?",
+    text: "[Clutching my bare chest, feeling the erratic, heavy pounding of my heart.] I saw the Citadel burn... I felt my flesh burn to the bone. Why am I inside a Reaper ship? What happened to the fleet?",
     next: "hackett_status_intro"
   },
 

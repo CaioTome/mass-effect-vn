@@ -125,7 +125,7 @@ Arrasto o corpo alguns centímetros para trás até minhas costas nuas baterem n
 [2] "Como está Rannoch? Os Quarians e os Geth conseguiram reconstruir o planeta?" -> (Nó 5.B)
 [3] "A cura da Genophage se manteve estável com os Krogans?" -> (Nó 5.C)
 [4] "E os Relays de Massa destruídos? Os Leviathans se manifestaram?" -> (Nó 5.D)
-[5] "E quanto a mim, Almirante? Como diabos eu estou respirando... e o que eu estou fazendo aqui?" -> (Conclui o briefing e avança para o Ato 4N)
+[5] "E quanto a mim, Almirante? Como diabos eu estou respirando... e o que eu estou fazendo aqui?" -> (Desbloqueia após investigar os 4 tópicos anteriores; conclui o briefing e avança para o Ato 4N)
 ```
 
 #### Nó 5.A: Os Reapers e a Reconstrução
@@ -323,9 +323,12 @@ Arrasto o corpo alguns centímetros para trás até minhas costas nuas baterem n
 **CATALYST (Hackett):**  
 "Alguns diriam que você está mais original agora do que quando a Cerberus reconstruiu você no passado. Mas isso cobra um preço: se você levar um tiro de calibre pesado sem escudos, sangrará e morrerá como qualquer outro mortal."
 
-**SHEPARD:**  
-*(Empunhando a pesada M-3 Predator. A coronha fria transmite o pulso do seu coração.)*  
-"Carne e osso... É tudo o que eu preciso para tirar a Tali de lá."
+#### 📋 Escolha: Reação à Mortalidade
+```
+[1] "[Segurar a pistola com firmeza.] Carne e osso serão o bastante. Eu enfrentei Saren como mortal; posso despedaçar a Cerberus sem implantes." -> (Firmeza e determinação)
+[2] "[Examinar as placas compostas.] Sem reforços de titânio ou malha biótica. Um erro e eu sangro até a morte como qualquer recruta." -> [Renegade] (Pragmatismo tático)
+[3] "[Puxar o ar puro com profundidade.] Depois de anos me sentindo como uma máquina da Cerberus... é um alívio me sentir puramente humano de novo." -> [Paragon] (Reflexão e humanidade)
+```
 
 ---
 
@@ -335,32 +338,39 @@ Arrasto o corpo alguns centímetros para trás até minhas costas nuas baterem n
 **CATALYST (Hackett):**  
 "Para cruzar os scanners da C-Sec sem disparar alertas da Aliança, você precisará de uma credencial civil mercenária. Como suas impressões digitais de síntese não batem com os registros originais da Aliança, posicione a mão no terminal."
 
-*(Shepard pressiona a palma sobre a luz laser do console. Uma nova identificação civil com o sobrenome escolhido pelo jogador é transmitida aos registros públicos da Cidadela.)*
+*(Shepard pressiona a palma sobre a luz laser do console. Uma nova identificação civil com o nome John Moreau é transmitida aos registros públicos da Cidadela.)*
+
+**PENSAMENTO DE SHEPARD (1ª Pessoa):**  
+Moreau. De todos os nomes na galáxia... Digitais que não coincidem com arquivo algum, exatamente como o clone que a Cerberus produziu na Citadel durante minha licença, e um nome falso emprestado do melhor piloto com quem já voei. Joker adoraria cada segundo disso.
+
+### Cena 7.2: Hub Tático de Partida
+*(Antes de colocar o capacete e embarcar, Shepard pode investigar a situação antes da inserção):*
+
+```
+[1] "Me conte mais sobre Liara. Como ela está operando em segurança na Citadel?" -> (A Citadel foi levada para o sistema Sol e está em reconstrução na órbita da Terra; Liara está lá ajudando e reconstruindo a rede do Broker, mas o Catalyst não sabe sua localização exata nem quais dados ela possui)
+[2] "Onde está o resto da minha tripulação? O que aconteceu com Garrus, Joker e os outros?" -> (Catalyst explica a dispersão e aponta que Liara saberá informar muito melhor)
+[3] "Quão confiável é esse disfarce de 'John Moreau' perante os scanners da C-Sec?" -> (Explicação sobre biometria e a vantagem de não ter registro na Aliança)
+[4] "[Se equipar e partir]" -> (Avança para o fechamento do capacete e partida)
+```
+
+#### Cena 7.3: O Capacete e a Partida
+*(Ao selecionar "[Se equipar e partir]", Shepard ergue o capacete fechado e o trava no colarinho. O mecanismo pneumático veda o ar com um clique pressurizado. O visor espelhado escurece completamente, e o modulador de voz ativa com um tom robótico metálico e frio.)*
 
 **SHEPARD:**  
-"Identidade registrada. Um veterano de guerra qualquer procurando contratos nos Terminus."
-
-### Cena 7.2: O Capacete e as Coordenadas de Liara
-*(Shepard pega o capacete fechado e o trava no colarinho. O mecanismo pneumático veda o ar com um assobio sibilante. O visor espelhado escurece completamente, ocultando seu rosto. Ele liga o modulador de áudio.)*
-
-**SHEPARD:**  
-*(A voz sai grave, metálica e eletronicamente distorcida — irreconhecível.)*  
-"Para onde eu vou?"
+"Moreau. Muito engraçado. Vamos trazê-la de volta."
 
 **CATALYST (Hackett):**  
-"A Shadow Broker. Doutora Liara T'Soni opera uma central sigilosa na Cidadela. Nossas interceptações mostram que Tali dispersou micro-pulsos codificados de emergência antes de ser levada ao confinamento. Liara é a única com capacidade de rastrear esses dados."
+"As coordenadas orbitais da Citadel já estão carregadas no computador de bordo. Um shuttle descaracterizado de longo alcance aguarda no hangar ventral inferior. Encontre Liara, reúna a força necessária e traga a liderança quariana para casa."
+
+*(A projeção do Almirante Hackett estica o braço e presta uma continência militar perfeita. Por puro reflexo, Shepard retribui.)*
 
 **CATALYST (Hackett):**  
-"Um shuttle descaracterizado aguarda no hangar inferior. Encontre Liara, una as forças necessárias e traga a liderança quariana em segurança."
-
-*(A projeção do Almirante Hackett estica o braço e presta uma continência militar perfeita.)*
-
-**HACKETT / CATALYST:**  
-"Foi uma honra servir ao seu lado, Comandante. Viva a vida finita que lhe resta... Hackett out."
+"Não falhe com ela, Shepard. Catalyst desligando."
 
 *(O holograma colapsa em partículas de luz ciano que desaparecem no ar. As portas colossais do hangar do Reaper se abrem para o vácuo espacial silencioso, revelando o shuttle civil de prontidão.)*
 
-*(Shepard caminha até a nave. A caçada começou.)*
+**SHEPARD:**  
+"Aguenta firme, Tali. Estou a caminho."
 
 ---
 ### [FIM DO CAPÍTULO 1 — A TERCEIRA CHANCE]

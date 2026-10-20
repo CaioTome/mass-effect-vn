@@ -39,6 +39,8 @@ export const nodesPart3 = {
       },
       {
         text: "What about me, Admiral? How in the hell am I breathing... and what am I doing here?",
+        requires: { temp: { briefing_questions: 4 } },
+        showLocked: true,
         targetNode: "normal_shepard_question_alive"
       }
     ]
