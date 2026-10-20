@@ -1,443 +1,351 @@
-# Especificação da Engine Visual Novel: *Mass Effect - Dialogue & Choice System*
+# Especificação Técnica da Engine Visual Novel: *Mass Effect*
 
 > **Documento de Arquitetura & Implementação Técnica**  
 > **Projeto:** *Mass Effect: Consciência e Carne (Ghost in the Flesh)*  
-> **Objetivo:** Criar uma engine de Visual Novel leve, imersiva e focada na leitura confortável, reproduzindo a clássica Roda de Diálogo de 8 posições de Mass Effect e os Interrupts morais sem pressão de tempo, hospedável gratuitamente no **GitHub Pages**.
+> **Diretor Criativo & Roteirista:** Caio  
+> **Plataforma:** Web nativa (HTML5 / Vanilla CSS moderno / Vanilla ES Modules / Web Audio API) para publicação estática no **GitHub Pages**  
+> **Padrão de Código & Dados:** 100% Desacoplado, sem frameworks pesados, padronizado em **inglês** nos dados executáveis e **português** na documentação/planejamento.
 
 ---
 
-## 🎯 1. Visão Geral dos Pilares de Design
+## 🎯 1. Visão Geral & Filosofia Arquitetural
 
-A proposta foi refinada para priorizar uma **experiência pura de leitura interativa (estilo Visual Novel cinematográfica)**, simplificando a implementação técnica e removendo barreiras de gameplay:
+A engine foi projetada para oferecer uma **experiência pura de leitura interativa cinematográfica**, combinando a estética icônica da interface holográfica de *Mass Effect* com a profundidade mecânica de RPGs modernos (estilo *Baldur's Gate*):
 
-1. **Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco:**
-   * **Shepard em 1ª Pessoa:** Shepard não tem sprite fixo na tela, atuando como o ponto de vista do jogador (preservando rostos personalizados, gênero e escolhas da trilogia).
-   * **Cena Solo (Shepard + 1 Interlocutor):** O interlocutor fica **centralizado** no palco com foco visual total.
-   * **Cena Duo (Shepard + 2 Interlocutores, ex: Liara e Garrus):** O palco posiciona os personagens nos lados esquerdo e direito.
-   * **Iluminação Dinâmica (Foco de Voz):** Quem fala fica 100% iluminado e em destaque suave (`.speaking`). O interlocutor em silêncio fica sombreado na penumbra (`.dimmed`). Quando Shepard fala, ambos ficam sombreados ouvindo a câmera.
-2. **Sistema de Diálogo Estilo Baldur's Gate (Lista de Texto Completo):**
-   * Em vez de pequenos snippets comprimidos em uma roda circular, o jogador tem uma **lista numerada vertical com o texto completo da fala**:
-     ```
-     1. [Linha completa de fala ou intenção de Shepard]
-     2. [Linha alternativa de tom diplomático / empático]
-     3. [Linha agressiva / assertiva]
-     4. [Pergunta investigativa...]
-     ```
-   * **Sem Destaques Artificiais (Sem Letras Amarelas):** O leitor percebe o avanço para a próxima cena pelo contexto narrativo natural, garantindo maior imersão e surpresa.
-   * Seleção ágil por clique ou teclas numéricas (`1` a `9`).
-3. **Leitura Sem Pressa (Interrupts Sem Timer):**
-   * **Zero estresse de QTE:** Os gatilhos de *Paragon Interrupt* (azul inferior esquerdo, atalho `[Q]`) e *Renegade Interrupt* (vermelho inferior direito, atalho `[E]`) **não possuem contador regressivo**.
-   * Eles aparecem como opções contextuais durante a fala/cena. O leitor pode ler no seu próprio ritmo e escolher:
-     * Clicar no **Interrupt** para disparar o evento especial moral;
-     * Ou simplesmente clicar na caixa de diálogo / avançar para continuar o diálogo normal sem interrupção.
-4. **Desacoplamento Total (Engine vs. Roteiro) & Padrão em Inglês:**
-   * A engine em HTML/CSS/JS é fixa e reutilizável.
-   * O código, arquitetura de dados e roteiros são redigidos em **inglês**, permitindo distribuição internacional e modularidade.
+* **100% Vanilla & Ultra-Leve:** Construída estritamente com HTML5 semântico, CSS moderno estruturado com variáveis customizadas (`:root`) e JavaScript modular (ES Modules). Não depende de React, Vue, Vite, bundlers ou pré-processadores.
+* **Pronta para Deploy Estático:** Totalmente compatível com GitHub Pages sem etapa de build. Todos os caminhos de assets e módulos são relativos.
+* **Desacoplamento Total:**
+  * **Motor (`js/engine.js`):** Máquina de estados, renderizador de palco, gerenciador de diálogo e roteador de nós.
+  * **Áudio Procedural (`js/audio.js`):** Síntese sonora em tempo real via Web Audio API (sem dependência estrita de arquivos de áudio externos para SFX da interface).
+  * **Catálogo de Personagens (`data/characters.js`):** Registro independente de IDs, nomes e sprites.
+  * **Registro de Histórias (`data/stories.js`):** Registro de campanhas e capítulos.
+  * **Roteiros Modulares (`data/chapters/`):** Capítulos particionados em pastas e arquivos modulares por fases dramáticas.
 
 ---
 
-## 📐 2. Wireframe da Interface
+## 👁️ 2. Câmera em 1ª Pessoa (POV de Shepard) & Stage Manager Dinâmico
 
-### 2.1. Composição em Tela (Modo Duo: Garrus & Liara)
+Para garantir imersão máxima e preservar o Shepard personalizado de cada jogador (gênero, rosto, escolhas da trilogia clássica), a engine adota o ponto de vista em primeira pessoa:
+
+### 2.1. Câmera POV de John Shepard
+* **Shepard Atrás da Lente:** John Shepard **nunca** possui sprite visível no palco. A tela representa a visão direta dos seus olhos.
+* **Narração em 1ª Pessoa:** Todas as ações, percepções sensoriais e eventos de cena entre colchetes `[...]` são redigidos estritamente a partir da perspectiva de Shepard (ex: `"[I force my eyes open, dazed. My heart pounds against my ribs.]"`). Nunca usar 2ª pessoa ("You see") ou 3ª pessoa para o protagonista.
+
+### 2.2. Modos de Palco Automáticos (`#stage`)
+A engine inspeciona a lista `present: [...]` do nó atual e ajusta automaticamente a classe do `#stage`:
 
 ```
-+-------------------------------------------------------------------------+
-| [Cenário de Fundo: Sanctum da Shadow Broker / Ponte / Rannoch]          |
-|                                                                         |
-|      +----------------+                         +----------------+      |
-|      |  INTERLOCUTOR  |                         |  INTERLOCUTOR  |      |
-|      |    (ESQUERDA)  |                         |    (DIREITA)   |      |
-|      |  [ILUMINADO se |                         |  [SOMBREADO se |      |
-|      |   estiver com  |                         |   estiver só   |      |
-|      |    a palavra]  |                         |    ouvindo]    |      |
-|      +----------------+                         +----------------+      |
-|                                                                         |
-|                 +-------------------------------------+                 |
-|                 | 1. [Opção de fala completa 1]       |                 |
-|                 | 2. [Opção de fala completa 2]       |                 |
-|                 | 3. [Opção investigativa completa]   |                 |
-|                 +-------------------------------------+                 |
-|                                                                         |
-|                 +-------------------------------------+                 |
-|                 | [Nome]: "Fala do personagem atual..."|                 |
-|                 +-------------------------------------+                 |
-|                                                                         |
-| (AZUL - Sem Timer)                                 (VERMELHO - Sem Timer)|
-| +------------------+                                +--------------------+|
-| | PARAGON INTERRUPT|                                | RENEGADE INTERRUPT ||
-| |  [Q] Ação Moral  |                                |  [E] Ação Direta   ||
-| +------------------+                                +--------------------+|
-+-------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------+
+| MODO SOLO (#stage.mode-single)                                                    |
+|                                [ Interlocutor ]                                   |
+|                                    (Centro)                                       |
++-----------------------------------------------------------------------------------+
+| MODO DUO (#stage.mode-dual)                                                       |
+|        [ Interlocutor A ]                             [ Interlocutor B ]          |
+|            (Esquerda)                                      (Direita)              |
++-----------------------------------------------------------------------------------+
+| MODO TRIO (#stage.mode-trio)                                                      |
+|   [ Interlocutor A ]           [ Interlocutor B ]            [ Interlocutor C ]   |
+|     (Esquerda 18%)               (Centro 50%)                  (Direita 82%)      |
++-----------------------------------------------------------------------------------+
 ```
 
-*(Nota: No Modo Solo com apenas 1 personagem em cena, o sprite fica centralizado horizontalmente no palco com presença total).*
-```
+1. **Modo Solo (`.mode-single`):** Quando há 1 interlocutor em cena (ex: `present: ["hackett"]` ou `present: ["liara"]`). O personagem fica posicionado no centro absoluto do palco.
+2. **Modo Duo (`.mode-dual`):** Quando há 2 interlocutores (ex: `present: ["liara", "garrus"]`). Distribui um personagem à esquerda e outro à direita.
+3. **Modo Trio (`.mode-trio`):** Quando há 3 interlocutores (ex: `present: ["liara", "tali", "garrus"]`). Posiciona os três personagens com espaçamento harmônico (Esquerda a 18%, Centro a 50%, Direita a 82%).
+
+### 2.3. Sistema Dinâmico de Iluminação e Foco de Voz (Voice Focus)
+A iluminação guia o olho do jogador dinamicamente através do interlocutor que está com a palavra:
+* **Personagem Falando (`speaker === charId`):**
+  * Recebe a classe `.speaking`.
+  * Iluminação total (`filter: brightness(1) saturate(1)`), ligeiro aumento de escala (`scale(1.02)`) e sombra ciano holográfica suave.
+* **Personagens em Silêncio (`speaker !== charId`):**
+  * Recebem a classe `.dimmed`.
+  * Recuam para a penumbra (`filter: brightness(0.35) saturate(0.55)`), focando a atenção de volta no interlocutor ativo.
+* **Quando Shepard Fala (`speaker: "shepard"`):**
+  * **Todos** os personagens presentes no palco entram no estado `.dimmed`, voltados para a câmera ouvindo com atenção a fala do Comandante.
 
 ---
 
-## 👤 3. Arquitetura de Personagens: Expressões como IDs Independentes
+## 📜 3. Sistema de Diálogo Estilo Baldur's Gate (Vertical Full-Text Choices)
 
-Para eliminar a necessidade de máquinas de estado complexas de sprites, cada traje ou expressão de John Shepard (e de seus aliados) é um registro autônomo no catálogo `characters.js`:
+Em vez de resumos curtos limitados pelo espaço circular de uma roda, as escolhas utilizam uma lista vertical com o texto completo da fala:
+
+### 3.1. Características Centrais
+* **Texto Integral:** O jogador lê exatamente o que Shepard irá verbalizar, permitindo controle fino do tom, da postura e da intenção.
+* **Sem Destaques Artificiais (Sem Letras Amarelas):** O leitor percebe o avanço natural da cena pelo contexto dramático do diálogo, sem cores que "entreguem" a opção que avança a história.
+* **Atalhos Numéricos Ágeis:** O jogador pode selecionar as opções tanto pelo clique do mouse quanto diretamente pelo teclado pressionando as teclas `1` a `9`.
+* **Rastreamento de Opções Lidas:** Linhas investigativas já exploradas recebem a classe `.read`, atenuando a cor para facilitar a navegação em hubs de perguntas sem impedir a releitura.
+
+### 3.2. Alinhamentos Morais nas Escolhas
+As escolhas podem declarar alinhamento moral explícito através da propriedade `type`:
+* **Neutra / Investigativa:** Borda ciano sutil padrão.
+* **`type: "paragon"`:** Borda e número em azul Paragon (`#00aaff`), acento luminoso ciano e hover com brilho azulado.
+* **`type: "renegade"`:** Borda e número em vermelho Renegade (`#ff3344`), acento luminoso rubro e hover com brilho avermelhado.
+
+### 3.3. Requisitos & Opções Bloqueadas (`requires` & `showLocked`)
+Quando uma opção exige requisitos de contador moral (`paragon`, `renegade`), flags de história ou contadores de investigação (`temp`), o motor avalia a condição:
+* **Opção Oculta:** Por padrão, opções cujos requisitos não são atendidos não são exibidas.
+* **Opção Bloqueada Visível (`showLocked: true`):** A opção é renderizada com opacidade reduzida, cursor de bloqueio (`not-allowed`) e um badge informativo com o que é necessário para desbloqueá-la:
+  * `[Investigate more (1/2)]` (para requisitos de contador temporário).
+  * `[Requires 2 Paragon]` / `[Requires 2 Renegade]`.
+  * `[Locked]`.
+* **Feedback de Acesso Negado:** Tentar clicar ou teclar o número de uma opção bloqueada dispara o som de bloqueio/erro da interface (`audio.playLocked()`).
+
+---
+
+## ⚡ 4. Sistema de Interrupts Morais Sem Timer (Leitura Pura)
+
+Inspirado nos momentos dramáticos de *Mass Effect 2* e *3*, mas adaptado para o ritmo confortável de leitura:
+
+```
++-----------------------------------------------------------------------------------+
+| [Caixa de Diálogo Principal: Texto da Cena...]                                    |
+|                                                                                   |
+| (AZUL - Canto Inferior Esquerdo)                            (VERMELHO - Canto Dir)|
+| +--------------------------------+               +--------------------------------+
+| | [Q] PARAGON INTERRUPT          |               | [E] RENEGADE INTERRUPT         |
+| | Acalmar Liara [Paragon]        |               | Break the Illusion [Renegade]  |
+| +--------------------------------+               +--------------------------------+
++-----------------------------------------------------------------------------------+
+```
+
+* **Zero Pressão de Tempo:** Não existem barras decrescentes ou QTEs estressantes. Os botões surgem na tela e permanecem enquanto o nó atual estiver ativo.
+* **Dois Comportamentos Possíveis:**
+  1. **Ignorar o Interrupt:** Clicar na caixa de texto ou avançar prossegue pelo fluxo narrativo padrão do nó (`next`).
+  2. **Acionar o Interrupt:** Clicar no botão ou acionar o atalho de teclado correspondente (`[Q]` para Paragon, `[E]` para Renegade) interrompe a cena e pula imediatamente para o `targetNode`.
+* **Gatilhos Condicionais:** Interrupts podem definir `requires`, tornando-se disponíveis apenas após certas condições (ex: o interrupt Renegade para quebrar a farsa do Catalyst só surge após Shepard fazer pelo menos 2 perguntas no briefing).
+
+---
+
+## 💾 5. Gerenciamento de Estado, Persistência e Flags
+
+O estado global da engine é gerenciado pela classe `VNEngine` e estruturado em três níveis:
 
 ```javascript
-// js/data/characters.js
-export const characters = {
-  // --- VARIAÇÕES DE JOHN SHEPARD (SEMPRE À ESQUERDA) ---
-  "shepard_mercenario": {
-    name: "Mercenário Encapuzado",
-    side: "left",
-    sprite: "assets/portraits/shepard_mercenary_helmet.webp"
-  },
-  "shepard_revelado": {
-    name: "John Shepard",
-    side: "left",
-    sprite: "assets/portraits/shepard_unmasked_neutral.webp"
-  },
-  "shepard_serio": {
-    name: "John Shepard",
-    side: "left",
-    sprite: "assets/portraits/shepard_serious.webp"
-  },
-  "shepard_sorrindo": {
-    name: "John Shepard",
-    side: "left",
-    sprite: "assets/portraits/shepard_smirk.webp"
-  },
-  "shepard_vulneravel": {
-    name: "John Shepard",
-    side: "left",
-    sprite: "assets/portraits/shepard_tired_vulnerable.webp"
-  },
-
-  // --- INTERLOCUTORES (ENTRAM À DIREITA QUANDO FALAM) ---
-  "liara_broker": {
-    name: "Liara T'Soni",
-    side: "right",
-    sprite: "assets/portraits/liara_broker_calm.webp"
-  },
-  "liara_chocada": {
-    name: "Liara T'Soni",
-    side: "right",
-    sprite: "assets/portraits/liara_shocked.webp"
-  },
-  "garrus_neutro": {
-    name: "Garrus Vakarian",
-    side: "right",
-    sprite: "assets/portraits/garrus_neutral.webp"
-  },
-  "garrus_sorriso": {
-    name: "Garrus Vakarian",
-    side: "right",
-    sprite: "assets/portraits/garrus_smirk.webp"
-  },
-  "tali_mascarada": {
-    name: "Tali'Zorah",
-    side: "right",
-    sprite: "assets/portraits/tali_mask.webp"
-  },
-  "catalyst_shepard": {
-    name: "Catalyst (Holograma)",
-    side: "right",
-    sprite: "assets/portraits/catalyst_hologram.webp"
-  }
+this.state = {
+  paragon: 0,         // Pontos morais persistentes (localStorage)
+  renegade: 0,        // Pontos morais persistentes (localStorage)
+  flags: {},          // Marcadores booleanos persistentes (localStorage)
+  temp: {}            // Contadores voláteis por cena/capítulo (NUNCA salvos)
 };
 ```
 
-**Vantagem Direta:** Para mudar a expressão de Shepard de chocado para sério ou retirar o capacete, o nó do roteiro só precisa declarar `speaker: "shepard_serio"`. A engine atualiza o sprite instantaneamente.
+### 5.1. Persistência em `localStorage` (`SAVE_KEY: "mass-effect-vn-save-v1"`)
+* **O que é salvo:** Pontuação de `paragon`, pontuação de `renegade` e o dicionário de `flags` (ex: `{ saved_wrex: true, romance_tali: true }`).
+* **O que NÃO é salvo:**
+  * O nó atual da cena (ao recarregar a página, o jogador inicia no começo do capítulo para garantir fluidez cinematográfica).
+  * O objeto `temp`, que é puramente transitório.
+* **Reset com Dupla Confirmação:** O botão de reinício no HUD apaga o `localStorage`, recria o estado limpo e reinicia o primeiro capítulo.
+
+### 5.2. Contadores Temporários (`temp`)
+* Utilizados para hubs investigativos locais, permitindo medir quantas perguntas o jogador já realizou antes de desbloquear opções decisivas ou interrupts.
+* **Zera automaticamente** sempre que um novo capítulo é carregado (`this.state.temp = {}`).
+
+### 5.3. Efeitos (`effects`) & Requisitos (`requires`)
+* **`effects`:** Soma valores aos contadores quando uma opção é selecionada:
+  ```javascript
+  effects: {
+    paragon: 1,
+    temp: { briefing_questions: 1 },
+    flags: { learned_geth_peace: true }
+  }
+  ```
+  * **Proteção contra Abuso:** Em menus de escolhas de hubs, os efeitos são aplicados apenas na **primeira vez** que a opção é escolhida. Reler perguntas investigativas não infla artificialmente os contadores.
+* **`requires`:** Avalia se o estado atende todos os critérios mínimos:
+  ```javascript
+  requires: {
+    paragon: 2,
+    flags: { saved_wrex: true },
+    temp: { briefing_questions: 2 }
+  }
+  ```
 
 ---
 
-## 🎡 4. Mecânica da Roda de Diálogo (8 Slots) & Investigação
+## 🧩 6. Schema de Dados dos Roteiros (`data/chapters/`)
 
-### 4.1. Estrutura dos Slots & Cores
-A roda tem 8 posições fixas indexadas de 1 a 8. Seguindo o padrão clássico de *Mass Effect*, **as opções normais de diálogo não possuem cores de Paragon (azul) ou Renegade (vermelho) na roda** — o texto utiliza a tipografia holográfica padrão uniforme (ciano claro/branco). O posicionamento (topo para tom diplomático, baixo para tom assertivo) já cumpre o papel de guiar a intenção moral do jogador:
-* **Slot 1 (12:00):** Resposta padrão ou direta.
-* **Slot 2 (01:30):** Opção de tom **Paragon** (diplomática, amigável ou empática — texto em cor padrão).
-* **Slot 3 (03:00):** Deixado intencionalmente vazio na roda principal para dar respiro visual e reservar a posição.
-* **Slot 4 (04:30):** Opção de tom **Renegade** (firme, agressiva ou pragmática — texto em cor padrão).
-* **Slot 5 (06:00):** Resposta neutra/secundária.
-* **Slot 6 (07:30):** Pergunta extra.
-* **Slot 7 (09:00):** Opção **"Investigar"** (abre a sub-roda de diálogo).
-* **Slot 8 (10:30):** Pergunta de contexto ou lore adicional.
-
-### 4.2. Funcionamento da Sub-Roda de Investigação
-Quando o jogador clica na **Posição 7 ("Investigar")**:
-1. A roda entra no modo de sub-menu de investigação.
-2. As opções de perguntas são populadas nos slots disponíveis (preenchidas em sentido horário).
-3. **Obrigatório:** A **Posição 3 (Direita)** é automaticamente preenchida com a opção **"Voltar"**:
-   * Ao clicar em "Voltar", a engine retorna imediatamente para a Roda Principal daquela cena.
-4. **Opções Já Lidas:** Perguntas de investigação já feitas ganham a classe CSS `.read` (ficam com cor atenuada/acinzentada), mas continuam clicáveis se o leitor quiser reler a resposta.
-
-### 4.3. Opção Amarela: O Próximo Diálogo ou Cena
-* Enquanto a roda mantém uma paleta uniforme sem azul ou vermelho, a **cor amarela (`#ffd200`)** é o destaque visual exclusivo da Roda de Diálogo.
-* **Significado da Cor Amarela:** Simboliza que aquela escolha encerra a discussão/investigação atual e passa para o **próximo diálogo, novo assunto ou transição de cena**.
-* No roteiro, qualquer opção decisiva recebe a flag `isYellow: true`.
-* No visual, o botão ganha a classe `.yellow-choice` (amarelo holográfico com brilho sutil), orientando o leitor de forma elegante e intuitiva.
-* As cores **Azul (Paragon)** e **Vermelho (Renegade)** ficam restritas exclusivamente aos **Interrupts** nos cantos inferiores da tela.
-
----
-
-## 🕊️ 5. Sistema de Interrupts Sem Timer (Foco na Leitura)
-
-Ao contrário dos jogos de ação em 3D, em uma Visual Novel a imposição de um timer de poucos segundos prejudica a leitura do texto. Portanto:
-
-1. **Ativação Opcional:**
-   * Durante certas falas, o ícone **Paragon (Azul)** surge no canto inferior esquerdo e/ou o **Renegade (Vermelho)** no canto inferior direito.
-   * Eles permanecem na tela enquanto a fala atual estiver sendo exibida.
-2. **Duas Vias Claras para o Leitor:**
-   * **Via A (Ignorar o Interrupt):** O leitor clica no botão "Avançar" ou na caixa de texto. O diálogo segue seu fluxo normal e os ícones desaparecem suavemente.
-   * **Via B (Acionar o Interrupt):** O leitor clica no ícone azul ou vermelho. O fluxo padrão é interrompido e a cena pula imediatamente para a ramificação especial daquele evento.
-
----
-
-## 📄 6. Schema de Dados dos Diálogos (`data/chapters/`)
-
-O roteiro é 100% separado do motor. Veja como fica um trecho real do Capítulo 1:
+Cada capítulo é um objeto estruturado contendo metadados e um mapa indexado de `nodes`:
 
 ```javascript
-// js/data/chapters/chapter-1.js
-export const chapter1 = {
-  id: "cap1_encontro_liara",
-  background: "assets/backgrounds/shadow_broker_sanctum.webp",
-  startNode: "liara_01",
-
+export const chapterExample = {
+  id: "chapter_id_slug",
+  title: "Chapter Title",
+  background: "assets/backgrounds/scene_background.jpg",
+  startNode: "node_initial",
   nodes: {
-    // 1. Shepard mascarado chega ao sanctum
-    "liara_01": {
-      speaker: "shepard_mercenario",
-      text: "Tranque as portas, Doutora T'Soni. O que temos para conversar não pode sair destas quatro paredes.",
-      next: "liara_02"
-    },
-
-    "liara_02": {
-      speaker: "liara_broker",
-      text: "Você tem três segundos para abaixar esse rifle e explicar como burlou meus sistemas de defesa, mercenário.",
-      next: "liara_03_revelacao"
-    },
-
-    // 2. Shepard desliga o modulador e retira o capacete
-    "liara_03_revelacao": {
-      speaker: "shepard_revelado",
-      text: "[Shepard desacopla as travas do capacete e o coloca sobre a mesa.] Liara. Sou eu.",
-      next: "liara_04_choque"
-    },
-
-    "liara_04_choque": {
-      speaker: "liara_chocada",
-      text: "Deusa... Isso é impossível. Você foi atomizado no Crucible! Seus sinais vitais foram encerrados!",
-      
-      // MOMENTO DE INTERRUPT (SEM TIMER): O leitor escolhe abraçá-la ou seguir o diálogo
-      interrupt: {
-        paragon: {
-          icon: "assets/icons/paragon.svg",
-          label: "Acalmar Liara com um gesto gentil",
-          targetNode: "interrupt_paragon_liara"
-        }
-      },
-      next: "wheel_principal_liara"
-    },
-
-    // Ramo exclusivo caso o leitor tenha clicado no Paragon Interrupt
-    "interrupt_paragon_liara": {
-      speaker: "shepard_vulneravel",
-      text: "[John se aproxima devagar e segura suas mãos trêmulas.] Respire, Liara. Eu estou aqui. Carne, osso e nenhum implante Reaper.",
-      next: "liara_05_pos_abraco"
-    },
-
-    "liara_05_pos_abraco": {
-      speaker: "liara_broker",
-      text: "Eu posso sentir o calor da sua pele... Pelas deusas, John. Como você está vivo?",
-      next: "wheel_principal_liara"
-    },
-
-    // 3. A RODA PRINCIPAL DE 8 SLOTS
-    "wheel_principal_liara": {
-      type: "wheel",
-      speaker: "shepard_revelado",
-      wheelSlots: {
-        // Slot 1: Neutra direta
-        1: {
-          text: "Estou vivo, e Tali precisa de nós.",
-          targetNode: "node_fala_urgencia"
-        },
-        // Slot 2: Paragon
-        2: {
-          text: "É bom rever você, velha amiga.",
-          type: "paragon",
-          targetNode: "node_fala_amizade"
-        },
-        // Slot 3: VAZIO na roda principal
-        3: null,
-        // Slot 4: Renegade
-        4: {
-          text: "Não temos tempo para sentimentalismo.",
-          type: "renegade",
-          targetNode: "node_fala_fria"
-        },
-        // Slot 7: INVESTIGAR (abre a sub-roda)
-        7: {
-          text: "Investigar...",
-          type: "investigate",
-          targetSubWheel: "subwheel_investigacao_liara"
-        }
-      }
-    },
-
-    // 4. SUB-RODA DE INVESTIGAÇÃO (COM "VOLTAR" NO SLOT 3)
-    "subwheel_investigacao_liara": {
-      type: "subwheel",
-      speaker: "shepard_revelado",
-      wheelSlots: {
-        // Slot 1: Pergunta sobre o corpo
-        1: {
-          text: "Como sobrevivi ao Crucible?",
-          targetNode: "node_explicacao_catalyst"
-        },
-        // Slot 2: Pergunta sobre a Cerberus
-        2: {
-          text: "O que a Cerberus quer com o Almirantado?",
-          targetNode: "node_pergunta_cerberus"
-        },
-        // Slot 3: VOLTAR OBRIGATÓRIO (retorna à roda principal)
-        3: {
-          text: "Voltar",
-          type: "return",
-          targetWheel: "wheel_principal_liara"
-        },
-        // Slot 7: Pergunta sobre Garrus
-        7: {
-          text: "Onde Garrus está agora?",
-          targetNode: "node_onde_esta_garrus"
-        },
-        // Slot 8: Opção Amarela (Decide avançar e partir para ação direto daqui)
-        8: {
-          text: "Temos o suficiente. Vamos traçar a rota.",
-          isYellow: true,
-          targetNode: "node_partida_missao"
-        }
-      }
-    },
-
-    // Nós de resposta das investigações (retornam à sub-roda após a fala)
-    "node_explicacao_catalyst": {
-      speaker: "shepard_serio",
-      text: "O Catalyst sintetizou uma nova matriz celular humana na câmara Reaper. Sou 100% biológico agora. Sem Lazarus, sem implantes.",
-      next: "subwheel_investigacao_liara" // Volta automaticamente para a sub-roda!
-    },
-
-    "node_pergunta_cerberus": {
-      speaker: "liara_broker",
-      text: "Células dissidentes isoladas nos Terminus. Elas acreditam que controlando os Quarians, os Geth desmilitarizados os seguirão.",
-      next: "subwheel_investigacao_liara"
-    },
-
-    "node_onde_esta_garrus": {
-      speaker: "liara_broker",
-      text: "Ele assumiu uma força-tarefa especial. Está caçando a Cerberus dia e noite para não encarar o luto pela sua morte.",
-      next: "subwheel_investigacao_liara"
-    },
-
-    // Nós de avanço
-    "node_fala_urgencia": {
-      speaker: "shepard_serio",
-      text: "A Cerberus capturou o transporte diplomático de Tali. Eles estão tentando doutriná-la.",
-      next: "node_partida_missao"
-    },
-
-    "node_partida_missao": {
-      speaker: "liara_broker",
-      text: "Vou criptografar minhas linhas e preparar minha nave. Shepard... É um milagre ter você de volta.",
-      next: "fim_do_bloco"
-    }
+    // Nós do capítulo...
   }
 };
 ```
 
----
-
-## 💻 7. Como a Engine Implementa Isso em Código Leve
-
-### 7.1. Renderização dos Sprites
+### 6.1. Schema de Nó Narrativo Padrão
 ```javascript
-// js/ui.js
-export function renderSpeaker(characterId) {
-  const char = characters[characterId];
-  if (!char) return;
-
-  const leftSlot = document.getElementById("portrait-left");
-  const rightSlot = document.getElementById("portrait-right");
-  const nameLabel = document.getElementById("speaker-name");
-
-  nameLabel.textContent = char.name;
-
-  if (char.side === "left") {
-    // Shepard à esquerda: sempre visível
-    leftSlot.src = char.sprite;
-    leftSlot.classList.add("active");
-  } else {
-    // Interlocutor à direita: entra quando fala
-    rightSlot.src = char.sprite;
-    rightSlot.classList.add("slide-in");
-  }
+"node_id": {
+  background: "assets/backgrounds/optional_override.jpg", // Opcional (se mudar o cenário)
+  present: ["liara", "garrus"],                          // Personagens no palco (Solo, Duo, Trio)
+  speaker: "liara",                                      // ID de quem fala (ou "shepard")
+  text: "Linha de diálogo ou ação narrativa.",
+  
+  // Interrupt moral opcional (sem timer)
+  interrupt: {
+    paragon: {
+      icon: "assets/icons/paragon.png",
+      label: "Comfort Companion [Paragon]",
+      requires: { temp: { questions: 2 } },              // Opcional
+      targetNode: "node_interrupt_paragon"
+    },
+    renegade: {
+      icon: "assets/icons/renegate.png",
+      label: "Demand Answers [Renegade]",
+      targetNode: "node_interrupt_renegade"
+    }
+  },
+  
+  next: "next_node_id"                                   // ID do próximo nó (ou null para encerrar)
 }
 ```
 
-### 7.2. Renderização da Roda de 8 Posições
+### 6.2. Schema de Nó de Escolhas (Choice Hub)
 ```javascript
-// js/wheel.js
-export function renderWheel(wheelData, onSelectCallback) {
-  const wheelContainer = document.getElementById("dialogue-wheel");
-  wheelContainer.innerHTML = "";
-
-  // Percorre os 8 slots fixos (1 a 8)
-  for (let slot = 1; slot <= 8; slot++) {
-    const choice = wheelData.wheelSlots[slot];
-    if (!choice) continue; // Posição vazia (ex: slot 3 na roda principal)
-
-    const button = document.createElement("button");
-    button.className = `wheel-slot slot-${slot}`;
-
-    // Apenas a opção amarela ganha cor especial na roda!
-    if (choice.isYellow) button.classList.add("yellow-choice");
-    if (choice.type === "investigate") button.classList.add("investigate-slot");
-    if (choice.type === "return") button.classList.add("return-slot");
-
-    button.innerHTML = `<span>${choice.text}</span>`;
-    button.addEventListener("click", () => onSelectCallback(choice));
-
-    wheelContainer.appendChild(button);
-  }
-}
-```
-
-### 7.3. Renderização dos Interrupts (Sem Timer)
-```javascript
-// js/interrupts.js
-export function setupInterrupts(node, onInterruptTriggered) {
-  const paragonBtn = document.getElementById("interrupt-paragon");
-  const renegadeBtn = document.getElementById("interrupt-renegade");
-
-  // Reset visual
-  paragonBtn.classList.remove("visible");
-  renegadeBtn.classList.remove("visible");
-
-  if (node.interrupt?.paragon) {
-    paragonBtn.classList.add("visible");
-    paragonBtn.onclick = () => onInterruptTriggered(node.interrupt.paragon.targetNode);
-  }
-
-  if (node.interrupt?.renegade) {
-    renegadeBtn.classList.add("visible");
-    renegadeBtn.onclick = () => onInterruptTriggered(node.interrupt.renegade.targetNode);
-  }
+"choice_hub_id": {
+  type: "choice",
+  present: ["hackett"],
+  speaker: "shepard",
+  interrupt: { ... },                                     // Interrupts permanecem ativos durante o hub
+  choices: [
+    {
+      text: "Opção normal investigativa...",
+      effects: { temp: { briefing_questions: 1 } },      // Concede contador
+      targetNode: "node_investigate_answer"
+    },
+    {
+      text: "Linha de tom diplomático e encorajador.",
+      type: "paragon",                                    // Alinhamento moral Paragon
+      effects: { paragon: 1 },
+      targetNode: "node_paragon_response"
+    },
+    {
+      text: "Linha de tom firme, agressivo ou pragmático.",
+      type: "renegade",                                   // Alinhamento moral Renegade
+      effects: { renegade: 1 },
+      targetNode: "node_renegade_response"
+    },
+    {
+      text: "Opção decisiva avançada.",
+      requires: { temp: { briefing_questions: 2 } },     // Requisito mínimo
+      showLocked: true,                                   // Fica visível e esmaecida se bloqueada
+      targetNode: "node_conclusion"
+    }
+  ]
 }
 ```
 
 ---
 
-## 🚀 8. Próximos Passos & Inicialização
+## 📁 7. Modularização de Capítulos em Subpastas
 
-Com essas definições consolidadas:
-1. **Layout e CSS:** Criar a folha de estilos base com o tema sci-fi (gradientes azuis, fontes estilo Eurostile/Orbitron/Inter, scanlines sutis e botões em arco circular para os 8 slots).
-2. **Setup do GitHub Pages:** Estruturar a pasta para publicação direta no repositório.
-3. **Escrita do Capítulo 1:** O texto narrativo já pode ser redigido diretamente no formato de nós e slots de diálogo acima.
+Para evitar arquivos monolíticos de milhares de linhas e permitir manutenção ágil, todo capítulo narrativo deve seguir o padrão modular em subpastas:
+
+```
+data/chapters/
+└── 1.a-third-chance/
+    ├── 1.despertar-carne.js              # Fase 1: Despertar sensorial e fraqueza mortal
+    ├── 2.projecao-familiar.js            # Fase 2: Aparição de Hackett
+    ├── 3.briefing-galaxia.js             # Fase 3: Hub investigativo & Interrupt Renegade
+    ├── 4a.renegade-desmascaramento.js    # Ramo A: Quebra da farsa & Pacto por Tali
+    ├── 4b.revelacao-gradual.js           # Ramo B: Revelação gradual do Catalyst & Crise
+    ├── 5.peso-carne-mortal.js            # Fase 4: Equipamento & Ausência de cibernéticos
+    ├── 6.mascara-partida.js              # Fase 5: Dossiê John Moreau & Partida
+    └── index.js                          # Agregador central do capítulo
+```
+
+### 7.1. Convenção de Nomenclatura dos Arquivos de Nós
+* `[numero-da-parte].[resumo-curto].js` (ex: `1.despertar-carne.js`, `4a.renegade-desmascaramento.js`).
+* Cada módulo exporta um objeto de nós dedicado (ex: `export const nodesPart1 = { ... };`).
+
+### 7.2. O Arquivo Agregador `index.js`
+O arquivo `index.js` reúne todos os blocos de nós e exporta o objeto unificado do capítulo:
+
+```javascript
+// data/chapters/1.a-third-chance/index.js
+import { nodesPart1 } from "./1.despertar-carne.js";
+import { nodesPart2 } from "./2.projecao-familiar.js";
+import { nodesPart3 } from "./3.briefing-galaxia.js";
+import { nodesPart4a } from "./4a.renegade-desmascaramento.js";
+import { nodesPart4b } from "./4b.revelacao-gradual.js";
+import { nodesPart5 } from "./5.peso-carne-mortal.js";
+import { nodesPart6 } from "./6.mascara-partida.js";
+
+export const chapter01 = {
+  id: "chapter_01_third_chance",
+  title: "A Third Chance",
+  background: "assets/backgrounds/reaper_chamber.jpg",
+  startNode: "awakening_01",
+  nodes: {
+    ...nodesPart1,
+    ...nodesPart2,
+    ...nodesPart3,
+    ...nodesPart4a,
+    ...nodesPart4b,
+    ...nodesPart5,
+    ...nodesPart6
+  }
+};
+```
+
+### 7.3. Registro no Catálogo de Histórias (`data/stories.js`)
+O capítulo é conectado diretamente à lista de histórias jogáveis:
+
+```javascript
+// data/stories.js
+import { chapter01 } from "./chapters/1.a-third-chance/index.js";
+
+export const stories = [
+  {
+    id: "by_the_homeworld",
+    title: "By the homeworld I hope to see one day with you",
+    chapters: [
+      {
+        id: "chapter_01_third_chance",
+        number: 1,
+        title: "A Third Chance",
+        data: chapter01,
+        available: true,
+        status: "Playable"
+      },
+      // Demais capítulos futuros ("Coming Soon")...
+    ]
+  }
+];
+```
+
+---
+
+## 🔊 8. Motor de Áudio Procedural (Web Audio API)
+
+O módulo `js/audio.js` sintetiza sonoridades de interface holográfica sci-fi puras em tempo real usando osciladores e curvas de ganho exponenciais do Web Audio API, sem latência de carregamento de arquivos externos:
+
+* **`playHover()`:** Bip sutil senoidal de 880 Hz modulado em 35ms para feedback tátil de foco no menu.
+* **`playClick()`:** Pulso rápido de 520 Hz a 260 Hz simulando ativação de botão holográfico.
+* **`playLocked()`:** Tom dissonante descendente (220 Hz a 110 Hz) indicando opção indisponível.
+* **`playInterrupt()`:** Pulso harmônico de alerta moral quando um Interrupt surge na cena.
+* **`playTypewriter()`:** Cliques sutis de ruído branco simulando escrita em terminal de dados.
+* **`playModalOpen()` / `playModalClose()`:** Varrer de frequências graves e agudas para abertura e fechamento de painéis.
+
+---
+
+## 🎮 9. Padrões de Roteiro & Casos de Uso Reais
+
+### 9.1. Transição de Palco Multi-Personagem (Solo ➔ Duo ➔ Trio)
+Demonstrada na progressão de planejamento no Sanctum da Shadow Broker:
+1. **Fase 1 (Solo):** Shepard conversa a sós com Liara (`present: ["liara"]`). Liara fica imponente no centro da tela.
+2. **Fase 2 (Duo):** Garrus entra na sala (`present: ["liara", "garrus"]`). O palco desliza suavemente para o modo duplo. Quando Garrus fala, Liara escurece; quando Liara fala, Garrus escurece; quando Shepard fala, ambos escurecem.
+3. **Fase 3 (Trio):** Transmissão interceptada de Tali (`present: ["liara", "tali", "garrus"]`). O palco divide-se em três colunas. Tali centraliza a chamada de socorro e cada companheiro reage em tempo real.
+
+### 9.2. Hub Investigativo com Contador & Bifurcação Moral
+Demonstrada no Capítulo 1 (*A Third Chance*):
+1. **Briefing Inicial:** Shepard acorda nu no Reaper e ouve Hackett relatar o fim da guerra.
+2. **Contador Progressivo:** Cada pergunta sobre os Reapers, os Geth, Rannoch ou os Krogans incrementa `briefing_questions`.
+3. **Bifurcação Rápida:** Ao atingir 2 perguntas, o Interrupt Renegade (`[E]`) surge. Shepard pode interromper bruscamente e forçar o Catalyst a derrubar a máscara imediatamente (Ramo A), ou terminar o briefing e chegar à mesma revelação de forma gradual (Ramo B).
+4. **Convergência:** Ambos os ramos convergem organicamente para o pedestal de equipamento, onde Shepard veste a blindagem e parte sob o disfarce de John Moreau.

@@ -37,9 +37,10 @@ Para garantir qualidade literária, coesão de lore e produtividade máxima sem 
    - **Regra de Idioma:** Os documentos de apoio, planejamento e roteiros em Markdown são redigidos em **português** para manter a fluidez de escrita e revisão do autor.
 
 3. **💻 Etapa 3: Implementação (Código & Engine)**
-   - Tradução e conversão do roteiro aprovado para a estrutura de dados JavaScript da engine (`data/chapters/*.js`).
+   - Tradução e conversão do roteiro aprovado para a estrutura de dados JavaScript modular da engine (`data/chapters/[num].[slug]/[num].[resumo].js`).
+   - Consolidação dos nós no agregador `index.js` da pasta do capítulo.
    - Registro de novos personagens/sprites em `data/characters.js` e configuração do capítulo em `data/stories.js`.
-   - **Regra de Idioma:** No código-fonte da engine, arquivos de dados executáveis do jogo (`data/chapters/*.js`) e interface do usuário, o texto final e identificadores são mantidos em **inglês** para o jogo.
+   - **Regra de Idioma:** No código-fonte da engine, arquivos de dados executáveis do jogo (`data/chapters/`) e interface do usuário, o texto final e identificadores são mantidos em **inglês** para o jogo.
 
 ---
 
@@ -55,7 +56,8 @@ mass-effect-vn/
 ├── css/                    # Estilização modular (HUD sci-fi, Roda de 8 slots, Diálogo, Interrupts)
 ├── data/
 │   ├── characters.js       # Catálogo unificado de personagens e IDs de expressão
-│   └── chapters/           # Roteiros desacoplados divididos por nós e capítulos
+│   ├── stories.js          # Registro unificado de histórias e capítulos
+│   └── chapters/           # Capítulos modulares em subpastas (ex: 1.a-third-chance/)
 ├── docs/                   # Especificação técnica (engine.md) e bíblia narrativa (planejamento.md)
 ├── js/                     # Lógica da engine (state, wheel, dialogue, audio, ui)
 ├── index.html              # Ponto de entrada da aplicação
@@ -113,61 +115,71 @@ Para preservar a identidade personalizada de cada jogador (rosto customizado, g�
 
 ---
 
-## 📜 5. Schema Padrão de Roteiro (`data/chapters/*.js`) e Padrão em Inglês
+## 📜 5. Schema Padrão de Roteiro Modular (`data/chapters/[num].[slug]/`) e Padrão em Inglês
 
-Todo o código-fonte, identificadores, comentários e o roteiro narrativo são padronizados em **inglês** para universalidade e reuso pela comunidade.
+Todo o código-fonte, identificadores, comentários e o roteiro narrativo são padronizados em **inglês** para universalidade e reuso pela comunidade. Capítulos são organizados em subpastas modulares:
 
 ```javascript
-export const chapter1 = {
-  id: "chapter1_sanctum",
-  title: "Chapter 1: Contact at the Shadow Broker Sanctum",
-  background: "assets/backgrounds/shadow_broker_sanctum.jpg",
-  startNode: "node_01",
-  nodes: {
-    "node_01": {
-      present: ["liara"],
-      speaker: "shepard",
-      text: "Lock the doors, Doctor T'Soni. What we need to discuss cannot leave these four walls.",
-      next: "node_02"
+// data/chapters/1.a-third-chance/1.despertar-carne.js
+export const nodesPart1 = {
+  "node_01": {
+    present: ["liara"],
+    speaker: "shepard",
+    text: "Lock the doors, Doctor T'Soni. What we need to discuss cannot leave these four walls.",
+    next: "node_02"
+  },
+  "node_02": {
+    present: ["liara"],
+    speaker: "liara",
+    text: "By the Goddess... That is impossible. Your vital signs were terminated at the Crucible!",
+    interrupt: {
+      paragon: {
+        icon: "assets/icons/paragon.png",
+        label: "Comfort Liara [Paragon]",
+        targetNode: "node_interrupt_paragon"
+      }
     },
-    "node_02": {
-      present: ["liara"],
-      speaker: "liara",
-      text: "By the Goddess... That is impossible. Your vital signs were terminated at the Crucible!",
-      interrupt: {
-        paragon: {
-          icon: "assets/icons/paragon.png",
-          label: "Comfort Liara [Paragon]",
-          targetNode: "node_interrupt_paragon"
-        }
+    next: "choice_liara_01"
+  },
+  "choice_liara_01": {
+    type: "choice",
+    present: ["liara"],
+    speaker: "shepard",
+    choices: [
+      {
+        text: "I am alive, and Tali's diplomatic convoy is in grave danger.",
+        targetNode: "node_urgency"
       },
-      next: "choice_liara_01"
-    },
-    "choice_liara_01": {
-      type: "choice",
-      present: ["liara"],
-      speaker: "shepard",
-      choices: [
-        {
-          text: "I am alive, and Tali's diplomatic convoy is in grave danger.",
-          targetNode: "node_urgency"
-        },
-        {
-          text: "It is good to see you again, old friend.",
-          type: "paragon",
-          targetNode: "node_friendship"
-        },
-        {
-          text: "We don't have time for shock. Focus on the mission.",
-          type: "renegade",
-          targetNode: "node_cold_focus"
-        },
-        {
-          text: "How did you intercept the distress telemetry? [Investigate]",
-          targetNode: "node_investigate_telemetry"
-        }
-      ]
-    }
+      {
+        text: "It is good to see you again, old friend.",
+        type: "paragon",
+        targetNode: "node_friendship"
+      },
+      {
+        text: "We don't have time for shock. Focus on the mission.",
+        type: "renegade",
+        targetNode: "node_cold_focus"
+      },
+      {
+        text: "How did you intercept the distress telemetry? [Investigate]",
+        targetNode: "node_investigate_telemetry"
+      }
+    ]
+  }
+};
+
+// data/chapters/1.a-third-chance/index.js
+import { nodesPart1 } from "./1.despertar-carne.js";
+// ... import das demais partes
+
+export const chapter01 = {
+  id: "chapter_01_third_chance",
+  title: "A Third Chance",
+  background: "assets/backgrounds/reaper_chamber.jpg",
+  startNode: "awakening_01",
+  nodes: {
+    ...nodesPart1,
+    // ... nós das demais partes agregados
   }
 };
 ```
@@ -203,6 +215,7 @@ Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíbli
 - **Tratar caminhos como relativos:** Garantir que imagens, áudios e scripts funcionem em qualquer subdiretório do GitHub Pages.
 - **Garantir acessibilidade e responsividade:** O leitor deve conseguir jogar tanto no mouse quanto via atalhos de teclado (ex: teclas 1 a 9 para a lista de diálogo, Espaço/Enter para avançar, Q/E para interrupts).
 - **Padronizar código e roteiro em inglês:** Toda a redação de nós, diálogos, comentários e identificadores deve ser mantida em língua inglesa.
+- **Manter capítulos modulares organizados em subpastas:** Dividir cada capítulo em `data/chapters/[num].[slug-capitulo]/` particionado em arquivos `[num].[slug-parte].js` e consolidado pelo `index.js`.
 - **Manter narração e ações em 1ª Pessoa:** Descrever todos os eventos, reações corporais e ambiente estritamente pelos olhos de Shepard ("behind me", "my palms", "I step forward").
 - **Finalização de Áudio/SFX na reta final:** O foco primário no momento é a robustez literária, os ramais e a estrutura de nós; a implementação detalhada de efeitos sonoros avançados (SFX) e trilha ambiente (BGM) será finalizada na reta final do projeto.
 

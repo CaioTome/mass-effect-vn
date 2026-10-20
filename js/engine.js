@@ -1,7 +1,6 @@
 // js/engine.js - Mass Effect Visual Novel Engine (Baldur's Gate Style Dialogue & POV Camera)
 import { characters } from "../data/characters.js";
 import { stories } from "../data/stories.js";
-import { testScene } from "../data/chapters/test-scene.js";
 import { audio } from "./audio.js";
 
 const SAVE_KEY = "mass-effect-vn-save-v1";
@@ -10,8 +9,8 @@ class VNEngine {
   constructor() {
     this.currentStoryIndex = 0;
     const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
-    const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
-    this.chapter = defaultChapter.data;
+    const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || activeStory.chapters[0] || null;
+    this.chapter = defaultChapter ? defaultChapter.data : null;
 
     this.hasStarted = false;
     this.currentNodeId = null;
@@ -125,10 +124,12 @@ class VNEngine {
         if (!second) return;
 
         const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
-        const firstChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
+        const firstChapter = activeStory.chapters.find(c => c.available && c.data) || activeStory.chapters[0] || null;
         this.clearSave();
         this.state = this.createState();
-        this.loadChapter(firstChapter.data);
+        if (firstChapter && firstChapter.data) {
+          this.loadChapter(firstChapter.data);
+        }
       });
     }
 
@@ -608,7 +609,7 @@ class VNEngine {
     // If scene hasn't started yet, launch default playable chapter
     if (!this.hasStarted) {
       const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
-      const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
+      const defaultChapter = activeStory.chapters.find(c => c.available && c.data) || activeStory.chapters[0] || null;
       if (defaultChapter && defaultChapter.data) {
         this.loadChapter(defaultChapter.data);
       }

@@ -40,7 +40,7 @@ mass-effect-vn/
 │   └── style.css           # Mass Effect sci-fi HUD styling, scanlines, and lighting filters
 ├── data/
 │   ├── characters.js       # Character definitions and portrait registry
-│   └── chapters/           # Decoupled narrative chapters (chapter-01.js, test-scene.js)
+│   └── chapters/           # Decoupled narrative chapters (e.g. 1.a-third-chance/)
 ├── docs/                   # Technical architecture (engine.md) and narrative bible
 ├── js/
 │   ├── audio.js            # Web Audio API sound synthesizer
