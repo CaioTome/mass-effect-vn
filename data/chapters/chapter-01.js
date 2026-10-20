@@ -20,7 +20,7 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[A wet biomechanical snap echoes. My body drops onto a freezing metal grating, coughing violently as my lungs burn with the first agonizing intake of oxygen.]",
+      text: "[A wet biomechanical snap echoes. My body drops onto a freezing metal grating, coughing violently as my lungs burn with the first agonizing intake of air.]",
       next: "awakening_03"
     },
 
@@ -28,7 +28,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[I force my eyes open through the blur of amniotic fluid. Behind me lies a grotesque mass of greyish plant tendrils fused into Reaper conduits.] A Thorian nodule... assimilated into Reaper cybernetics? Where am I?",
+      text: "[I force my eyes open through the blur of amniotic fluid. Behind me lies a grotesque mass of greyish plant tendrils fused into Reaper conduits.] A Thorian... assimilated into Reaper cybernetics? Where am I?",
       next: "awakening_04"
     },
 
@@ -36,7 +36,7 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: [],
       speaker: "shepard",
-      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper ship. Did the Crucible fail? What happened to us... what happened to Tali",
+      text: "[The floor plates thrum beneath my palms with a deep, subharmonic pulse. Hexagonal obsidian walls rise into cavernous shadows.] A Reaper. Did the Crucible fail? What happened to us... what happened to Tali",
       next: "hackett_beam_appear"
     },
 
@@ -69,7 +69,7 @@ export const chapter01 = {
     "hackett_calm_01": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Take a deep breath, Shepard. Your vital signs are erratic; neural shock takes time to settle. I am here to help you.",
+      text: "Take a deep breath, Shepard. Your vital signs are erratic; neural shock takes time to settle. I'm here to help you.",
       next: "hackett_status_intro"
     },
 
@@ -142,7 +142,7 @@ export const chapter01 = {
     "node_rannoch_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "At an exemplary pace. To dispel historical dread and facilitate formal entry into the Citadel community, the Geth voluntarily underwent comprehensive demilitarization. Their platforms now operate in ecological engineering and agricultural synthesis alongside Quarian engineers.",
+      text: "At an exemplary pace. To dispel historical dread and facilitate formal entry into the Citadel community, the Geth were demilitarized. Their platforms now operate in ecological engineering and agricultural synthesis alongside Quarian engineers.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -156,7 +156,7 @@ export const chapter01 = {
     "node_krogans_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Urdnot Wrex and Bakara hold the clans with steady authority. A population boom is underway, but with star charts provided by the Reapers and newly opened colony sectors, expansion is being channeled through peaceful diplomacy.",
+      text: "Urdnot Wrex still holds the clans with steady authority. A population boom will happen, but with star charts provided by the Reapers, a safe expansion is being channeled through peaceful diplomacy.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -170,7 +170,7 @@ export const chapter01 = {
     "node_relays_status": {
       present: ["hackett"],
       speaker: "hackett",
-      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent in their oceanic abyss, well aware that the synthetic network now answers to a higher guiding will.",
+      text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent.",
       interrupt: {
         renegade: {
           icon: "assets/icons/renegate.png",
@@ -215,7 +215,7 @@ export const chapter01 = {
     "renegade_cloning_explanation": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Your original body was disintegrated at the Crucible. You were reconstructed utilizing accelerated biomass from an assimilated Thorian node, paired with the genomic blueprints Cerberus cataloged during Project Lazarus. Your memories were transferred via direct synaptic resonance—no indoctrination, no control. Pure organic flesh.",
+      text: "Your original body was disintegrated at the Crucible. You were reconstructed utilizing biomass from an assimilated Thorian node, paired with the genomic blueprints Cerberus cataloged during Project Lazarus. Your memories were transferred via direct synaptic resonance, no indoctrination, no control. Pure organic flesh.",
       next: "renegade_shepard_demand"
     },
 
