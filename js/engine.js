@@ -4,6 +4,8 @@ import { stories } from "../data/stories.js";
 import { testScene } from "../data/chapters/test-scene.js";
 import { audio } from "./audio.js";
 
+const SAVE_KEY = "mass-effect-vn-save-v1";
+
 class VNEngine {
   constructor() {
     this.currentStoryIndex = 0;
@@ -15,6 +17,9 @@ class VNEngine {
     this.currentNodeId = null;
     this.currentNode = null;
     this.readChoices = new Set();
+
+    // Counters: Paragon / Renegade points and flags persist (localStorage); temp counters are scene-scoped helpers
+    this.state = this.loadSave();
 
     // Typewriter state
     this.isTyping = false;
@@ -110,13 +115,20 @@ class VNEngine {
 
     if (this.dom.btnRestart) {
       this.dom.btnRestart.addEventListener("click", () => {
-        this.readChoices.clear();
-        const initialBg = this.chapter.nodes[this.chapter.startNode]?.background || this.chapter.background;
-        if (initialBg) {
-          this.dom.bg.src = initialBg;
-          this.dom.bg.setAttribute("src", initialBg);
-        }
-        this.loadScene(this.chapter.startNode);
+        const first = window.confirm(
+          "Restart the game?\n\nYou will return to the very beginning of Chapter 1 and all progress will be lost."
+        );
+        if (!first) return;
+        const second = window.confirm(
+          "Are you absolutely sure?\n\nThis cannot be undone."
+        );
+        if (!second) return;
+
+        const activeStory = stories[this.currentStoryIndex] || { chapters: [] };
+        const firstChapter = activeStory.chapters.find(c => c.available && c.data) || { data: testScene };
+        this.clearSave();
+        this.state = this.createState();
+        this.loadChapter(firstChapter.data);
       });
     }
 
@@ -130,12 +142,91 @@ class VNEngine {
     this.chapter = chapterData;
     this.hasStarted = true;
     this.readChoices.clear();
+    this.state.temp = {};
     const initialBg = this.chapter.nodes[this.chapter.startNode]?.background || this.chapter.background;
     if (initialBg) {
       this.dom.bg.src = initialBg;
       this.dom.bg.setAttribute("src", initialBg);
     }
     this.loadScene(this.chapter.startNode);
+  }
+
+  // -----------------------------------------------------------------
+  // 🧮 COUNTERS: Paragon / Renegade points & temporary counters
+  // -----------------------------------------------------------------
+  createState() {
+    return { paragon: 0, renegade: 0, flags: {}, temp: {} };
+  }
+
+  // Only paragon, renegade and flags are persisted; temp is never saved
+  loadSave() {
+    const state = this.createState();
+    try {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        state.paragon = Number(saved.paragon) || 0;
+        state.renegade = Number(saved.renegade) || 0;
+        state.flags = saved.flags && typeof saved.flags === "object" ? saved.flags : {};
+      }
+    } catch (err) {
+      console.warn("Could not read save data:", err);
+    }
+    return state;
+  }
+
+  saveProgress() {
+    try {
+      const { paragon, renegade, flags } = this.state;
+      localStorage.setItem(SAVE_KEY, JSON.stringify({ paragon, renegade, flags }));
+    } catch (err) {
+      console.warn("Could not write save data:", err);
+    }
+  }
+
+  clearSave() {
+    try { localStorage.removeItem(SAVE_KEY); } catch (err) {}
+  }
+
+  /**
+   * requires: { paragon: 2, renegade: 1, flags: { saved_wrex: true }, temp: { briefing_questions: 2 } }
+   * Points/temp are minimum thresholds; flags must match their truthiness. All conditions must be met.
+   */
+  meetsRequirements(requires) {
+    if (!requires) return true;
+    if (requires.paragon !== undefined && this.state.paragon < requires.paragon) return false;
+    if (requires.renegade !== undefined && this.state.renegade < requires.renegade) return false;
+    if (requires.flags) {
+      for (const [key, value] of Object.entries(requires.flags)) {
+        if (Boolean(this.state.flags[key]) !== Boolean(value)) return false;
+      }
+    }
+    if (requires.temp) {
+      for (const [key, min] of Object.entries(requires.temp)) {
+        if ((this.state.temp[key] || 0) < min) return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * effects: { paragon: 1, renegade: 1, flags: { saved_wrex: true }, temp: { key: 1 }, clearTemp: ["key"] }
+   * Points and temp values are added; flags are set. Progress is saved after every change.
+   */
+  applyEffects(effects) {
+    if (!effects) return;
+    if (effects.paragon) this.state.paragon += effects.paragon;
+    if (effects.renegade) this.state.renegade += effects.renegade;
+    if (effects.flags) Object.assign(this.state.flags, effects.flags);
+    if (effects.temp) {
+      for (const [key, amount] of Object.entries(effects.temp)) {
+        this.state.temp[key] = (this.state.temp[key] || 0) + amount;
+      }
+    }
+    if (effects.clearTemp) {
+      effects.clearTemp.forEach(key => delete this.state.temp[key]);
+    }
+    this.saveProgress();
   }
 
   loadScene(nodeId) {
@@ -372,12 +463,12 @@ class VNEngine {
     if (node.interrupt) {
       let playedCue = false;
 
-      if (node.interrupt.paragon) {
+      if (node.interrupt.paragon && this.meetsRequirements(node.interrupt.paragon.requires)) {
         this.dom.interruptParagon.classList.add("visible");
         playedCue = true;
       }
 
-      if (node.interrupt.renegade) {
+      if (node.interrupt.renegade && this.meetsRequirements(node.interrupt.renegade.requires)) {
         this.dom.interruptRenegade.classList.add("visible");
         playedCue = true;
       }
@@ -392,8 +483,10 @@ class VNEngine {
     if (!this.currentNode || !this.currentNode.interrupt) return;
 
     const interruptData = this.currentNode.interrupt[type];
-    if (interruptData && interruptData.targetNode) {
+    if (interruptData && interruptData.targetNode && this.meetsRequirements(interruptData.requires)) {
       audio.playInterruptTrigger(type);
+      // Interrupts award +1 point of their own alignment unless `effects` overrides it
+      this.applyEffects(interruptData.effects || { [type]: 1 });
       this.dom.interruptParagon.classList.remove("visible");
       this.dom.interruptRenegade.classList.remove("visible");
       this.loadScene(interruptData.targetNode);
@@ -404,7 +497,10 @@ class VNEngine {
   // 📜 BALDUR'S GATE STYLE FULL-TEXT DIALOGUE CHOICES
   // -----------------------------------------------------------------
   renderChoices(node) {
-    const choices = node.choices || [];
+    // Only show choices whose requirements are met (or locked ones flagged with `showLocked`)
+    const choices = (node.choices || []).filter(
+      c => this.meetsRequirements(c.requires) || c.showLocked
+    );
     this.dom.choiceList.innerHTML = "";
 
     // Hide dialogue box so the choices cleanly take focus without redundant prompts
@@ -421,6 +517,16 @@ class VNEngine {
       // Mark previously explored choices
       if (this.readChoices.has(choice.targetNode)) {
         choiceBtn.classList.add("read");
+      }
+
+      // Locked choices stay visible but cannot be picked
+      const locked = !this.meetsRequirements(choice.requires);
+      if (locked) {
+        choiceBtn.classList.add("locked");
+        choiceBtn.disabled = true;
+      }
+      if (choice.type === "paragon" || choice.type === "renegade") {
+        choiceBtn.dataset.alignment = choice.type;
       }
 
       // Number badge + full spoken line
@@ -444,7 +550,14 @@ class VNEngine {
   }
 
   selectChoice(choice) {
+    if (!this.meetsRequirements(choice.requires)) return;
     audio.playSelect();
+    // Effects apply only the first time a choice is picked
+    if (choice.targetNode && !this.readChoices.has(choice.targetNode)) {
+      this.applyEffects(choice.effects);
+    } else if (!choice.targetNode) {
+      this.applyEffects(choice.effects);
+    }
     if (choice.targetNode) {
       this.readChoices.add(choice.targetNode);
     }

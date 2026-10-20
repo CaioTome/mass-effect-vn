@@ -86,6 +86,12 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
   - **Avançar normalmente (Ignorar):** Clicar na caixa de texto ou no botão de avançar dá continuidade ao fluxo padrão da conversa.
   - **Acionar Interrupt:** Clicar no botão ou acionar a tecla dispara imediatamente o ramo exclusivo daquela ação moral (`targetNode`).
 
+### 4.2.1. Contadores & Opções Condicionais (Paragon / Renegade / Temporários)
+- **Estado (`engine.state`):** `paragon` e `renegade` (pontos), `flags` (marcadores de história, ex: `flags: { saved_wrex: true }`) e `temp` (contadores temporários por capítulo, para uso pontual). **Pontos e flags são salvos em `localStorage`**; `temp` nunca é salvo. O progresso de cena (nó atual) não é salvo.
+- **`requires` (em escolhas ou interrupts):** valores mínimos; todos precisam ser atendidos. Ex: `requires: { paragon: 2, flags: { saved_wrex: true }, temp: { briefing_questions: 2 } }`. Escolhas sem requisito atendido ficam ocultas; com `showLocked: true` aparecem esmaecidas e não selecionáveis.
+- **`effects` (em escolhas ou interrupts):** valores somados aos contadores. Ex: `effects: { paragon: 1, temp: { briefing_questions: 1 }, clearTemp: ["outra_chave"] }`. Em escolhas, só valem na **primeira** vez que a opção é escolhida (reler um hub não infla contadores). Interrupts concedem +1 do seu alinhamento, a menos que definam `effects`.
+- **Reset:** `temp` zera ao carregar um capítulo; o botão Restart (com dupla confirmação) apaga o save e volta ao início do Capítulo 1.
+
 ### 4.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
 Para preservar a identidade personalizada de cada jogador (rosto customizado, gênero e escolhas da trilogia) e maximizar a imersão visual novel:
 - **Shepard em 1ª Pessoa (Atrás da Câmera):** Shepard nunca aparece como sprite na tela. Ele é a visão/câmera do jogador.

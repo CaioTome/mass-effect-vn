@@ -542,6 +542,13 @@ body, html {
   border-left-color: rgba(120, 150, 180, 0.3);
 }
 
+/* Opções bloqueadas por requisitos de contador (showLocked) */
+.choice-item.locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
 /* ==========================================================================
 /* ==========================================================================
    📂 CHAPTERS SCREEN & TERMINAL

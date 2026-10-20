@@ -1,4 +1,15 @@
 // data/chapters/chapter-01.js - Chapter 1: A Third Chance (Mass Effect Visual Novel)
+
+// Renegade interrupt gated by a temporary counter: unlocks after the player asks 2 briefing questions
+const breakIllusionInterrupt = {
+  renegade: {
+    icon: "assets/icons/renegate.png",
+    label: "Break the Illusion [Renegade]",
+    requires: { temp: { briefing_questions: 2 } },
+    targetNode: "renegade_interrupt_farsa"
+  }
+};
+
 export const chapter01 = {
   id: "chapter_01_third_chance",
   title: "A Third Chance",
@@ -28,7 +39,15 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[My bare palms and knees slam against the freezing metal floor plates. The thermal shock rips a violent spasm through my raw skin. I gasp in panic, but draw in only thick fluid. Coughing violently, I purge a mouthful of yellowish fluid across the deck. The first real intake of oxygen burns my throat like shattered glass.]",
+      text: "[My bare palms and knees slam against the freezing metal floor plates. The thermal shock rips a violent spasm through my raw skin.]",
+      next: "awakening_03b"
+    },
+
+    "awakening_03b": {
+      background: "assets/backgrounds/black.jpg",
+      present: [],
+      speaker: "shepard",
+      text: "[I gasp in panic, but draw in only thick fluid. Coughing violently, I purge a mouthful of yellowish fluid across the deck. The first real intake of oxygen burns my throat like shattered glass.]",
       next: "awakening_04"
     },
 
@@ -36,7 +55,15 @@ export const chapter01 = {
       background: "assets/backgrounds/black.jpg",
       present: [],
       speaker: "shepard",
-      text: "[I try to push myself up, but my wrists buckle. My muscles feel like dead lead, as if they've spent a century in deep atrophy. My teeth chatter violently. I stare at my wet, trembling hands: no gauntlets, no surgical scars, no glowing Lazarus veins. Just my skin. I drag myself back until my naked spine hits a freezing bulkhead.] Where... where the hell am I?",
+      text: "[I try to push myself up, but my wrists buckle. My muscles feel like dead lead, as if they've spent a century in deep atrophy. My teeth chatter violently.]",
+      next: "awakening_04b"
+    },
+
+    "awakening_04b": {
+      background: "assets/backgrounds/black.jpg",
+      present: [],
+      speaker: "shepard",
+      text: "[I stare at my wet, trembling hands: no gauntlets, no surgical scars, no glowing Lazarus veins. Just my skin. I drag myself back until my naked spine hits a freezing bulkhead.] Where... where the hell am I?",
       next: "awakening_05"
     },
 
@@ -63,7 +90,15 @@ export const chapter01 = {
       background: "assets/backgrounds/reaper_chamber.jpg",
       present: ["hackett"],
       speaker: "shepard",
-      text: "[A vertical cyan beam pierces the gloom of the chamber, blinding my unadjusted eyes. I throw up a trembling forearm to shield my face. In the center of the beam, a life-sized holographic projection stabilizes: Admiral Steven Hackett in full Alliance dress uniform, hands clasped behind his back, solemn and commanding.]",
+      text: "[A vertical cyan beam pierces the gloom of the chamber, blinding my unadjusted eyes. I throw up a trembling forearm to shield my face.]",
+      next: "hackett_beam_appear_02"
+    },
+
+    "hackett_beam_appear_02": {
+      background: "assets/backgrounds/reaper_chamber.jpg",
+      present: ["hackett"],
+      speaker: "shepard",
+      text: "[In the center of the beam, a life-sized holographic projection stabilizes: Admiral Steven Hackett in full Alliance dress uniform, hands clasped behind his back, solemn and commanding.]",
       next: "hackett_entry_01"
     },
 
@@ -100,13 +135,6 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "hackett",
       text: "The invasion is over, Commander. The Reapers were defeated. Two months have passed since the Battle of Earth. I am here to bring you up to speed on the galaxy before we address what comes next.",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
       next: "choice_briefing_hub"
     },
 
@@ -117,28 +145,26 @@ export const chapter01 = {
       type: "choice",
       present: ["hackett"],
       speaker: "shepard",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
+      interrupt: breakIllusionInterrupt,
       choices: [
         {
           text: "What is the Reapers' role now? How did galactic civilization react?",
+          effects: { temp: { briefing_questions: 1 } },
           targetNode: "node_reapers_status"
         },
         {
           text: "What about Rannoch? Did the peace between the Quarians and the Geth endure?",
+          effects: { temp: { briefing_questions: 1 } },
           targetNode: "node_rannoch_status"
         },
         {
           text: "Did the Genophage cure hold? Are the Krogan stabilizing under Wrex?",
+          effects: { temp: { briefing_questions: 1 } },
           targetNode: "node_krogans_status"
         },
         {
           text: "What of the Mass Relays? Did the ancient Leviathans make a move?",
+          effects: { temp: { briefing_questions: 1 } },
           targetNode: "node_relays_status"
         },
         {
@@ -152,13 +178,7 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "hackett",
       text: "The Reapers are actively assisting in galactic reconstruction. Capital ships are hauling raw alloys, stabilizing planetary atmospheres, and restoring orbital platforms and the relays. Citadel fleets maintain sentry lines, but peace holds.",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
+      interrupt: breakIllusionInterrupt,
       next: "choice_briefing_hub"
     },
 
@@ -166,13 +186,7 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "hackett",
       text: "At an exemplary pace. To dispel historical dread and facilitate formal entry into the Citadel community, the Geth voluntarily underwent comprehensive demilitarization. Their platforms now operate in ecological engineering and agricultural synthesis alongside Quarian engineers.",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
+      interrupt: breakIllusionInterrupt,
       next: "choice_briefing_hub"
     },
 
@@ -180,13 +194,7 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "hackett",
       text: "Urdnot Wrex still holds the clans with steady authority. A population boom is underway, but with star charts provided by the Reapers, a safe expansion is being channeled through peaceful diplomacy.",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
+      interrupt: breakIllusionInterrupt,
       next: "choice_briefing_hub"
     },
 
@@ -194,13 +202,7 @@ export const chapter01 = {
       present: ["hackett"],
       speaker: "hackett",
       text: "Nearly a quarter of the Relay network has already been reactivated through combined Alliance-Reaper repair flotillas. As for the Leviathans, they remain silent.",
-      interrupt: {
-        renegade: {
-          icon: "assets/icons/renegate.png",
-          label: "Break the Illusion [Renegade]",
-          targetNode: "renegade_interrupt_farsa"
-        }
-      },
+      interrupt: breakIllusionInterrupt,
       next: "choice_briefing_hub"
     },
 
@@ -210,7 +212,14 @@ export const chapter01 = {
     "renegade_interrupt_farsa": {
       present: ["hackett"],
       speaker: "shepard",
-      text: "[My eyes narrow. As the reports drone on, my instincts awaken.] I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade right now. I want to know who you really are!",
+      text: "[My eyes narrow. As the reports drone on, my instincts awaken.]",
+      next: "renegade_interrupt_farsa_speech"
+    },
+
+    "renegade_interrupt_farsa_speech": {
+      present: ["hackett"],
+      speaker: "shepard",
+      text: "I've heard enough, 'Admiral'... that's quite enough. Steven Hackett is on Earth coordinating the greatest reconstruction in galactic history. He would never deliver a solo diplomatic briefing to a naked, slime-covered soldier on a Reaper deck. Drop the masquerade right now. I want to know who you really are!",
       next: "renegade_catalyst_shift"
     },
 
@@ -290,7 +299,7 @@ export const chapter01 = {
     "node_renegade_cloning_info": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "You were synthesized utilizing accelerated biomass from an assimilated Thorian, reconstructed with the cellular blueprints Cerberus cataloged during Project Lazarus. Your memories and will were transferred without corruption from your neural map seared into the Crucible at ascension. You are pure organic flesh. No leashes, no cybernetics, no indoctrination.",
+      text: "You were synthesized from accelerated Thorian biomass. The Thorians were catalogued in previous cycles, and their tissue adapts to any blueprint, in this case the cellular data Cerberus recorded during Project Lazarus. Your memories and will were transferred without corruption from your neural map seared into the Crucible at ascension. You are pure organic flesh. No leashes, no cybernetics, no indoctrination.",
       next: "choice_renegade_hub"
     },
 
@@ -356,7 +365,7 @@ export const chapter01 = {
     "normal_catalyst_recriacao_explain": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "Your original vessel did perish. This biological form was cultivated through accelerated synthesis of a Thorian, structured upon the molecular blueprints Cerberus cataloged during Project Lazarus. Your memories, personality, and free will were imprinted from the neural matrix recorded during your ascension. You are not indoctrinated. You are yourself.",
+      text: "Your original vessel did perish. This biological form was grown from accelerated Thorian biomass. The Thorians were catalogued in previous cycles, and their tissue adapts to any blueprint, in this case the molecular records Cerberus kept from Project Lazarus. Your memories, personality, and free will were imprinted from the neural matrix recorded during your ascension. You are not indoctrinated. You are yourself.",
       next: "normal_shepard_why_revive"
     },
 
@@ -480,28 +489,35 @@ export const chapter01 = {
     "biometrics_console": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "To clear C-Sec checkpoints without alerting Alliance central intelligence, you require an untraceable mercenary civilian identity. Because your synthetic fingerprints do not match old Alliance archives, place your palm on the sensor console.",
+      text: "To clear C-Sec checkpoints without alerting Alliance central intelligence, you require an untraceable mercenary civilian identity. Your regenerated fingerprints match no Alliance archive, the same flaw that betrayed the duplicate Cerberus grew from your Lazarus data on the Citadel. Place your palm on the sensor console.",
       next: "shepard_id_scanned"
     },
 
     "shepard_id_scanned": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[A laser grid scans my palm with a sharp chime. Then I Read: 'Registered. John Moreau', just another decommissioned marine hunting bounty contracts in the Terminus.]",
+      text: "[I press my palm against the console. A laser grid sweeps across my skin with a sharp chime, and a dossier assembles itself on the display. I read it in silence: Name, John Moreau. Discharged Alliance marine. Freelancer chasing bounty contracts in the Terminus.]",
+      next: "shepard_moreau_thought"
+    },
+
+    "shepard_moreau_thought": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[Moreau. Of all the names in the galaxy... Fingerprints that match nothing, just like that clone Cerberus cooked up on the Citadel during my shore leave. A fake name borrowed from the best pilot I ever flew with. Joker would love every second of this.]",
       next: "helm_sealed"
     },
 
     "helm_sealed": {
       present: ["catalyst_hackett"],
       speaker: "shepard",
-      text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Very Funny. Where do I begin?",
+      text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Moreau. Very funny.",
       next: "catalyst_liara_order"
     },
 
     "catalyst_liara_order": {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
-      text: "The Shadow Broker. Doctor Liara T'Soni maintains a secure intelligence redoubt on the Citadel.",
+      text: "The coordinates of Liara's redoubt are already loaded into the shuttle's navigation computer.",
       next: "catalyst_final_salute"
     },
 
@@ -509,6 +525,20 @@ export const chapter01 = {
       present: ["catalyst_hackett"],
       speaker: "catalyst_hackett",
       text: "An unmarked long-range shuttle awaits in the lower ventral airlock. Find Liara, assemble what strength you need, and bring the Quarian leadership home.",
+      next: "catalyst_salute"
+    },
+
+    "catalyst_salute": {
+      present: ["catalyst_hackett"],
+      speaker: "shepard",
+      text: "[Hackett's projection straightens and snaps a perfect salute. Out of pure reflex, I return it.]",
+      next: "catalyst_out"
+    },
+
+    "catalyst_out": {
+      present: ["catalyst_hackett"],
+      speaker: "catalyst_hackett",
+      text: "Do not fail her, Shepard. Catalyst out.",
       next: "departure_final"
     },
 
