@@ -536,7 +536,7 @@ export const chapter01 = {
     "chapter_01_end": {
       present: [],
       speaker: "system",
-      text: "[End of Chapter 1: A Third Chance. Continue to Chapter 2: Dossier: Shadow Broker via the Chapters Archive.]",
+      text: "[End of Chapter 1: A Third Chance. Chapter 2: Dossier: Shadow Broker — Coming Soon.]",
       next: null
     }
   }

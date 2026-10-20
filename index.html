@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/icons/n7.png">
 </head>
+
 <body>
   <div id="game-container">
     <!-- Background Scene -->
     <img id="scene-background" src="assets/backgrounds/black.jpg" alt="Background Scene">
-    
+
     <!-- Scanlines & Sci-Fi Vignette Overlay -->
     <div class="scanlines-overlay"></div>
 
@@ -22,9 +24,9 @@
         <span id="chapter-title">A Third Chance</span>
       </div>
       <div class="hud-right">
-        <button id="btn-chapters" class="hud-btn" title="Open Chapter Selector">📁 Chapters</button>
-        <button id="btn-mute" class="hud-btn" title="Toggle Sound Effects">🔊 Audio On</button>
-        <button id="btn-restart" class="hud-btn" title="Restart Scene">↺ Restart</button>
+        <button id="btn-chapters" class="hud-btn" title="Open Chapter Selector">Chapters</button>
+        <button id="btn-mute" class="hud-btn" title="Toggle Sound Effects">Audio On</button>
+        <button id="btn-restart" class="hud-btn" title="Restart Scene">Restart</button>
       </div>
     </header>
 
@@ -86,11 +88,11 @@
               <span class="chapter-row-title">A Third Chance</span>
               <span class="chapter-row-badge badge-play">▶ Play</span>
             </button>
-            <button class="chapter-row playable" data-number="2">
+            <div class="chapter-row locked" data-number="2">
               <span class="chapter-row-num">2.</span>
               <span class="chapter-row-title">Dossier: Shadow Broker</span>
-              <span class="chapter-row-badge badge-play">▶ Play</span>
-            </button>
+              <span class="chapter-row-badge badge-coming-soon">Coming Soon</span>
+            </div>
             <div class="chapter-row locked" data-number="3">
               <span class="chapter-row-num">3.</span>
               <span class="chapter-row-title">Dossier: Archangel</span>
@@ -110,4 +112,5 @@
   <!-- Engine Controller ES Module -->
   <script type="module" src="js/engine.js"></script>
 </body>
+
 </html>

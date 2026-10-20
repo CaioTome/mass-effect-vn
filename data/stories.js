@@ -1,6 +1,5 @@
 // data/stories.js - Story & Chapter Registry (Mass Effect Visual Novel Engine)
 import { chapter01 } from "./chapters/chapter-01.js";
-import { testScene } from "./chapters/test-scene.js";
 
 export const stories = [
   {
@@ -19,9 +18,9 @@ export const stories = [
         id: "chapter_02_shadow_broker",
         number: 2,
         title: "Dossier: Shadow Broker",
-        data: testScene,
-        available: true,
-        status: "Playable"
+        data: null,
+        available: false,
+        status: "Coming Soon"
       },
       {
         id: "chapter_03_archangel",
