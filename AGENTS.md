@@ -21,26 +21,27 @@ A aplicação reproduz com alta fidelidade a icônica **Roda de Diálogo de 8 po
 
 ---
 
-## 🔄 2. Fluxo de Desenvolvimento: Ideia ➔ Roteiro ➔ Implementação
+## 🔄 2. Fluxo de Desenvolvimento: BPMN ➔ Ideação & Refinamento ➔ Revisão ➔ Implementação In-Game
 
-Para garantir qualidade literária, coesão de lore e produtividade máxima sem atrito técnico, todo novo capítulo ou arco narrativo deve seguir estritamente o pipeline de três etapas:
+Para garantir qualidade literária, coesão de lore e produtividade máxima sem atrito técnico, todo novo capítulo ou arco narrativo segue estritamente este pipeline colaborativo:
 
-1. **💡 Etapa 1: Ideia (Conceito & Planejamento)**
-   - Brainstorming de premissas, conflitos dramáticos, stakes e arcos de personagens.
-   - Documentado em português nos arquivos de planejamento e bíblia narrativa (`docs/planejamento.md` / `docs/`).
-   - Alinhamento de referências de lore de Mass Effect e mecânicas interativas necessárias.
+1. **🗺️ Etapa 1: Arquitetura em BPMN (Diretor Criativo)**
+   - O Diretor Criativo (Caio) **sempre fornecerá um diagrama de fluxo em BPMN** (arquivos `.bpmn` e `.svg` organizados em `docs/Capitulo [N] - bpmn/`) definindo os atos, gateways de decisão, locais, encontros e pontos de virada do capítulo.
 
-2. **📝 Etapa 2: Roteiro (Escrita Literária Estruturada em Markdown)**
-   - Redação integral da cena em **português** em `docs/capitulos/*.md`.
-   - Foco absoluto na prosa, diálogos autênticos, ritmo emocional, escolhas completas (estilo Baldur's Gate) e marcações claras de *Interrupts* morais (`[Paragon [Q]]` / `[Renegade [E]]`).
-   - Leitura fluida e aprovação direta com o Diretor Criativo antes de tocar em código.
-   - **Regra de Idioma:** Os documentos de apoio, planejamento e roteiros em Markdown são redigidos em **português** para manter a fluidez de escrita e revisão do autor.
+2. **💡 Etapa 2: Refinamento & Documento de Ideia/Roteiro (Agente de IA)**
+   - O Agente analisa a arquitetura BPMN fornecida, refina os atos dramáticos, desenha os ramais de diálogo vertical em texto completo (estilo Baldur's Gate), define os gatilhos de *Interrupts* morais (`[Q] Paragon` / `[E] Renegade`) e requisitos de estado (`engine.state`).
+   - Produz ou atualiza o documento detalhado de roteiro/conceito em `docs/capitulos/[slug].md` (em inglês ou português conforme direcionado pelo Diretor Criativo).
 
-3. **💻 Etapa 3: Implementação (Código & Engine)**
-   - Tradução e conversão do roteiro aprovado para a estrutura de dados JavaScript modular da engine (`data/chapters/[num].[slug]/[num].[resumo].js`).
-   - Consolidação dos nós no agregador `index.js` da pasta do capítulo.
-   - Registro de novos personagens/sprites em `data/characters.js` e configuração do capítulo em `data/stories.js`.
-   - **Regra de Idioma:** No código-fonte da engine, arquivos de dados executáveis do jogo (`data/chapters/`) e interface do usuário, o texto final e identificadores são mantidos em **inglês** para o jogo.
+3. **✍️ Etapa 3: Revisão & Validação (Diretor Criativo)**
+   - O Diretor Criativo lê, valida o ritmo, ajusta falas e aprova formalmente a narrativa antes de qualquer linha de código de dados ser escrita.
+
+4. **💻 Etapa 4: Implementação Modular In-Game (Código & Engine)**
+   - Seguindo o padrão de excelência estabelecido no Capítulo 1 ([`data/chapters/1.a-third-chance/`](data/chapters/1.a-third-chance/)), o capítulo é implementado na engine de forma modular:
+     - Cada caixinha/cena do BPMN torna-se um arquivo JavaScript independente em `data/chapters/[num].[slug]/` (ex: `1.citadel-gates.js`, `2.barla-von.js`, `3a.presidium.js`, etc.).
+     - Todos os nós são consolidados no agregador local `index.js`.
+     - Novos personagens e expressões são catalogados em `data/characters.js`.
+     - O capítulo é registrado e ativado em `data/stories.js`.
+   - **Regra de Idioma:** O código-fonte, dados da engine (`data/chapters/`), identificadores e texto final in-game são mantidos em **inglês**.
 
 ---
 
