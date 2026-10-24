@@ -1,376 +1,228 @@
-# Capítulo 1: A Terceira Chance *(A Third Chance)*
-### Roteiro Narrativo & Estrutura de Diálogo (Visual Novel Engine)
+# Chapter 1: A Third Chance *(A Terceira Chance)*
+### Narrative Script & Scene Architecture (Visual Novel Engine)
 
-> **Cenário:** Interior de uma Nave-Mãe Reaper — Câmara de Biogestação Selada e Pressurizada.  
-> **Áudio de Ambiente:** Zumbido grave de antimatéria, gotejamento de líquido amniótico orgânico, estalos elétricos esparsos.  
-> **Personagem em Cena:** Almirante Steven Hackett (Projeção Holográfica do Catalyst) — `assets/portraits/hackett.png`.  
-> **Ponto de Vista:** 1ª Pessoa (Câmera nos olhos de John Shepard).  
-> **Linha do Tempo:** 2 meses após o desfecho *Control (Paragon)* de *Mass Effect 3*.
+> **Setting:** Interior of a Reaper Bio-Gestation Vessel (Pressurized and Sterile Incubation Chamber).  
+> **Protagonist:** Commander John Shepard (First-person POV; newly synthesised 100% organic human body).  
+> **Characters Present:** Admiral Steven Hackett / The Catalyst (Holographic Projection) — `assets/portraits/hackett.png`.  
+> **Timeline:** Two months after the *Control (Paragon)* outcome of *Mass Effect 3*.  
+> **Narrative Reference:** Aligns with [`docs/planejamento.md`](../planejamento.md) (The Awakening & The Origin) and the engine code in [`data/chapters/1.a-third-chance/`](../../data/chapters/1.a-third-chance/).
 
 ---
 
-## 🗺️ Mapa de Fluxo do Capítulo
+## 📖 Resumo Geral do Capítulo (Executive Narrative Summary)
+
+Dois meses após o sacrifício de John Shepard no ápice do Crucible, o lendário comandante desperta desprovido de qualquer implante cibernético no convés congelado de uma câmara de biogestação pressurizada no coração de uma nave Reaper.
+
+* **Ato 1: O Despertar da Carne (Nudez e Frio):**
+  - Shepard é expelido de uma placenta bio-orgânica com lodo amarelado e tosse o primeiro oxigênio real em seus pulmões puramente humanos.
+  - Ele percebe que seu corpo não possui as próteses e circuitos do Projeto Lazarus: não há titânio, nem olhos cibernéticos brilhantes, apenas pele pálida e vulnerável. Ao redor, cabos sintéticos estão fundidos a nódulos do Thorian.
+* **Ato 2: A Projeção Familiar (A Voz de Hackett):**
+  - Um feixe de luz ciano projeta a figura solene do Almirante Steven Hackett em uniforme de gala. O suposto Almirante ordena que Shepard respire com calma e o ajuda a estabilizar as funções motoras após o choque sináptico.
+* **Ato 3: O Briefing da Galáxia (Hub de Informações):**
+  - Hackett informa que a guerra acabou e a galáxia está sendo reconstruída.
+  - Através de um menu de diálogo completo (estilo RPG/Baldur's Gate), o jogador pode investigar o papel construtivo dos Reapers, a desmilitarização voluntária dos Geth em Rannoch, o controle dos clãs Krogan sob Wrex e Bakara, e a reativação dos Mass Relays.
+* **A Grande Bifurcação (Renegade vs. Revelação Gradual):**
+  - **Ramo Renegade ([E] Interrupt):** A qualquer instante do briefing, o jogador pode desmascarar a farsa: Shepard percebe que o verdadeiro Hackett jamais estaria a sós no ventre de um Reaper. O Catalyst abandona a encenação militar e elogia os reflexos analíticos de John, revelando imediatamente a crise brutal: **Tali'Zorah vas Normandy e o Almirantado Quariano foram sequestrados por uma célula terrorista da Cerberus**, que pretende usar tecnologia de controle neural para subjugar os Geth através dos Quarians. Shepard aceita um pacto pragmático apenas para salvá-la.
+  - **Ramo Normal (Investigação Completa):** Ao esgotar as perguntas e indagar sobre sua própria ressurreição, a projeção assume sua voz polifônica. O Catalyst explica que utilizou a biomassa acelerada do Thorian combinada com a matriz celular do Lazarus e o mapa neural de Shepard gravado no Crucible. Ele revela o rapto de Tali e a necessidade urgente de um operador invisível para resgatá-la sem atrair a retaliação da Cerberus.
+* **Ato 5: O Peso da Carne Mortal (Equipamentos Sem Implantes):**
+  - Um pedestal revela blindagem de combate sem identificação, sua pistola pesada M-3 Predator e um capacete com visor polarizado e modulador de voz.
+  - O Catalyst lembra que Shepard é agora 100% mortal: sem escudos, qualquer disparo de fuzil causará hemorragia e morte. O jogador reage à sua nova fragilidade biológica.
+* **Ato 6: A Nova Identidade & Partida:**
+  - O console registra uma credencial mercenária sob o nome falso de *John Moreau* (homenageando Joker), com digitais não catalogadas que facilitam a passagem por scanners.
+  - O Catalyst fornece as coordenadas da Citadel e aponta a Shadow Broker (Liara T'Soni) como o primeiro contato obrigatório. Shepard fecha o capacete, ativa o modulador e embarca no cargueiro civil ruma à Citadel.
+
+---
+
+## 🗺️ Chapter Architecture & Flowchart
 
 ```mermaid
 flowchart TD
-    Ato1["Ato 1: O Despertar da Carne (Nudez e Frio)"] --> Ato2["Ato 2: A Voz do Almirante (Sem desmascaramento)"]
-    Ato2 --> Ato5["Ato 5: O Briefing da Galáxia (Hub de Escolhas)"]
+    Start(["Start: Chapter 1"]) --> Part1["Part 1: The Awakening of Flesh<br/>(Sensory Shock & Bio-Chamber)"]
+    Part1 --> Part2["Part 2: A Familiar Projection<br/>(Hologram of Admiral Hackett Appears)"]
+    Part2 --> Part3["Part 3: The State of the Galaxy<br/>(Briefing Hub)"]
     
-    Ato5 -.->|"Em qualquer momento:<br/>[E] RENEGADE INTERRUPT"| RamoRenegade["Ramo Renegade: Interrupção Rápida"]
-    RamoRenegade --> Ato3R["Ato 3R: Desmascaramento & Elogio às Simulações"]
-    Ato3R --> Ato4R["Ato 4R: Urgência Imediata (Tali Sequestrada)"]
-    Ato4R --> HubRenegade["Sub-Hub Renegade: Investigar Recriação & Furtividade"]
-    HubRenegade --> PactoRenegade["Pacto Pragmático:<br/>'Não confio em você, mas salvo a Tali'"]
-    PactoRenegade --> Ato6["Ato 6: O Peso da Carne Mortal (Sem Cibernética)"]
+    Part3 -.->|"At any point:<br/>[E] RENEGADE INTERRUPT"| Part4A["Part 4A: Renegade Confrontation<br/>(Unmasking the Catalyst & Immediate Crisis)"]
+    Part4A --> HubRenegade["Renegade Inquiry Sub-Hub<br/>(Thorian Synthesis & Stealth Imperative)"]
+    HubRenegade --> PactRenegade["Pragmatic Pact:<br/>'I don't trust you, but I'm saving Tali'"]
+    PactRenegade --> Part5["Part 5: The Weight of Mortal Flesh<br/>(Unmarked Armor & No Cybernetics)"]
     
-    Ato5 -->|"Opção 5: 'E quanto a mim...?'"| Ato3N["Ato 3N: A Revelação da Farsa (Hackett é o Catalyst)"]
-    Ato3N --> RecriacaoN["Explicação da Recriação: Thorian & Matriz do Lazarus"]
-    RecriacaoN --> Ato4N["Ato 4N: O Motivo (Tali Sequestrada pela Cerberus)"]
-    Ato4N --> HubNormal["Sub-Hub Normal: Investigar Cerberus & Furtividade"]
-    HubNormal --> AvancoNormal["Shepard Focado:<br/>'Já ouvi o bastante. Por onde começo?'"]
-    AvancoNormal --> Ato6
+    Part3 -->|"Option 5: 'What about me...?'"| Part4B["Part 4B: Gradual Revelation<br/>(Catalyst Explains Resurrection & Crisis)"]
+    Part4B --> HubNormal["Normal Crisis Sub-Hub<br/>(Cerberus Mental Control & Stealth)"]
+    HubNormal --> AdvanceNormal["Focused Soldier:<br/>'I've heard enough. Where do I begin?'"]
+    AdvanceNormal --> Part5
     
-    Ato6 --> Ato7["Ato 7: A Nova Identidade & Partida com Coordenadas de Liara"]
+    Part5 --> Part6["Part 6: Mask of the Ghost & Departure<br/>(John Moreau Alias & Flight to Citadel)"]
+    Part6 --> End(["End: Chapter 1"])
 ```
 
 ---
 
-## 🎬 Ato 1: O Despertar da Carne
+## 🎬 Part 1: The Awakening of Flesh (`1.despertar-carne.js`)
 
-### Cena 1.1: O Lodo e o Choque Térmico
-*(Cenário Inicial: `assets/backgrounds/black.jpg` — tela em escuridão completa. Ouve-se uma frequência grave pulsando e o som abafado de batimentos cardíacos pesados e descompassados — `audio/heartbeat.mp3`.)*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV).
 
-**PENSAMENTO DE SHEPARD (1ª Pessoa):**  
-Frio. Um frio viscoso, cortante e asfixiante.  
-A última coisa de que me lembro era o fogo. O calor insuportável do Crucible devorando meus ossos, o cheiro de ozônio de cada circuito cibernético do meu peito derretendo sob a pele, a dor de ter minha consciência arrancada de mim.  
-Eu vi minha vida inteira queimar. Mas nunca imaginei que a morte seria assim: congelada, escura e sufocante.
+### Narrative Concept & Dramatic Focus
+The scene opens in complete darkness. Shepard's consciousness surfaces through viscous, suffocating cold. His final memory was the agonizing incinerating heat of the Crucible consuming his bones and vaporizing his cybernetics.
 
-*(Som de estalo biomecânico úmido. Rompimento de membrana tecidual. Um corpo despenca de uma altura curta e atinge pesadamente o chão com um baque surdo.)*
-
-**PENSAMENTO DE SHEPARD (1ª Pessoa):**  
-Minhas palmas e joelhos nus colidem contra o piso de liga metálica congelada.  
-O choque térmico na pele nua me arranca um espasmo violento. Puxo o ar em pânico, mas só encontro líquido.  
-Engasgo. Meus pulmões se contraem e expulso uma golfada espessa de fluido amniótico amarelado contra o convés. O primeiro sopro real de oxigênio entra cortando a minha traqueia como vidro moído.
-
-*(Transição Visual do Cenário: O background preto dissolve suavemente e revela `assets/backgrounds/reaper_chamber.jpg`. A visão oscila, embaçada pelo líquido e pela luz fria.)*
-
-**PENSAMENTO DE SHEPARD (1ª Pessoa):**  
-Tento me apoiar, mas meus pulsos cedem. Meus músculos parecem chumbo morto, como se tivessem passado um século atrofiados em sono profundo.  
-Meus dentes batem com tanta força que sinto o gosto metálico da minha própria boca. Olho para as minhas mãos molhadas e trêmulas: sem manoplas, sem cicatrizes de cirurgias cibernéticas, sem as veias brilhantes do Projeto Lazarus. Apenas pele pálida, vulnerável e humana.  
-Arrasto o corpo alguns centímetros para trás até minhas costas nuas baterem na base gelada de uma antepara.
-
-**SHEPARD:**  
-*(A voz sai num sussurro rouco, rasgando as cordas vocais ressecadas.)*  
-"Onde... onde diabos..."
-
-*(A visão de Shepard finalmente foca na cavidade de onde foi expelido: uma massa grotesca de tentáculos vegetais e tecido cinzento bio-orgânico pulsando lentamente, fundida a cabos sintéticos e condutores hexagonais.)*
-
-**SHEPARD:**  
-"Um... um nódulo de Thorian? Preso a condutores de antimatéria...?"
-
-*(O zumbido subsônico que faz o piso tremer reverbera diretamente nos ossos de Shepard.)*
-
-**SHEPARD:**  
-"As paredes... a arquitetura... Isso é um Reaper. O Crucible falhou? A Terra... o que aconteceu com todos nós?!"
+* **The Physical Shock:**
+  - Shepard is expelled from an amniotic membrane, dropping onto the frozen metal alloy floor of a bio-gestation chamber.
+  - Coughing violently, he expels yellowish fluid from his lungs; the first intake of pressurized oxygen burns his trachea like crushed glass.
+  - His limbs feel dead and atrophied. Looking at his pale, trembling hands, he realizes the scars and glowing cybernetic subdermal channels of the Lazarus Project are gone. He is purely biological human flesh.
+* **The Environment:**
+  - Behind him, the pod reveals an unsettling fusion: pulsating gray Thorian tendrils and biomass intertwined with hexagonal synth-cables and Reaper antimatter conduits.
+  - Subsonic vibrations through the deck plates confirm the unthinkable: he is inside an active Reaper capital ship.
 
 ---
 
-## 🎬 Ato 2: A Voz do Almirante (Sem Desmascaramento)
+## 🎬 Part 2: A Familiar Projection (`2.projecao-familiar.js`)
 
-### Cena 2.1: A Postura Familiar
-*(Um feixe vertical de luz ciano corta a penumbra da câmara, ferindo os olhos desacostumados de Shepard. Ele ergue o antebraço trêmulo para bloquear a luminosidade. No centro do facho, a projeção holográfica em tamanho real se estabiliza: o Almirante Steven Hackett, em uniforme de gala impecável da Aliança, mãos cruzadas para trás e olhar solene.)*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), Admiral Steven Hackett (Holographic Projection).
 
-**HACKETT (Holograma):**  
-"Em pé, Comandante. Ficar encolhido no convés nunca salvou a galáxia antes, e não vai começar agora."
+### Narrative Concept & Dramatic Focus
+A cyan laser beam projects a life-sized holographic image of **Admiral Steven Hackett** in pristine Alliance dress uniform. 
 
-*(Shepard força os olhos, atordoado. O choque de ver seu comandante supremo faz o coração disparar. Ele tenta usar a parede para se levantar, mas as pernas tremem e ele cai novamente sobre um joelho, ofegante.)*
-
-**SHEPARD:**  
-"Almirante...? Senhor... sou eu? Nós... nós vencemos? A Terra foi salva?"
-
-**HACKETT (Holograma):**  
-"Controle a respiração, John. Seus sinais vitais estão saindo do choque sináptico. Seu sistema nervoso acabou de reiniciar após uma sobrecarga catastrófica. Fique onde está até que o tônus muscular se estabilize."
-
-**SHEPARD:**  
-*(Pressionando o peito nu, sentindo as batidas descompassadas do coração acelerado.)*  
-"Eu vi a Citadel explodir... eu senti meu corpo queimar até o osso. Por que estou dentro de uma nave Reaper? O que aconteceu com a frota?"
-
-**HACKETT (Holograma):**  
-"A invasão acabou, Comandante. Eu estou aqui para colocar você a par do estado da galáxia antes de tratarmos do que vem a seguir."
+* **The Staged Comfort:**
+  - Hackett orders Shepard to stand and regulate his breathing, explaining that his nervous system just rebooted from catastrophic synaptic shock.
+  - Disoriented and overwhelmed by seeing his supreme commander, Shepard attempts to rise, collapsing to one knee.
+  - The Admiral assures him that the war is over, the Reapers have stood down, and Earth has been spared. Hackett instructs Shepard to listen to a strategic briefing on the state of the galaxy.
 
 ---
 
-## 🎬 Ato 5: O Briefing da Galáxia (Status pós-Crucible)
+## 🎬 Part 3: The State of the Galaxy - Briefing Hub (`3.briefing-galaxia.js`)
 
-*(Hackett assume sua postura clássica de briefing de comando, com as mãos cruzadas atrás das costas.)*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), Admiral Steven Hackett (Holographic Projection).
 
-**HACKETT (Holograma):**  
-"Dois meses se passaram desde a Batalha da Terra, Comandante. A invasão acabou. Os Reapers cessaram completamente as hostilidades e seus protocolos de colheita foram anulados."
+### Narrative Concept & Interactive Mechanics
+Hackett assumes his trademark command posture, reporting on the post-Crucible galaxy across two months of peace.
 
----
+* **The Constant Renegade Prompt:**
+  - Throughout this entire briefing hub, the **[E] Renegade Interrupt** prompt remains persistently available.
+  - Activating `[E]` immediately cuts Hackett off, bypassing the remaining briefing and jumping directly to the **Renegade Confrontation Branch (Part 4A)**.
 
-### ⚡ MECÂNICA: Gatilho Renegade Ativo em Todo o Briefing
-> **[E] RENEGADE INTERRUPT SEMPRE VISÍVEL:**  
-> *"Desmascarar a farsa: 'Eu escutei bastante... agora chega. Quero saber quem você é de verdade!'"*  
-> *(Acionar esta opção a qualquer momento corta o briefing e pula imediatamente para o **Ramo Renegade: Ato 3R ➔ Ato 4R**).*
-
----
-
-### 📋 Menu de Escolhas do Briefing (Estilo Baldur's Gate)
-
-*(Se o jogador não usar o Interrupt, pode investigar os tópicos da nova galáxia):*
-
-```
-[1] "Qual é o papel dos Reapers agora? As pessoas não entraram em pânico?" -> (Nó 5.A)
-[2] "Como está Rannoch? Os Quarians e os Geth conseguiram reconstruir o planeta?" -> (Nó 5.B)
-[3] "A cura da Genophage se manteve estável com os Krogans?" -> (Nó 5.C)
-[4] "E os Relays de Massa destruídos? Os Leviathans se manifestaram?" -> (Nó 5.D)
-[5] "E quanto a mim, Almirante? Como diabos eu estou respirando... e o que eu estou fazendo aqui?" -> (Desbloqueia após investigar os 4 tópicos anteriores; conclui o briefing e avança para o Ato 4N)
-```
-
-#### Nó 5.A: Os Reapers e a Reconstrução
-**SHEPARD:**  
-"Se os Reapers não estão destruindo a vida orgânica, o que eles estão fazendo agora?"
-
-**HACKETT (Holograma):**  
-"Eles estão auxiliando na reconstrução da infraestrutura galáctica. Naves capitais transportam recursos pesados, estabilizam atmosferas em mundos devastados e reparam estações orbitais. As frotas do Conselho mantêm vigilância cautelosa, mas os tratados foram respeitados."  
-*(Retorna ao Menu de Escolhas)*
-
-#### Nó 5.B: Rannoch e a Desmilitarização dos Geth
-**SHEPARD:**  
-"E Rannoch? A paz entre Quarians e Geth resistiu ao fim da guerra?"
-
-**HACKETT (Holograma):**  
-"Em ritmo exemplar. Para afastar o pavor histórico das espécies do Conselho e viabilizar a entrada formal na comunidade galáctica, os Geth voluntariamente passaram por um processo total de **desmilitarização**. Suas plataformas foram reprogramadas para arquitetura, agricultura biológica e purificação ambiental, trabalhando lado a lado com os Quarians."  
-*(Retorna ao Menu de Escolhas)*
-
-#### Nó 5.C: A Genophage e os Krogans
-**SHEPARD:**  
-"A cura da Genophage não gerou uma nova crise militar entre os Krogans?"
-
-**HACKETT (Holograma):**  
-"Urdnot Wrex e Bakara mantêm o controle dos clãs. A explosão populacional está ocorrendo, mas com os dados astronômicos fornecidos pelos Reapers e o mapeamento de novos setores habitáveis, a expansão está sendo conduzida diplomaticamente."  
-*(Retorna ao Menu de Escolhas)*
-
-#### Nó 5.D: Os Relays e os Leviathans
-**SHEPARD:**  
-"A rede de Mass Relays foi restaurada? E aquelas criaturas antigas... os Leviathans?"
-
-**HACKETT (Holograma):**  
-"Cerca de um quarto dos Relays já está operacional novamente. Quanto aos Leviathans, não houve qualquer atividade diplomática ou hostil. Eles permanecem isolados nas profundezas de seus oceanos, cientes de que a rede dos Reapers agora responde a uma nova diretriz."  
-*(Retorna ao Menu de Escolhas)*
+* **Baldur's Gate Style Investigation Choices:**
+  1. *"What is the Reapers' role now? How did galactic civilization not collapse in panic?"*  
+     *(Hackett explains that Reapers are acting as heavy reconstruction platforms under new directives, repairing orbital infrastructure and clearing fallout under Council surveillance).*
+  2. *"How is Rannoch? Did the peace between the Quarians and the Geth endure?"*  
+     *(Hackett notes that peace is flourishing; the Geth voluntarily demilitarized all platforms to ease organic fears, dedicating their processing power to agriculture, civil engineering, and environmental scrubbing).*
+  3. *"Did the Genophage cure remain stable among the Krogans?"*  
+     *(Hackett confirms that Urdnot Wrex and Bakara maintain order; expansion is being directed diplomatically toward newly chartered garden worlds).*
+  4. *"What about the damaged Mass Relays? Did the Leviathans show themselves?"*  
+     *(Hackett reports that roughly a quarter of the relay network is already repaired, and the Leviathans remain silent in their deep-sea trenches).*
+  5. *"What about me, Admiral? How am I breathing... and what am I doing inside a Reaper?"*  
+     *(Unlocks after exploring the previous topics; concludes the briefing and transitions peacefully to the Normal Revelation Branch, Part 4B).*
 
 ---
 
-## 🔀 BIFURCAÇÃO DRAMÁTICA
+## 🎬 Part 4A: Renegade Confrontation (`4a.renegade-desmascaramento.js`)
+
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), The Catalyst (Holographic Hackett avatar).
+
+### Narrative Concept & Dramatic Climax
+Triggered by the `[E]` Renegade Interrupt. Shepard's tactical combat instincts flag the absurdity of Admiral Hackett delivering a solo diplomatic briefing inside an alien dreadnought while Shepard lies naked and weaponless on the deck.
+
+* **The Shattered Simulation:**
+  - Shepard cuts him off sharply, demanding the imposter drop the act.
+  - Hackett's human warmth dissolves instantly. His eyes flash brilliant crystalline cyan, and an analytical smile touches his lips.
+  - The entity introduces itself: **The Catalyst**, the directing intelligence Shepard took control of at the Crucible. It commends Shepard for detecting the environmental anomalies four minutes ahead of statistical models.
+* **The Immediate Crisis:**
+  - The Catalyst bluntly reveals the truth: **Tali'Zorah vas Normandy and the Quarian Admiralty were abducted in the Terminus Systems by an underground Cerberus guerrilla cell**.
+  - Cerberus intends to deploy the Illusive Man's neural indoctrination protocols on Tali and the admirals, using their authority to indirectly enslave the demilitarized Geth.
+* **Renegade Sub-Investigation Menu:**
+  1. *"How am I breathing if my body was incinerated on the Crucible?"*  
+     *(The Catalyst explains accelerated Thorian biomass synthesis combined with Lazarus Project molecular templates. Shepard's neural map was imprinted cleanly; he is 100% organic, unaugmented, and free).*
+  2. *"Why don't you destroy their base yourself with the Reaper fleet?"*  
+     *(Capital ship intervention guarantees hostage execution before touchdown. Furthermore, if Cerberus discovers Shepard survived, they will execute Tali immediately out of spite).*
+  3. *"I don't trust a single word out of you. But I'm cooperating... strictly for Tali."*  
+     *(The Catalyst accepts the pragmatic terms and directs Shepard to contact the Shadow Broker on the Citadel. Advances to Part 5).*
 
 ---
 
-### 🔴 FLUXO A: Ação Renegade [E] Acionada Durante o Briefing
+## 🎬 Part 4B: Gradual Revelation (`4b.revelacao-gradual.js`)
 
-*(Shepard semicerra os olhos durante o briefing da galáxia. A postura do holograma, a solidão da câmara e a lógica absurda de um Almirante supremo dando relatório a sós no ventre de um Reaper ativam todos os seus alarmes de combate.)*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), The Catalyst (Holographic Hackett avatar).
 
-**SHEPARD [Renegade Interrupt]:**  
-"[Olhar penetrante, voz firme e calculada.] Eu escutei bastante, 'Almirante'... mas agora chega. Steven Hackett está na Terra coordenando a maior reconstrução da história da galáxia. Ele nunca me daria um briefing diplomático a sós, enquanto estou desarmado e coberto de lodo no convés de um Reaper. Desligue essa farsa agora. Eu quero saber quem você é de verdade!"
+### Narrative Concept & Dramatic Focus
+Triggered by selecting Option 5 after exploring the briefing topics. Shepard calmly asks Hackett how he survived the Crucible and why he was kept inside a Reaper.
 
-#### Ato 3R: O Desmascaramento e a Quebra de Simulação
-*(A expressão de Hackett congela. Os olhos do holograma perdem o brilho humano e emitem um pulso ciano cristalino. Um sorriso tênue e analítico surge no canto dos lábios da projeção.)*
-
-**CATALYST (Sob a forma de Hackett):**  
-"Fascinante. Nossos modelos probabilísticos previam que um cérebro orgânico recém-reanimado levaria mais quatro minutos e doze segundos para isolar as anomalias lógicas deste ambiente. Você superou as simulações, Shepard. Seu instinto tático permanece aguçado."
-
-**SHEPARD:**  
-"Você é o Catalyst. A IA do Crucible. Deixe os jogos mentais de lado e fale direto: o que você quer de mim?!"
-
-#### Ato 4R: A Urgência Brutal
-**CATALYST (Hackett):**  
-"Direto ao ponto, como sempre. Uma nave de transporte diplomático de Rannoch foi interceptada nos Terminus. Tali'Zorah vas Normandy foi sequestrada."
-
-*(O golpe atinge Shepard com força física. Ele dá um passo à frente, punhos cerrados e dentes trincados.)*
-
-**SHEPARD:**  
-"A Tali?! Se você estiver mentindo para mim..."
-
-**CATALYST (Hackett):**  
-"Não há engodo. Células clandestinas da Cerberus a capturaram junto ao Almirantado. Como os Geth estão desmilitarizados e confiam cegamente nos Quarians, a Cerberus usará a tecnologia de doutrinação do Homem Ilusório na mente de Tali para escravizar toda a rede sintética."
-
-##### 📋 Sub-Menu de Investigação Renegade
-```
-[1] "Como diabos eu estou de pé se o meu corpo virou pó no Crucible?" -> (Nó 4R.A)
-[2] "Por que você mesmo não resolve isso com a frota dos Reapers?" -> (Nó 4R.B)
-[3] "Eu não confio em você. Mas vou colaborar por enquanto... pela Tali." -> (Nó 4R.C: O Pacto Pragmático)
-```
-
-###### Nó 4R.A: A Recriação Biológica
-**SHEPARD:**  
-"Como diabos eu estou respirando se eu vi minha carne se desintegrar no Crucible?!"
-
-**CATALYST (Hackett):**  
-"Você foi sintetizado a partir de biomassa acelerada de um nódulo do Thorian, reconstruído com os dados celulares que a Cerberus catalogou no Projeto Lazarus. Suas memórias e vontade foram transferidas sem corrupção a partir do seu mapa neural gravado na ascensão. Você é carne orgânica pura. Sem coleiras, sem implantes, sem doutrinação."  
-*(Retorna ao Sub-Menu Renegade)*
-
-###### Nó 4R.B: O Limite dos Reapers
-**SHEPARD:**  
-"Você tem milhares de naves capitais sob seu controle. Por que não destrói a base deles você mesmo?!"
-
-**CATALYST (Hackett):**  
-"Se uma nave Reaper entrar no sistema, os Quarians serão executados em segundos antes mesmo de um disparo ser efetuado. E se a Cerberus descobrir que Shepard vive, Tali morrerá apenas para privá-lo de sua vitória. Ela só sobreviverá se ninguém souber que você retornou."  
-*(Retorna ao Sub-Menu Renegade)*
-
-###### Nó 4R.C: O Pacto Pragmático
-**SHEPARD:**  
-*(Apertando as mãos com tanta força que os nós dos dedos empalidecem.)*  
-"Eu não confio numa única palavra que sai dessa projeção. Mas não vou arriscar a vida da Tali. Eu vou colaborar por enquanto... apenas até ela estar a salvo."
-
-**CATALYST (Hackett):**  
-"Um acordo pragmaticamente aceitável, Shepard. A cooperação mútua é o único vetor que garante a sobrevivência dela. Para iniciar o rastreamento, você precisará contatar a Shadow Broker. Doutora Liara T'Soni já está operando uma central clandestina na Cidadela."  
-*(Avança diretamente para o Ato 6: O Peso da Carne Mortal)*
+* **The Serene Truth:**
+  - The holographic projection's posture relaxes; its cadence becomes polyphonic and serene.
+  - The Catalyst explains that adopting Admiral Hackett's likeness was a psychological protocol to ground Shepard's waking organic mind and prevent dissociative panic.
+  - It confirms Shepard's biological rebirth via Thorian biomass synthesis and the Lazarus matrix.
+* **The Reason for Resurrection:**
+  - The Catalyst explains that two weeks ago, Tali'Zorah vas Normandy was kidnapped by Cerberus remnants seeking to control the Geth through the Admiralty.
+* **Normal Crisis Sub-Investigation Menu:**
+  1. *"Who took Tali? What do they want with her?"*  
+     *(Details the Cerberus guerrilla network and their pursuit of neural control technology).*
+  2. *"Why hasn't the Alliance or the Reaper fleet intervened?"*  
+     *(Explains that orbital assault would result in summary hostage executions, and Shepard's public survival would prompt immediate retaliatory murder).*
+  3. *"I've heard enough. I won't let Cerberus touch her. Where do I start?"*  
+     *(The Catalyst directs Shepard to Dr. Liara T'Soni on the Citadel, noting that Liara has the surveillance decryption necessary to decode Tali's emergency signals. Advances to Part 5).*
 
 ---
 
-### 🔵 FLUXO B: Sequência Normal (Sem Ação Renegade)
+## 🎬 Part 5: The Weight of Mortal Flesh (`5.peso-carne-mortal.js`)
 
-*(Shepard conclui o menu de investigação escolhendo a opção [5] "E quanto a mim, Almirante? Como diabos eu estou respirando... e o que eu estou fazendo aqui?"):*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), The Catalyst (Holographic Hackett avatar).
 
-**SHEPARD:**  
-"E quanto a mim, Almirante? O senhor fala sobre a reconstrução galáctica, mas eu me lembro de virar cinzas no Crucible. Como diabos eu estou respirando de novo? E por que o senhor me manteve trancado dentro de um Reaper?"
+### Narrative Concept & Existential Weight
+A hexagonal console rises from the deck, offering sterile, unmarked tactical equipment:
+- An unmarked mercenary combat suit without N7 or Alliance insignia.
+- A standard M-3 Predator heavy pistol, fully loaded.
+- A sealed combat helmet with a polarized mirror visor and electronic voice modulator.
 
-#### Ato 3N: A Revelação da Farsa e a Calma das Simulações
-*(A projeção holográfica de Hackett não pisca. As feições humanas do rosto suavizam e o tom de voz perde a cadência militar, tornando-se sereno, ecoante e polifônico.)*
-
-**CATALYST (Sob a forma de Hackett):**  
-"Seus parâmetros biológicos e respostas emocionais estão exatamente dentro das simulações previstas, Shepard. Steven Hackett não está a bordo desta nave."
-
-**SHEPARD:**  
-*(Dando um passo cambaleante para trás, os olhos arregalados.)*  
-"O quê...? Você... você é a inteligência do Crucible."
-
-**CATALYST (Hackett):**  
-"Eu sou a consciência diretora que você assumiu no ápice do Crucible. Não houve intenção de enganá-lo por malícia. Adotar o rosto e a voz do homem que liderou sua espécie foi o protocolo necessário para ancorar sua mente orgânica e evitar um colapso dissociativo ou pânico no instante do despertar."
-
-**SHEPARD:**  
-"Meu corpo foi desintegrado! Eu senti meus ossos queimarem! O que você fez?!"
-
-**CATALYST (Hackett):**  
-"Seu corpo original de fato pereceu. Esta nova forma biológica foi cultivada através da síntese acelerada de um nódulo do Thorian, estruturada com base nos registros moleculares que a Cerberus catalogou no Projeto Lazarus. Suas memórias, personalidade e livre-arbítrio foram impressos a partir do mapa neural gravado no momento de sua ascensão. Você não foi doutrinado. Você é você mesmo."
-
-**SHEPARD:**  
-*(Olhando para o próprio peito arfante, tomado por uma vertigem existencial.)*  
-"Por que fazer isso...? Você já tem o controle dos Reapers! Por que me arrancar da morte e me colocar de volta numa casca de carne?!"
-
-#### Ato 4N: O Motivo da Recriação
-**CATALYST (Hackett):**  
-"Porque há duas semanas, Tali'Zorah vas Normandy foi sequestrada."
-
-*(O chão parece sumir sob os pés de Shepard. O ar gela em seus pulmões.)*
-
-**SHEPARD:**  
-"Tali...? Como assim... sequestrada por quem?!"
-
-##### 📋 Sub-Menu de Investigação da Crise (Rota Normal)
-```
-[1] "Quem levou a Tali? O que eles pretendem fazer com ela?" -> (Nó 4N.A)
-[2] "Por que os Reapers ou a Aliança não invadem a base deles?" -> (Nó 4N.B)
-[3] "Já ouvi o bastante. Não vou deixar a Cerberus tocar nela. Por onde eu começo?" -> (Nó 4N.C: Avanço Focado)
-```
-
-###### Nó 4N.A: A Ameaça da Doutrinação
-**SHEPARD:**  
-"Quem levou a Tali? O que esses desgraçados pretendem fazer com ela?!"
-
-**CATALYST (Hackett):**  
-"Remanescentes da Cerberus, atuando em células clandestinas nos Sistemas Terminus. Com os Geth voluntariamente desmilitarizados e integrados à sociedade quariana, a Cerberus pretende usar a tecnologia de controle mental que o Homem Ilusório refinou na guerra para escravizar Tali e os Almirantes. Se obtiverem sucesso, controlarão toda a rede sintética através da confiança cega que os Geth depositam em seus Criadores."  
-*(Retorna ao Sub-Menu da Crise)*
-
-###### Nó 4N.B: A Necessidade de Furtividade
-**SHEPARD:**  
-"Então use as frotas dos Reapers! Ou avise a Aliança para cercar o setor com cruzadores!"
-
-**CATALYST (Hackett):**  
-"Reapers não realizam infiltrações cirúrgicas. Qualquer movimentação de naves capitais resultará na execução sumária dos reféns antes do desembarque. E se a Cerberus descobrir que o Comandante Shepard sobreviveu, Tali será morta por pura vingança contra seu maior inimigo. O resgate exige discrição absoluta. Exige um fantasma."  
-*(Retorna ao Sub-Menu da Crise)*
-
-###### Nó 4N.C: O Avanço Focado
-**SHEPARD:**  
-"Já ouvi o bastante. Não vou deixar a Cerberus tocar nela. Por onde eu começo?"
-
-**CATALYST (Hackett):**  
-"Para rastrear o comboio sequestrado, você precisará dos recursos da Shadow Broker. Doutora Liara T'Soni opera uma central clandestina na Cidadela. Nossas escutas interceptaram pulsos de emergência que Tali dispersou na rede antes do confinamento; Liara é a única com capacidade de decodificar esses sinais."  
-*(Avança diretamente para o Ato 6: O Peso da Carne Mortal)*
+* **The Reality of Mortality:**
+  - Shepard dons the armor plates. His newly grown muscles burn with lactic acid; his joints ache, and the plates feel twice as heavy.
+  - The Catalyst delivers a stark warning: **Shepard possesses zero cybernetics.** No titanium-laced bones, no subdermal mesh, no Lazarus synthetic enhancements. A single high-caliber bullet without kinetic barrier shields will cause fatal hemorrhage.
+* **Player Choice (Reaction to Mortality):**
+  1. *"[Grip the pistol tightly.] Flesh and bone will be enough. I broke Saren as a mortal; I can tear Cerberus apart without implants."* (Paragon / Pure Determination)
+  2. *"[Inspect the composite plates.] No titanium reinforcement or biotic mesh. One mistake and I bleed to death like any raw recruit."* (Renegade / Tactical Pragmatism)
+  3. *"[Take a deep, clear breath.] After years of feeling like a Cerberus machine... it feels damn good to be purely human again."* (Reflective / Humanist)
 
 ---
 
-## 🎬 Ato 6: O Peso da Carne Mortal (Comum a Ambos os Fluxos)
+## 🎬 Part 6: Mask of the Ghost & Departure (`6.mascara-partida.js`)
 
-### Cena 6.1: Os Equipamentos e a Fragilidade Humana
-*(Uma seção do console hexagonal se eleva do chão da câmara, expondo equipamentos dispostos com simetria estéril:  
-- Um traje de combate civil de placas compostas escuras, sem insígnias da N7 ou da Aliança.  
-- Sua pistola pesada M-3 Predator, limpa e carregada.  
-- Um capacete com visor polarizado preto-espelho e modulador vocal eletrônico.)*
+### Scene Summary
+* **Location:** `assets/backgrounds/reaper_chamber.jpg`
+* **Characters Present:** Shepard (POV), The Catalyst (Holographic Hackett avatar).
 
-**CATALYST (Hackett):**  
-"Equipamento sintetizado para uma operação de infiltração nas sombras."
-
-*(Shepard se aproxima. Seus dedos tocam as placas da blindagem. Ele começa a se vestir; suas articulações doem, o metal parece mais pesado nos ombros, e o ar que entra no peito arde sem filtros mecânicos.)*
-
-**SHEPARD:**  
-*(Ajustando as presilhas do peitoral com a respiração ofegante.)*  
-"A armadura... parece o dobro mais pesada. Meus músculos parecem lentos."
-
-**CATALYST (Hackett):**  
-"Uma constatação precisa, John. A biomassa do Thorian recriou apenas tecido celular orgânico. **Você não possui mais implantes cibernéticos.** Não há circuitos sob sua derme, nem fibras de titânio nos seus ossos, nem reforços sintéticos do Projeto Lazarus."
-
-**CATALYST (Hackett):**  
-"Alguns diriam que você está mais original agora do que quando a Cerberus reconstruiu você no passado. Mas isso cobra um preço: se você levar um tiro de calibre pesado sem escudos, sangrará e morrerá como qualquer outro mortal."
-
-#### 📋 Escolha: Reação à Mortalidade
-```
-[1] "[Segurar a pistola com firmeza.] Carne e osso serão o bastante. Eu enfrentei Saren como mortal; posso despedaçar a Cerberus sem implantes." -> (Firmeza e determinação)
-[2] "[Examinar as placas compostas.] Sem reforços de titânio ou malha biótica. Um erro e eu sangro até a morte como qualquer recruta." -> [Renegade] (Pragmatismo tático)
-[3] "[Puxar o ar puro com profundidade.] Depois de anos me sentindo como uma máquina da Cerberus... é um alívio me sentir puramente humano de novo." -> [Paragon] (Reflexão e humanidade)
-```
+### Narrative Concept & The Final Leap
+* **The Forged Biometrics:**
+  - Shepard places his palm on the console laser scanner.
+  - Because his newly synthesized dermal ridges and biometrics do not match Alliance records, the Catalyst registers a clean Terminus salvage contractor identity under the pseudonym **John Moreau** (a private homage to Joker).
+* **Departure Tactical Hub:**
+  - Before boarding, Shepard can inquire about Liara's current status on the Citadel, the dispersal of his old Normandy crew, and the reliability of his forged credentials.
+* **The Helmet & The Vow:**
+  - Shepard locks the heavy helmet onto his collar seals (`*pssshhht*`). The polarized visor turns opaque, and the voice modulator activates with a cold, metallic rasp.
+  - The Catalyst provides docking coordinates for the rebuilt Citadel, where an unflagged long-range civilian shuttle waits in the ventral bay.
+  - The holographic projection of Admiral Hackett snaps a crisp, respectful military salute. Shepard returns it by pure muscle-memory reflex.
+  - The hologram fades into cyan light. The colossal Reaper hangar doors slide open to the silence of open space.
+  - Shepard whispers his final promise into the sealed visor:
+    - *"Hang on, Tali. I'm coming for you."*
 
 ---
 
-## 🎬 Ato 7: A Nova Identidade & Partida
+## 🛠️ Implementation Reference (`data/chapters/1.a-third-chance/`)
 
-### Cena 7.1: O Registro Biométrico
-**CATALYST (Hackett):**  
-"Para cruzar os scanners da C-Sec sem disparar alertas da Aliança, você precisará de uma credencial civil mercenária. Como suas impressões digitais de síntese não batem com os registros originais da Aliança, posicione a mão no terminal."
+This chapter is fully implemented and playable in the Visual Novel engine across seven modular JavaScript ES modules:
 
-*(Shepard pressiona a palma sobre a luz laser do console. Uma nova identificação civil com o nome John Moreau é transmitida aos registros públicos da Cidadela.)*
-
-**PENSAMENTO DE SHEPARD (1ª Pessoa):**  
-Moreau. De todos os nomes na galáxia... Digitais que não coincidem com arquivo algum, exatamente como o clone que a Cerberus produziu na Citadel durante minha licença, e um nome falso emprestado do melhor piloto com quem já voei. Joker adoraria cada segundo disso.
-
-### Cena 7.2: Hub Tático de Partida
-*(Antes de colocar o capacete e embarcar, Shepard pode investigar a situação antes da inserção):*
-
-```
-[1] "Me conte mais sobre Liara. Como ela está operando em segurança na Citadel?" -> (A Citadel foi levada para o sistema Sol e está em reconstrução na órbita da Terra; Liara está lá ajudando e reconstruindo a rede do Broker, mas o Catalyst não sabe sua localização exata nem quais dados ela possui)
-[2] "Onde está o resto da minha tripulação? O que aconteceu com Garrus, Joker e os outros?" -> (Catalyst explica a dispersão e aponta que Liara saberá informar muito melhor)
-[3] "Quão confiável é esse disfarce de 'John Moreau' perante os scanners da C-Sec?" -> (Explicação sobre biometria e a vantagem de não ter registro na Aliança)
-[4] "[Se equipar e partir]" -> (Avança para o fechamento do capacete e partida)
-```
-
-#### Cena 7.3: O Capacete e a Partida
-*(Ao selecionar "[Se equipar e partir]", Shepard ergue o capacete fechado e o trava no colarinho. O mecanismo pneumático veda o ar com um clique pressurizado. O visor espelhado escurece completamente, e o modulador de voz ativa com um tom robótico metálico e frio.)*
-
-**SHEPARD:**  
-"Moreau. Muito engraçado. Vamos trazê-la de volta."
-
-**CATALYST (Hackett):**  
-"As coordenadas orbitais da Citadel já estão carregadas no computador de bordo. Um shuttle descaracterizado de longo alcance aguarda no hangar ventral inferior. Encontre Liara, reúna a força necessária e traga a liderança quariana para casa."
-
-*(A projeção do Almirante Hackett estica o braço e presta uma continência militar perfeita. Por puro reflexo, Shepard retribui.)*
-
-**CATALYST (Hackett):**  
-"Não falhe com ela, Shepard. Catalyst desligando."
-
-*(O holograma colapsa em partículas de luz ciano que desaparecem no ar. As portas colossais do hangar do Reaper se abrem para o vácuo espacial silencioso, revelando o shuttle civil de prontidão.)*
-
-**SHEPARD:**  
-"Aguenta firme, Tali. Estou a caminho."
-
----
-### [FIM DO CAPÍTULO 1 — A TERCEIRA CHANCE]
+1. `1.despertar-carne.js` — Cold awakening, amniotic fluid shock, Thorian biomass realization.
+2. `2.projecao-familiar.js` — Hackett holographic projection appears, motor stabilization.
+3. `3.briefing-galaxia.js` — Galaxy briefing hub with persistent `[E]` Renegade Interrupt.
+4. `4a.renegade-desmascaramento.js` — Renegade confrontation, simulation broken, Tali crisis urgency.
+5. `4b.revelacao-gradual.js` — Normal revelation, Catalyst explanation, Tali abduction details.
+6. `5.peso-carne-mortal.js` — Equipping unmarked gear, realization of fragile mortal organic flesh.
+7. `6.mascara-partida.js` — Forged John Moreau credentials, departure questions, helmet seal, flight to Citadel.
+8. `index.js` — Consolidates all nodes into `chapter01` and registers with `data/stories.js`.
