@@ -2,27 +2,16 @@
 class AudioManager {
   constructor() {
     this.ctx = null;
-    this.isMuted = false;
+    this.isMuted = true; // Sons e músicas desativados por enquanto
   }
 
   init() {
-    try {
-      if (!this.ctx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (AudioContext) {
-          this.ctx = new AudioContext();
-        }
-      }
-      if (this.ctx && this.ctx.state === "suspended") {
-        this.ctx.resume().catch(() => {});
-      }
-    } catch (e) {
-      // AudioContext unavailable or autoplay policy restricted
-    }
+    // Inicialização adiada para o final do projeto
   }
 
   toggleMute() {
-    this.isMuted = !this.isMuted;
+    // Mantém o áudio desativado temporariamente
+    this.isMuted = true;
     return this.isMuted;
   }
 
