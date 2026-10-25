@@ -6,7 +6,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: [],
     speaker: "shepard",
-    text: "[The monorail doors slide open at the Commons plaza. A solemn, reverent silence hangs over the terrace. In the center of the gardens stands the War Memorial: a colossal curved wall of polished black obsidian, etched with hundreds of thousands of names from every species that fought in the Reaper War.]",
+    text: "[The skycar touches down at the Commons transit platform. A solemn, reverent silence hangs over the terrace. In the center of the gardens stands the War Memorial: a colossal curved wall of polished black obsidian, etched with hundreds of thousands of names from every species that fought in the Reaper War.]",
     next: "commons_terminal_approach"
   },
 
@@ -22,7 +22,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: [],
     speaker: "shepard",
-    text: "[Joker leans heavily on his carbon-fiber cane, his flight jacket pulled tight against the station chill. His eyes are fixed on a fresh, gilded engraving in the stone: 'Commander John Shepard - Hero of the Citadel'. EDI stands beside him, her holographic fingers resting gently on his shoulder.]",
+    text: "[Joker stands with his familiar, stiff limp, his flight jacket pulled tight against the station chill as he carefully shifts his fragile weight. His eyes are fixed on a fresh, gilded engraving in the stone: 'Commander John Shepard - Hero of the Citadel'. EDI stands beside him, her holographic fingers resting gently on his shoulder.]",
     next: "commons_joker_voice"
   },
 

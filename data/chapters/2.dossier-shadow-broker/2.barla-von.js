@@ -146,7 +146,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* The Broker values results, mercenary, not threats. Take the rapid transit to the Commons. The War Memorial plaza is your first target.",
+    text: "*Hiss-pant* The Broker values results, mercenary, not threats. Use the rapid transit terminal outside. Hail a skycar down to the Commons. The War Memorial plaza is your first target.",
     next: "transit_to_commons"
   },
 
@@ -154,7 +154,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: [],
     speaker: "shepard",
-    text: "[I leave the Financial District and board the monorail speeding toward the Commons. The station's artificial twilight deepens outside the windows as the train glides toward the solemn expanse of the War Memorial.]",
+    text: "[I leave the Financial District and access the rapid transit terminal on the concourse. An automated Citadel skycar descends from the aerial traffic lanes, its repulsor engines humming as it carries me across the station ring toward the solemn expanse of the War Memorial.]",
     next: "commons_arrival"
   }
 };

@@ -125,7 +125,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: [],
     speaker: "shepard",
-    text: "[The transit cab hums through the vacuum tubes of the Presidium ring, carrying me away from the industrial grime of the docks into the quiet, pristine high-rises of the Financial District.]",
+    text: "[I step up to the rapid transit terminal and hail an automated skycar. The craft lifts into the aerial traffic corridors of the station, leaving behind the industrial docks and banking smoothly toward the gleaming corporate towers of the Financial District.]",
     next: "barla_von_arrival"
   }
 };
