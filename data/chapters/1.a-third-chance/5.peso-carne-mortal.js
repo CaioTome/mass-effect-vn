@@ -5,7 +5,7 @@ export const nodesPart5 = {
   "equipment_pedestal_rises": {
     present: ["catalyst_hackett"],
     speaker: "shepard",
-    text: "[A mechanical pedestal rises from the deck in front of me, displaying unmarked composite armor plating, my favorite pistol, and an enclosed helm with a polarized mirror visor.]",
+    text: "[A mechanical pedestal rises from the deck in front of me, displaying civilian attire with lightweight integrated armor weave, my favorite pistol, and a high-collared jacket with an electronic vocal modulator.]",
     next: "equipment_transition"
   },
 
@@ -19,7 +19,7 @@ export const nodesPart5 = {
   "shepard_armor_realization": {
     present: ["catalyst_hackett"],
     speaker: "shepard",
-    text: "[I strap the composite plates over my torso. My joints ache with unfamiliar friction. Each breath burns without synthetic filters.] The armor... it feels twice as heavy as I remember. My muscles are dragging.",
+    text: "[I pull the reinforced jacket over my torso. The integrated armor weave is light, but my muscles feel every movement without synthetic assist.] The gear... it feels heavier than I remember without servomotors. My body is doing all the work.",
     next: "catalyst_flesh_speech"
   },
 
@@ -47,7 +47,7 @@ export const nodesPart5 = {
         targetNode: "node_flesh_confident"
       },
       {
-        text: "[Examine the composite plates.] No cybernetic shields or titanium bone weave. One mistake and I bleed out like any other soldier.",
+        text: "[Examine the integrated armor weave.] No cybernetic shields or titanium bone weave. One mistake and I bleed out like any other soldier.",
         targetNode: "node_flesh_cautious"
       },
       {

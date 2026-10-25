@@ -110,7 +110,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: [],
     speaker: "shepard",
-    text: "[Behind my polarized visor, I whisper softly.] Stand tall, all three of you. Guard the Citadel... while I go get Tali back. [I turn away into the shadow of the colonnade and march toward the Citadel Archives.]",
+    text: "[Watching from the quiet shadows of the colonnade, I whisper softly.] Stand tall, all three of you. Guard the Citadel... while I go get Tali back. [I turn away into the corridor and head toward the Citadel Archives.]",
     next: "archives_arrival"
   }
 };

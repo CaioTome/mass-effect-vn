@@ -31,11 +31,16 @@ export const characters = {
   "joker": {
     name: "Jeff 'Joker' Moreau",
     title: "Flight Lieutenant",
-    isPlayer: false
+    sprite: "assets/portraits/joker.png"
   },
   "edi": {
     name: "EDI",
     title: "Enhanced Defense Intelligence",
+    sprite: "assets/portraits/edi.png"
+  },
+  "alliance_soldier": {
+    name: "Alliance Marine",
+    title: "5th Fleet Honor Guard",
     isPlayer: false
   },
   "csec_officer": {

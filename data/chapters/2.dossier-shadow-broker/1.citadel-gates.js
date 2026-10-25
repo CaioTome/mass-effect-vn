@@ -14,7 +14,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "shepard",
-    text: "[I step down the gangway into Docking Bay 24. Heavy mercenary plate encases my limbs, completely stripped of Alliance ranks, N7 insignias, or personal emblems. My face is buried behind an opaque, polarized visor, and my throat is wired to a raspy electronic vocal modulator.]",
+    text: "[I step down the gangway into Docking Bay 24. I wear civilian travel clothes reinforced with lightweight integrated armor weave—discreet, comfortable, and completely inconspicuous. No Alliance insignias, no heavy battle plate, nothing to draw an unwanted glance from the crowd.]",
     next: "citadel_gates_03"
   },
 
@@ -22,7 +22,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "shepard",
-    text: "[Every single step sends a dull ache through my joints. For three years, Cerberus cybernetics and synthetic muscle weaves bore the brunt of my armor's weight. Now, there are no servomotors humming in my spine. No neural dampeners dulling the pain. It is just raw mortal bone, breathing flesh, and the crushing pull of artificial gravity dragging sixty kilos of combat alloy down onto my shoulders.]",
+    text: "[I take a measured breath, taking in the bustling corridors. Two months ago, the Crucible fired above Earth, and the war was won. Now the Citadel is healing, its vast ring humming with reconstruction drones and the stubborn resilience of countless species rebuilding together.]",
     next: "citadel_gates_04"
   },
 
@@ -30,7 +30,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "shepard",
-    text: "[Around me, the docking ring is in total disarray. Automated welding drones shower sparks from the ceiling, cargo containers are piled high in the corridors, and thousands of exhausted refugees from across the galaxy huddle around C-Sec intake desks awaiting transit papers.]",
+    text: "[Around me, automated welding drones shower sparks from the ceiling, cargo containers are piled along the concourses, and thousands of commuters and refugees move steadily toward the automated customs checkpoints.]",
     next: "citadel_gates_scanner"
   },
 
@@ -38,70 +38,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "system",
-    text: "C-SEC AUTOMATED CUSTOMS // BIOMETRIC SWEEP ACTIVE... WARNING: DERMAL RIDGES DO NOT CORRESPOND TO ALLIANCE SERVICE REGISTRIES. CELLULAR ANOMALY DETECTED: SYNTHETIC REGENERATION SIGNATURE MATCHES PROTOCOL EPSILON-7. CROSS-REFERENCING SALVAGE ARCHIVES... OVERRIDE GRANTED: CONTRACTOR DOCKET #402 (MOREAU, JOHN).",
-    next: "citadel_gates_officer_01"
-  },
-
-  "citadel_gates_officer_01": {
-    background: "assets/backgrounds/citadel_docks.jpg",
-    present: ["csec_officer"],
-    speaker: "csec_officer",
-    text: "Hold up, heavy armor. Step out of the queue and face the console. Let me see your transit manifests.",
-    next: "choice_citadel_gates"
-  },
-
-  "choice_citadel_gates": {
-    type: "choice",
-    present: ["csec_officer"],
-    speaker: "shepard",
-    choices: [
-      {
-        text: "\"Freelance salvage contractor. Here under docket 402 for decommissioned drive components.\"",
-        targetNode: "gate_choice_pragmatic",
-        effects: { paragon: 1 }
-      },
-      {
-        text: "\"Papers are clean. Unless Council station law has changed since the Reaper drop, I'm moving through.\"",
-        targetNode: "gate_choice_renegade",
-        effects: { renegade: 1 }
-      },
-      {
-        text: "\"Citadel reconstruction is coming along remarkably well. Credit to the ground crews keeping these rings pressurized.\"",
-        targetNode: "gate_choice_polite",
-        effects: { paragon: 1 }
-      }
-    ]
-  },
-
-  "gate_choice_pragmatic": {
-    background: "assets/backgrounds/citadel_docks.jpg",
-    present: ["csec_officer"],
-    speaker: "shepard",
-    text: "[My vocal modulator converts my voice into a low, metallic baritone.] Freelance salvage contractor. Here under docket 402 for decommissioned drive components. My transport leaves as soon as the manifest clears.",
-    next: "gate_officer_response"
-  },
-
-  "gate_choice_renegade": {
-    background: "assets/backgrounds/citadel_docks.jpg",
-    present: ["csec_officer"],
-    speaker: "shepard",
-    text: "[I step firmly into the scanner's light, resting one armored gauntlet on my sidearm holster.] Papers are clean. Unless Council station law has changed since the Reaper drop, I'm moving through.",
-    next: "gate_officer_response"
-  },
-
-  "gate_choice_polite": {
-    background: "assets/backgrounds/citadel_docks.jpg",
-    present: ["csec_officer"],
-    speaker: "shepard",
-    text: "[Glancing at the repair scaffolds overhead.] Citadel reconstruction is coming along remarkably well. Credit to the ground crews keeping these rings pressurized under this kind of strain.",
-    next: "gate_officer_response"
-  },
-
-  "gate_officer_response": {
-    background: "assets/backgrounds/citadel_docks.jpg",
-    present: ["csec_officer"],
-    speaker: "csec_officer",
-    text: "Yeah, well, half our central data banks were wiped out when the station relocated to Earth. We've got missing persons by the millions and salvage crews coming in from every corner of the Terminus. Sensor flags an uncataloged dermal print, but your docket checks out. Name's John Moreau. Independent contractor. Move along, Moreau. Keep that weapon holstered while you're in the upper wards.",
+    text: "C-SEC AUTOMATED CUSTOMS // BIOMETRIC SWEEP ACTIVE... BIOMETRICS VERIFIED: NORMAL ORGANIC PROFILE. TRANSIT REGISTRY: INDEPENDENT CONTRACTOR DOCKET #402 (MOREAU, JOHN). CLEARANCE: GRANTED. WELCOME TO THE CITADEL.",
     next: "citadel_gates_pass"
   },
 
@@ -109,7 +46,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "shepard",
-    text: "[The turnstile unlocks with a green pneumatic chime. The Catalyst's forged cover held perfectly: an unremarkable mercenary with the genetic anomaly of a clone and the borrowed name of the best pilot in the Alliance.]",
+    text: "[The turnstile unlocks with a soft green chime. No alarms, no security flags, no questioning officers. The forged credentials hold up seamlessly, allowing me to walk straight through the checkpoint like any ordinary traveler blending into the flow.]",
     next: "citadel_gates_transit"
   },
 
@@ -117,7 +54,7 @@ export const nodesPart1 = {
     background: "assets/backgrounds/citadel_docks.jpg",
     present: [],
     speaker: "shepard",
-    text: "[I clear the customs checkpoint and head straight for the rapid transit terminal. Public extranet comms are heavily monitored by Alliance intelligence; if I ping Liara directly, alarms will trip across the Citadel. I need an off-grid broker... and that means finding Barla Von in the Financial District.]",
+    text: "[I clear the automated checkpoint and head straight for the rapid transit terminal. Public extranet comms are heavily monitored by Alliance intelligence; if I ping Liara directly, alarms will trip across the Citadel. I need an off-grid broker... and that means finding Barla Von in the Financial District.]",
     next: "citadel_transit_to_financial"
   },
 

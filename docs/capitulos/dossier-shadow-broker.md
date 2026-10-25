@@ -13,9 +13,9 @@
 
 Este capítulo retrata a infiltração de John Shepard na Citadel após seu renascimento como mortal, operando sob o disfarce de um mercenário anônimo para estabelecer contato seguro com a Shadow Broker sem revelar sua sobrevivência à galáxia ou à Cerberus.
 
-* **Ato 1: Chegada às Docas da Citadel (O Infiltrador Mascarado):**
-  - Shepard desembarca de um cargueiro civil descaracterizado usando blindagem pesada sem insígnias, visor polarizado opaco e modulador vocal eletrônico.
-  - No posto de inspeção de C-Sec, a identidade civil de contratante forjada com perfeição pelos Reapers (Catalyst) permite que ele entre sem dificuldades. Como a Citadel ainda se recupera da devastação da invasão, milhões de registros governamentais foram perdidos, servidores estão corrompidos e incontáveis cidadãos estão deslocados ou desaparecidos. A C-Sec, exausta e sobrecarregada com reconstrução e logística humanitária, opera sob protocolos mais tolerantes e flexíveis, liberando o mercenário sem complicações burocráticas.
+* **Ato 1: Chegada às Docas da Citadel (O Infiltrador Discreto):**
+  - Shepard desembarca de um cargueiro civil usando roupas civis com blindagem leve integrada — discretas, confortáveis e imperceptíveis na multidão de viajantes.
+  - No posto de inspeção automatizada da C-Sec, a identidade civil de contratante forjada com perfeição pelos Reapers (Catalyst) permite que ele passe direto pelo scanner sem qualquer alerta de anomalia, sem complicações burocráticas e sem interrupções de guardas, evitando riscos narrativos como ser forçado a retirar capuzes ou máscaras em público.
 * **Ato 2: O Escritório de Barla Von (A Missão das Escutas):**
   - Para localizar Liara sem acionar varreduras na extranet pública, Shepard vai ao Distrito Financeiro e aborda Barla Von.
   - Barla Von reconhece a autoridade de Shepard sobre a Shadow Broker e explica que a rede local sofreu severos danos na invasão. Ele entrega duas micro-escutas militares em sequência obrigatória:
@@ -23,19 +23,20 @@ Este capítulo retrata a infiltração de John Shepard na Citadel após seu rena
     2. Segundo no nó de comunicações do **Presidium (Embaixadas)**, triangulando a Broker diretamente para os Arquivos.
 * **Ato 3: A Operação das Escutas (Commons Memorial & Presidium Embassies):**
   - Uma missão perfeitamente linear e profundamente emocional:
-    - **Ato 3A (Commons - O Memorial dos Caídos):** Shepard vai ao terminal da praça central para fixar a primeira escuta. Ele presencia Joker e EDI velando o nome de *Commander John Shepard* no mural de obsidiana, com a oportunidade de acionar o Paragon Interrupt `[Q]` para prestar uma homenagem silenciosa. Escuta 1 online (50%).
+    - **Ato 3A (Commons - O Memorial dos Caídos):** Shepard chega à praça central e observa o cenário: Joker (apoiado em sua bengala em frente ao nome de Shepard) e EDI (ao seu lado, consolando-o), além de uma guarda de honra da Marinha da Aliança vigiando o memorial. O leitor pode optar por:
+      1. *Instalar a escuta e sair imediatamente:* Foco estrito na missão para não arriscar seu disfarce.
+      2. *Ficar um pouco mais:* Presencia um tocante evento onde soldados da Marinha da Aliança se aproximam de Joker e EDI para prestar continência e homenagear a tripulação da Normandy, com oportunidade de acionar o Paragon Interrupt `[Q]` para uma continência silenciosa das sombras antes de plantar a escuta.
     - **Ato 3B (Presidium - O Legado da Aliança: Hackett & Pódio [Jack, Kaidan, James]):** Shepard segue para o Presidium e instala a segunda escuta (sinal 100%). Em seguida, presencia a comovente cerimônia da Aliança: o Almirante Steven Hackett discursa sobre a coragem de Shepard e a união galáctica. Em seguida, o Major Kaidan Alenko (Spectre) sobe ao pódio acompanhado de seus novos candidatos no palco em formação de trio: **James Vega** e **Jack**. Kaidan homenageia Shepard como seu mentor e promete manter seu legado vivo. Shepard observa seus antigos companheiros das sombras com imenso orgulho e parte em direção aos Arquivos.
-    - Concluídas as duas instalações, a rede da Shadow Broker se sincroniza e revela que Liara está nos Arquivos da Citadel (logo ao lado no anel do Presidium).
-* **Ato 4: Os Arquivos da Citadel (O Lore Asari & A Isca de Tali):**
-  - Os Arquivos estão em plena reconstrução pós-guerra, com diversos historiadores Asari, curadores e pesquisadores comparando relíquias e dados históricos resgatados da queda de Thessia.
-  - **Liara T'Soni está no local em sua faceta pública:** renomada arqueóloga, especialista em Protheanos e heroína de guerra da Normandy, agindo como acadêmica normal (`Dra. Liara T'Soni // Arqueóloga & Historiadora`).
-  - Shepard não possui os sinais digitais de Tali, mas **carrega uma verdade explosiva e ultra-secreta que a galáxia ainda ignora:** o transporte diplomático de Rannoch foi sequestrado por uma célula da Cerberus e Tali'Zorah é refém.
-  - Aproximando-se discretamente com um datapad, Shepard lança a isca tática e oferece ajuda. Abalada, Liara mantém sua compostura pública e convoca o mercenário para uma sala blindada e fora do radar: a cobertura no Silversun Strip.
+    - Concluídas as duas instalações, a rede da Shadow Broker se sincroniza e revela que Liara está nos Arquivos da Citadel.
+* **Ato 4: Os Arquivos da Citadel (O Lore Galáctico & A Isca de Tali):**
+  - Uma nova e imersiva ala dos Arquivos: um vasto salão repleto de projeções holográficas azuis flutuantes exibindo a história conhecida da galáxia, com equipes mistas de historiadores Asari, Turianos, Salarians e Humanos catalogando os arquivos preservados da guerra e o que ainda necessita restauração.
+  - **Liara T'Soni é encontrada diante de uma projeção azul de Shepard e de sua história**, atualizando os registros e a biografia do Comandante. Shepard observa de perto e reflete sobre a estranha sensação do "fantasma de si mesmo".
+  - Aproximando-se discretamente com um datapad, Shepard lança a isca tática de que Tali'Zorah foi sequestrada pela Cerberus e oferece ajuda. Abalada, Liara mantém sua compostura pública e convoca o mercenário para uma sala blindada e fora do radar: a cobertura no Silversun Strip.
 * **Ato 5: O Santuário no Apartamento (Impasse Armado, Renegade Disarm & Desmascaramento):**
   - Shepard e Liara chegam ao antigo apartamento de luxo de Shepard no Silversun Strip. As persianas blindadas descem e as comunicações são bloqueadas.
   - Desconfiada e em alerta máximo, Liara puxa sua pistola pesada M-5 Phalanx com campo biótico armado.
   - **Renegade Interrupt `[E]`:** Em um reflexo N7 instantâneo, Shepard avança, desarma Liara e desmonta a pistola inteira em campo em menos de dois segundos, espalhando as peças inofensivas no balcão da cozinha.
-  - Shepard despressuriza os lacres pneumáticos do capacete e revela seu rosto vivo e humano. O choque emocional e as lágrimas quebram a postura da Shadow Broker.
+  - Shepard desativa o modulador vocal, baixa sua gola/capuz e revela seu rosto vivo e humano. O choque emocional e as lágrimas quebram a postura da Shadow Broker.
   - **A Revelação do Apartamento:** Ao ver Shepard reconhecer perplexo seu antigo lar, Liara conta a história que ele desconhecia:
     - No testamento militar de Shepard, o apartamento de luxo do Silversun Strip ficou como herança para **Tali'Zorah**.
     - Tali vendeu a propriedade para Liara por três motivos cruciais:
@@ -53,13 +54,13 @@ The chapter structure faithfully adapts the BPMN process flow ([`diagram.bpmn`](
 
 ```mermaid
 flowchart TD
-    Start(["Start: Chapter 2"]) --> Act1["Act 1: Arrival at Citadel Gates<br/>(Forged Reaper Credentials & Lenient C-Sec)"]
+    Start(["Start: Chapter 2"]) --> Act1["Act 1: Arrival at Citadel Gates<br/>(Forged Credentials & Seamless Customs Sweep)"]
     Act1 --> Act2["Act 2: Barla Von's Office<br/>(The Deal: Plant Covert Wiretaps)"]
     
-    Act2 --> Act3A["Act 3A: Commons Memorial<br/>(Plant Wiretap 1 & Joker/EDI Vigil)"]
+    Act2 --> Act3A["Act 3A: Commons Memorial<br/>(Plant Wiretap 1, Choice: Quick Exit vs. Stay with Joker, EDI & Marines)"]
     Act3A --> Act3B["Act 3B: Presidium Embassies<br/>(Plant Wiretap 2 & Podium: Hackett, Kaidan, Jack & James)"]
     
-    Act3B --> Act4["Act 4: Citadel Archives<br/>(Network Triangulated: Public Encounter with Liara)"]
+    Act3B --> Act4["Act 4: Citadel Archives<br/>(Blue Hologram History Hall: Liara & Shepard's Projection)"]
     
     Act4 --> Act5["Act 5: The Apartment Sanctum<br/>(Weapon Standoff, Renegade Disarm & Unmasking)"]
     Act5 --> End(["End: Chapter 2"])
@@ -71,23 +72,17 @@ flowchart TD
 
 ### Scene Summary
 * **Location:** `assets/backgrounds/citadel_docks.webp`
-* **Characters Present:** Shepard (POV), C-Sec Inspection Officer, ambient docks crowd.
+* **Characters Present:** Shepard (POV), ambient docks crowd.
 
 ### Narrative Concept & Dramatic Focus
-Shepard disembarks from a civilian cargo shuttle at the rebuilt Citadel docks. He wears unmarked mercenary battle plating with zero Alliance insignia, his face concealed behind an opaque polarized visor and his speech filtered through a rasping electronic modulator.
+Shepard disembarks from a civilian cargo shuttle at the rebuilt Citadel docks. He wears ordinary civilian travel attire reinforced with lightweight integrated armor weave—completely inconspicuous, comfortable, and discreet, with no Alliance insignia or heavy battle plate.
 
-For the first time since the Battle of Earth, John walks among living citizens. The Citadel smells of ozone, industrial sealant, and recycled air. His newly grown organic body feels every ounce of weight: no synthetic servos, no titanium-threaded muscles—just flesh, raw pulse, and bone.
+The station smells of ozone, industrial sealant, and recycled air, vibrating with reconstruction drones and civilian commuters.
 
-* **The Security Checkpoint & Post-War Context:**
-  - The Citadel is in the throes of massive reconstruction after the Reaper occupation. Station databases are riddled with corrupt sectors, millions of military and civilian files were destroyed, and vast waves of refugees, salvage contractors, and volunteers flood the docks daily.
-  - C-Sec is severely understaffed and exhausted; their officers prioritize humanitarian aid and hazardous salvage checks over stringent background checks on every nameless contractor.
-  - When Shepard steps through the automated scanner, the civilian contractor identity fabricated by the Catalyst passes the corrupted station databases with ease. The scanner chimes green.
-  - The C-Sec officer merely glances at the Terminus salvage credentials, asks a routine customs question, and waves the armored mercenary through without delay.
-* **Choices (Baldur's Gate Style):**
-  1. *"Freelance salvage contractor. Here to pick up decommissioned components under docket 402."* (Pragmatic/Calm)
-  2. *"Papers are clean. Unless Council station law has changed, I'm moving through."* (Renegade/Direct)
-  3. *"Citadel reconstruction is coming along remarkably well. Credit to the ground crews."* (Investigative/Polite)
-* **Outcome:** Shepard clears security smoothly without raising flags, cementing his ghost identity.
+* **The Security Checkpoint & Seamless Clearance:**
+  - Station databases, while still recovering, process civilian contractor manifests efficiently.
+  - When Shepard steps through the automated scanner, the biometrics sweep confirms a normal profile under contractor docket #402 (John Moreau).
+  - The scanner chimes green, and Shepard passes straight through the automated turnstiles without any alert, delay, or interrogation by guards, seamlessly blending into the transit crowd.
 
 ---
 

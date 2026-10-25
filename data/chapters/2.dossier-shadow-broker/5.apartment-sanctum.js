@@ -22,7 +22,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara drops all academic gentleness. In a flash of lethal grace, azure dark-energy flares across her shoulders. She whips her heavy M-5 Phalanx pistol from beneath her coat and levels the barrel squarely between the polarized eyes of my helmet.]",
+    text: "[Liara drops all academic gentleness. In a flash of lethal grace, azure dark-energy flares across her shoulders. She whips her heavy M-5 Phalanx pistol from beneath her coat and levels the barrel squarely between my eyes.]",
     next: "penthouse_liara_interrogate"
   },
 
@@ -44,7 +44,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[Renegade Interrupt [E]: In a blinding reflex drilled through hundreds of combat drops, I close the distance before her biotics can detonate. My left gauntlet parries her wrist upward; my right hand twists the heavy pistol cleanly from her grip.]",
+    text: "[Renegade Interrupt [E]: In a blinding reflex drilled through hundreds of combat drops, I close the distance before her biotics can detonate. My left hand parries her wrist upward; my right hand twists the heavy pistol cleanly from her grip.]",
     next: "penthouse_disarm_strip"
   },
 
@@ -84,7 +84,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[I reach up to the heavy neck clamps of my mercenary armor. With a sharp dual twist, the pressurized seals disengage with a loud pneumatic hiss of venting atmosphere.] *Psssshhht.*",
+    text: "[I reach up to the collar of my reinforced jacket, unfastening the high cowl and tapping off the subtle vocal modulator.]",
     next: "penthouse_unmask_face"
   },
 
@@ -92,7 +92,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[I lift off the heavy helmet and set it down on the kitchen counter beside the dismantled pistol. I exhale warm, real, unaugmented human breath. The room falls into absolute, breathless silence.]",
+    text: "[I lower the cowl, stepping fully into the warm light of the penthouse. I exhale warm, real human breath. The room falls into absolute, breathless silence.]",
     next: "penthouse_liara_shock"
   },
 

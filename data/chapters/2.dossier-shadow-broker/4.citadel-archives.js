@@ -6,15 +6,31 @@ export const nodesPart4 = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: [],
     speaker: "shepard",
-    text: "[I walk down the grand archway into the Citadel Archives. Unlike the quiet memorial, this cavernous hall is brimming with urgent academic activity. Dozens of Asari historians, curators, and cultural preservationists work around holographic workstations, cataloging databanks and salvaged Prothean artifacts rescued from the devastation of Thessia.]",
-    next: "archives_liara_in_crowd"
+    text: "[I step through the security stanchions into the Citadel Archives. A vast, vaulted hall opens before me, drenched in the luminous azure glow of dozens of floating holographic displays.]",
+    next: "archives_projection_hall"
   },
 
-  "archives_liara_in_crowd": {
+  "archives_projection_hall": {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: [],
     speaker: "shepard",
-    text: "[In the center of the research pavilion stands Dr. Liara T'Soni. Wearing her formal academic archival coat, she is consulting with two senior Asari scholars over a cracked Prothean glyph. To the entire galaxy, she is the preeminent authority on ancient civilizations, a decorated Normandy war hero, and an honored historical consultant. Not a single person in this room suspects she commands the greatest spy network in galactic history.]",
+    text: "[Across the wide chamber, towering blue projections display the known history of galactic civilization: 3D stellar charts of lost colony worlds, architectural reconstructions of ruined Thessian temples, fleet engagement logs from the Battle of Earth, and recovered Prothean archives. Scholars of every species—Asari historians, Turian tacticians, Salarian analysts, and Human curators—work side by side at holographic consoles, methodically cataloging what was preserved from the war and organizing records that still need to be restored.]",
+    next: "archives_shepard_projection"
+  },
+
+  "archives_shepard_projection": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["liara_public"],
+    speaker: "shepard",
+    text: "[Near the center of the hall, isolated beneath a private data arch, one projection stands out from all the rest. Floating in crisp blue light is a rotating hologram of the SSV Normandy, accompanied by battle telemetry from Virmire, the Collector Base, and London—and a towering holographic bust of Commander John Shepard. Standing directly beneath it, watching the scrolling records in contemplative silence, is Dr. Liara T'Soni.]",
+    next: "archives_ghost_of_myself"
+  },
+
+  "archives_ghost_of_myself": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["liara_public"],
+    speaker: "shepard",
+    text: "[I freeze in the azure wash of the display, my pulse drumming in my ears. Liara is possibly updating my biography... What a strange, surreal feeling. The ghost of myself. Standing here in flesh and blood, watching a friend who admired me record my memory into the permanent history of the galaxy... while I walk unnoticed among the living.]",
     next: "archives_approach_scholar"
   },
 
@@ -22,7 +38,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[I wait until her colleagues step toward the digital cataloging stacks, then approach her terminal. My heavy armored boots produce a deliberate, rhythmic metallic clank across the polished marble. Liara turns around, greeting me with polite, scholarly courtesy.]",
+    text: "[I take a steady breath, compose myself, and step toward her console. My footsteps are quiet and deliberate across the polished marble. Liara senses the presence, closing the private dossier file with a subtle gesture, and turns around to greet me with calm, academic professionalism.]",
     next: "archives_liara_greet"
   },
 
@@ -38,7 +54,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[I slide a encrypted datapad onto her console, leaning in close so my raspy vocal modulator carries only to her ears.] Dr. T'Soni. The Quarian diplomatic shuttle from Rannoch didn't suffer a drive-core rupture in the Terminus. It was ambushed and boarded by Cerberus black-ops. Tali'Zorah has been abducted... and I am here to help you get her back.",
+    text: "[I slide an encrypted datapad onto her console, keeping my voice low so it carries only to her ears.] Dr. T'Soni. The Quarian diplomatic shuttle from Rannoch didn't suffer a drive-core rupture in the Terminus. It was ambushed and boarded by Cerberus black-ops. Tali'Zorah has been abducted... and I am here to help you get her back.",
     next: "archives_liara_shock"
   },
 
@@ -78,7 +94,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["liara_public"],
     speaker: "liara_public",
-    text: "[Her eyes narrow, assessing every line of my armor with unsettling, combat-hardened intensity.] Follow me. Keep your hands where I can see them. One wrong twitch, and you will learn why the Shadow Broker survived the Reapers.",
+    text: "[Her eyes narrow, assessing me with unsettling, combat-hardened intensity.] Follow me. Keep your hands where I can see them. One wrong twitch, and you will learn why the Shadow Broker survived the Reapers.",
     next: "archives_to_penthouse_transit"
   },
 

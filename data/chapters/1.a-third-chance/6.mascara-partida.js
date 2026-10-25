@@ -5,14 +5,14 @@ export const nodesPart6 = {
   "biometrics_console": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "To clear C-Sec checkpoints without alerting Alliance central intelligence, you require an untraceable mercenary civilian identity. Your regenerated fingerprints match no Alliance archive, the same flaw that betrayed the duplicate Cerberus grew from your Lazarus data on the Citadel. Place your palm on the sensor console.",
+    text: "To clear C-Sec checkpoints without alerting Alliance central intelligence, you require an untraceable civilian contractor identity. Your regenerated fingerprints match no Alliance archive, the same flaw that betrayed the duplicate Cerberus grew from your Lazarus data on the Citadel. Place your palm on the sensor console.",
     next: "shepard_id_scanned"
   },
 
   "shepard_id_scanned": {
     present: ["catalyst_hackett"],
     speaker: "shepard",
-    text: "[I press my palm against the console. A laser grid sweeps across my skin with a sharp chime, and a dossier assembles itself on the display. I read it in silence: Name, John Moreau. Discharged Alliance marine. Freelancer chasing bounty contracts in the Terminus.]",
+    text: "[I press my palm against the console. A laser grid sweeps across my skin with a sharp chime, and a dossier assembles itself on the display. I read it in silence: Name, John Moreau. Independent contractor chasing salvage and transport contracts in the Terminus.]",
     next: "shepard_moreau_thought"
   },
 
@@ -37,11 +37,11 @@ export const nodesPart6 = {
         targetNode: "node_ask_about_crew"
       },
       {
-        text: "How secure is this 'John Moreau' mercenary cover against C-Sec scanners?",
+        text: "How secure is this 'John Moreau' contractor cover against C-Sec scanners?",
         targetNode: "node_ask_about_identity"
       },
       {
-        text: "[Equip gear and depart.]",
+        text: "[Equip the civilian clothes with integrated armor and depart.]",
         targetNode: "helm_sealed"
       }
     ]
@@ -64,14 +64,14 @@ export const nodesPart6 = {
   "node_ask_about_identity": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "Your regenerated dermal ridges and retinal maps match zero Alliance personnel archives, precisely mirroring the biometric anomaly of the clone Cerberus cultivated during the war. To automated Citadel sensors, you are simply John Moreau: an unremarkable freelance mercenary looking for salvage contracts in the Terminus. As long as your face remains concealed, Alliance intelligence will never flag your arrival.",
+    text: "Your regenerated dermal ridges and retinal maps match zero Alliance personnel archives, precisely mirroring the biometric anomaly of the clone Cerberus cultivated during the war. To automated Citadel sensors, you are simply John Moreau: an unremarkable independent contractor arriving for decommissioned salvage. With your face shielded by a discreet cowl and your voice modulated, you will blend seamlessly into the civilian transit flow.",
     next: "choice_departure_hub"
   },
 
   "helm_sealed": {
     present: ["catalyst_hackett"],
     speaker: "shepard",
-    text: "[I lift the helmet over my head. Pneumatic seals hiss into the collar with a pressurized click. The visor polarizes pitch black, and the vocal modulator activates with a cold, robotic metallic rasp.] Moreau. Very funny. Let's go get her back.",
+    text: "[I pull on the civilian travel attire—fitted with lightweight integrated armor weave beneath the fabric. It is flexible, discreet, and indistinguishable from ordinary transit wear. I fasten the high cowl to obscure my lower face and activate the subtle electronic vocal modulator.] Moreau. Very funny. Let's go get her back.",
     next: "catalyst_final_salute"
   },
 
