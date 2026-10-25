@@ -100,7 +100,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara looks up into my exposed face. Her biotics vanish completely. Her hands fly to her mouth, and tears immediately stream down her blue cheeks. Absolute, paralyzing shock shatters her composure.] By the Goddess... John? No... this... this is impossible! You died on the Crucible! We watched you burn! I put your name on the memorial wall with my own hands!",
+    text: "[Liara looks up into my exposed face. Her biotics vanish completely. Her hands fly to her mouth, and tears immediately stream down her blue cheeks. Absolute, paralyzing shock shatters her composure.] By the Goddess... Shepard? No... this... this is impossible! You died on the Crucible! We watched you burn! I put your name on the memorial wall with my own hands!",
     next: "penthouse_shepard_confirm"
   },
 
@@ -124,7 +124,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara wipes tears from her face, her voice trembling as she shares the heartbreaking truth.] John... after the war ended, your will was honored. The Silversun Strip penthouse was legally transferred to Tali'Zorah. But she couldn't stay. She sold it to me before leaving the Citadel.",
+    text: "[Liara wipes tears from her face, her voice trembling as she shares the heartbreaking truth.] Shepard... after the war ended, your will was honored. The Silversun Strip penthouse was legally transferred to Tali'Zorah. But she couldn't stay. She sold it to me before leaving the Citadel.",
     next: "penthouse_liara_revelation_02"
   },
 
@@ -148,7 +148,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara looks at me, fresh tears welling in her eyes.] Do you understand what it felt like to bring an unknown Terminus mercenary here, John? This apartment was the only place left in the galaxy where I could feel your presence. It was our sanctuary... and Tali's deepest wound. I brought an armed stranger into your home because I was ready to risk anything to find Tali. And the entire time... it was you under that armor.",
+    text: "[Liara looks at me, fresh tears welling in her eyes.] Do you understand what it felt like to bring an unknown Terminus mercenary here, Shepard? This apartment was the only place left in the galaxy where I could feel your presence. It was our sanctuary... and Tali's deepest wound. I brought an armed stranger into your home because I was ready to risk anything to find Tali. And the entire time... it was you under that armor.",
     next: "penthouse_shepard_resolve"
   },
 
@@ -172,7 +172,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara steps forward, breathless with awe and relief. She gently presses her trembling hands against my temples. Her eyes darken to an ethereal, radiant black as the psychic meld envelops our consciousness.] 'Embrace eternity... John...'",
+    text: "[Liara steps forward, breathless with awe and relief. She gently presses her trembling hands against my temples. Her eyes darken to an ethereal, radiant black as the psychic meld envelops our consciousness.] 'Embrace eternity... Shepard...'",
     next: "chapter_02_complete_hub"
   },
 

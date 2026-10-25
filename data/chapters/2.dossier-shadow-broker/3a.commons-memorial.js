@@ -56,7 +56,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: ["joker", "edi"],
     speaker: "joker",
-    text: "You were the best skipper a pilot could ever ask for, Commander. Always dragging us out of impossible fire... and you didn't even leave us a piece of armor to bury. The Normandy feels hollow without you, John. Every time I sit in the cockpit, I still wait for you to tell me to spool the drive.",
+    text: "You were the best skipper a pilot could ever ask for, Commander. Always dragging us out of impossible fire... and you didn't even leave us a piece of armor to bury. The Normandy feels hollow without you, Shepard. Every time I sit in the cockpit, I still wait for you to tell me to spool the drive.",
     next: "commons_edi_voice"
   },
 

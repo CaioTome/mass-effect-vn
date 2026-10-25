@@ -98,7 +98,10 @@ Para garantir profundidade narrativa, clareza e permitir linhas de fala completa
 ### 4.3. Câmera em 1ª Pessoa (POV de Shepard) & Sistema Dinâmico de Palco (Solo / Duo / Trio)
 Para preservar a identidade personalizada de cada jogador (rosto customizado, gênero e escolhas da trilogia) e maximizar a imersão visual novel:
 - **Shepard em 1ª Pessoa (Atrás da Câmera):** Shepard nunca aparece como sprite na tela. Ele é a visão/câmera do jogador.
-- **Narração e Percepção Estritamente em 1ª Pessoa:** Toda descrição de ação, ambiente ou evento de cena entre colchetes `[...]` deve ser narrada a partir do ponto de vista e percepção direta de John Shepard (ex: `"[A cyan holographic beam strikes the deck behind me, solidifying into Admiral Steven Hackett in full Alliance dress uniform.]"`). Nunca usar 2ª pessoa ("Your body", "You see") e nunca fazer com que NPCs narrem em terceira pessoa descrições visuais sobre si mesmos.
+- **Regra Rígida de Nomenclatura (Shepard, Jamais "John"):**
+  - **Jamais usar "John" para se referir ao Comandante**, seja em falas de amigos/aliados, cerimônias, memoriais ou narração. Como cada jogador define seu próprio nome (ou joga com Jane Shepard), amigos e companheiros o chamam exclusivamente de **Shepard** (ou "Commander", "Skipper").
+  - **"John" é EXCLUSIVAMENTE a identidade civil/falsa de mercenário** (`John Moreau`, contratante docket #402) forjada pelo Catalyst para a infiltração.
+- **Narração e Percepção Estritamente em 1ª Pessoa:** Toda descrição de ação, ambiente ou evento de cena entre colchetes `[...]` deve ser narrada a partir do ponto de vista e percepção direta de Shepard (ex: `"[A cyan holographic beam strikes the deck behind me, solidifying into Admiral Steven Hackett in full Alliance dress uniform.]"`). Nunca usar 2ª pessoa ("Your body", "You see") e nunca fazer com que NPCs narrem em terceira pessoa descrições visuais sobre si mesmos.
 - **Cena Solo (Shepard + 1 Interlocutor):**
   - O interlocutor fica **centralizado** no palco (`#stage.mode-single`), com presença imponente e foco total.
   - Quando o interlocutor fala: 100% iluminado (`.speaking`).

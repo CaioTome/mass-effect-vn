@@ -22,7 +22,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[Near the center of the hall, isolated beneath a private data arch, one projection stands out from all the rest. Floating in crisp blue light is a rotating hologram of the SSV Normandy, accompanied by battle telemetry from Virmire, the Collector Base, and London—and a towering holographic bust of Commander John Shepard. Standing directly beneath it, watching the scrolling records in contemplative silence, is Dr. Liara T'Soni.]",
+    text: "[Near the center of the hall, isolated beneath a private data arch, one projection stands out from all the rest. Floating in crisp blue light is a rotating hologram of the SSV Normandy, accompanied by battle telemetry from Virmire, the Collector Base, and London—and a towering holographic bust of Commander Shepard. Standing directly beneath it, watching the scrolling records in contemplative silence, is Dr. Liara T'Soni.]",
     next: "archives_ghost_of_myself"
   },
 

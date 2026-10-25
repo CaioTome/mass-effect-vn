@@ -46,7 +46,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "'They were wrong. One human proved that when krogan, turian, asari, quarian, and human stand shoulder to shoulder, nothing in this galaxy can extinguish our flame. Commander John Shepard gave everything to forge this united front. But peace is not maintained by monuments—it is defended by those who take up the mantle.'",
+    text: "'They were wrong. One human proved that when krogan, turian, asari, quarian, and human stand shoulder to shoulder, nothing in this galaxy can extinguish our flame. Commander Shepard gave everything to forge this united front. But peace is not maintained by monuments—it is defended by those who take up the mantle.'",
     next: "presidium_hackett_calls_kaidan"
   },
 
@@ -70,7 +70,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["kaidan"],
     speaker: "kaidan",
-    text: "'To honor John's legacy, the Alliance and the Citadel Council have authorized the expansion of our joint Spectre initiative. Today, I am proud to present the candidates entering humanity's Spectre pipeline under my direct mentorship: Lieutenant James Vega and Specialist Jack.'",
+    text: "'To honor Shepard's legacy, the Alliance and the Citadel Council have authorized the expansion of our joint Spectre initiative. Today, I am proud to present the candidates entering humanity's Spectre pipeline under my direct mentorship: Lieutenant James Vega and Specialist Jack.'",
     next: "presidium_podium_trio_reveal"
   },
 
