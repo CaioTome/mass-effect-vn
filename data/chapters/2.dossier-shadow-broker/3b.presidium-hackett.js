@@ -31,14 +31,48 @@ export const nodesPart3b = {
     present: [],
     speaker: "shepard",
     text: "[Before I can pull back into the corridor, a crisp military trumpet sounds across the embassy terrace. Above on the diplomatic balcony, an honor guard snaps to attention. A voice resonates over the speakers: 'All personnel, stand at attention for Fleet Admiral Steven Hackett.']",
-    next: "presidium_hackett_podium"
+    next: "presidium_hackett_spotted"
+  },
+
+  "presidium_hackett_spotted": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["hackett_real"],
+    speaker: "shepard",
+    text: "[I freeze behind the marble colonnade, looking up toward the balcony. Walking out to the central diplomatic podium is Fleet Admiral Steven Hackett himself, his dress uniform pristine and lined with Alliance honors. He approaches the lectern, preparing to address the Citadel assembly.]",
+    next: "choice_presidium_hackett"
+  },
+
+  "choice_presidium_hackett": {
+    type: "choice",
+    present: ["hackett_real"],
+    speaker: "shepard",
+    choices: [
+      {
+        text: "[Ignore what Hackett is going to say and go to Liara immediately]",
+        targetNode: "presidium_ignore_hackett",
+        effects: { renegade: 1 }
+      },
+      {
+        text: "[Listen to what Hackett has to say]",
+        targetNode: "presidium_hackett_podium",
+        effects: { paragon: 1 }
+      }
+    ]
+  },
+
+  "presidium_ignore_hackett": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[Every second I spend listening to speeches is a second Tali remains in Cerberus custody. The Alliance has Hackett, Kaidan, and Vega to hold the line—my mission is elsewhere. I pull my cowl low, slip away from the terrace, and head directly toward the Citadel Archives.]",
+    next: "archives_arrival"
   },
 
   "presidium_hackett_podium": {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "[Admiral Steven Hackett steps up to the central diplomatic podium, his chest adorned with the highest Alliance honors, his voice carrying unmistakable command.] 'Ambassadors, soldiers, citizens of the Citadel. Two months ago, the Reapers believed our diversity was a fatal weakness.'",
+    text: "[Admiral Steven Hackett steps up to the central diplomatic podium, his voice carrying unmistakable command across the silent courtyard.] 'Ambassadors, soldiers, citizens of the Citadel. Two months ago, the Reapers believed our diversity was a fatal weakness.'",
     next: "presidium_hackett_speech_02"
   },
 

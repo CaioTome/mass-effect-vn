@@ -47,14 +47,40 @@ export const nodesPart4 = {
     present: ["liara_public"],
     speaker: "liara_public",
     text: "Can I assist you with an archival query, contractor? Most battlefield salvage telemetry must be logged through C-Sec customs before our team can process historical validation.",
-    next: "archives_deliver_bait"
+    next: "choice_archives_approach"
   },
 
-  "archives_deliver_bait": {
+  "choice_archives_approach": {
+    type: "choice",
+    present: ["liara_public"],
+    speaker: "shepard",
+    choices: [
+      {
+        text: "\"Dr. T'Soni, I have private encrypted telemetry. The Quarian shuttle didn't crash—Tali was abducted by Cerberus.\"",
+        targetNode: "archives_deliver_bait_paragon",
+        effects: { paragon: 1 }
+      },
+      {
+        text: "\"Drop the academic pretense, Liara. The Admiralty didn't vanish in an accident—Cerberus has Tali, and we're out of time.\"",
+        targetNode: "archives_deliver_bait_renegade",
+        effects: { renegade: 1 }
+      }
+    ]
+  },
+
+  "archives_deliver_bait_paragon": {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[I slide an encrypted datapad onto her console, keeping my voice low so it carries only to her ears.] Dr. T'Soni. The Quarian diplomatic shuttle from Rannoch didn't suffer a drive-core rupture in the Terminus. It was ambushed and boarded by Cerberus black-ops. Tali'Zorah has been abducted... and I am here to help you get her back.",
+    text: "[I slide an encrypted datapad smoothly onto her console, keeping my voice low and calm.] Dr. T'Soni. The Quarian diplomatic shuttle from Rannoch didn't suffer a drive-core rupture in the Terminus. It was ambushed and boarded by Cerberus black-ops. Tali'Zorah has been abducted... and I am here to help you get her back.",
+    next: "archives_liara_shock"
+  },
+
+  "archives_deliver_bait_renegade": {
+    background: "assets/backgrounds/citadel_archives.jpg",
+    present: ["liara_public"],
+    speaker: "shepard",
+    text: "[I press the encrypted datapad firmly onto her console, leaning in close so my modulated whisper carries only to her.] Cut the polite scholar routine, Liara. The Quarian diplomatic shuttle didn't suffer an accident. Cerberus boarded the craft and took Tali'Zorah. I know what they're planning... and we don't have time to play academic games.",
     next: "archives_liara_shock"
   },
 

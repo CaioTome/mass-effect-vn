@@ -118,7 +118,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: ["joker", "edi"],
     speaker: "shepard",
-    text: "[Paragon Interrupt [Q]: Standing in the quiet shadows of the colonnade, I bring my hand to the center of my chest, holding a silent, heartfelt salute toward Joker, EDI, and the fallen.] Fly steady, Jeff. Watch over him, EDI. I'll see you both back on the flight deck soon.",
+    text: "[Paragon Interrupt [Q]: Standing in the quiet shadows of the colonnade, I snap a crisp, silent military salute, bringing my hand to my brow with sharp Alliance precision toward Joker, EDI, and the fallen.] Fly steady, Jeff. Watch over him, EDI. I'll see you both back on the flight deck soon.",
     next: "commons_plant_wiretap"
   },
 

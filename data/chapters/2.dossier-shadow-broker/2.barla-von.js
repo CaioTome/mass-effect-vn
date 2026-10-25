@@ -48,7 +48,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I plant my armored gauntlets firmly on the polished marble counter.] Cut the banker posture, Von. I know you've laundered operations for the Shadow Broker for over a decade. I need Dr. Liara T'Soni, and you are going to tell me where she is.",
+    text: "[I plant my tactical gloved hands firmly on the polished marble counter.] Cut the banker posture, Von. I know you've laundered operations for the Shadow Broker for over a decade. I need Dr. Liara T'Soni, and you are going to tell me where she is.",
     next: "barla_von_shock"
   },
 
@@ -130,7 +130,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I secure both micro-wiretaps into my armored tactical mag-pouches.] First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.",
+    text: "[I secure both micro-wiretaps into my tactical jacket pouches.] First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.",
     next: "barla_von_depart"
   },
 

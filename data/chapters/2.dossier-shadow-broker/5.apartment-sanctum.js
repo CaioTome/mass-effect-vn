@@ -21,7 +21,7 @@ export const nodesPart5 = {
   "penthouse_standoff_draw": {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
-    speaker: "liara",
+    speaker: "shepard",
     text: "[Liara drops all academic gentleness. In a flash of lethal grace, azure dark-energy flares across her shoulders. She whips her heavy M-5 Phalanx pistol from beneath her coat and levels the barrel squarely between my eyes.]",
     next: "penthouse_liara_interrogate"
   },
@@ -124,7 +124,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara wipes tears from her face, her voice trembling as she shares the heartbreaking truth.] Shepard... after the war ended, your will was honored. The Silversun Strip penthouse was legally transferred to Tali'Zorah. But she couldn't stay. She sold it to me before leaving the Citadel.",
+    text: "[Liara wipes tears from her face, her voice trembling as she shares the heartbreaking truth.] Shepard... after the war ended, your will was honored. The Silversun Strip penthouse was legally transferred to Tali. But she couldn't stay. She sold it to me before leaving the Citadel.",
     next: "penthouse_liara_revelation_02"
   },
 
