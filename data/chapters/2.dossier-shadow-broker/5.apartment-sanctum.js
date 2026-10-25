@@ -44,7 +44,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[Renegade Interrupt [E]: In a blinding reflex drilled through hundreds of combat drops, I close the distance before her biotics can detonate. My left hand parries her wrist upward; my right hand twists the heavy pistol cleanly from her grip.]",
+    text: "[In a blinding reflex drilled through hundreds of combat drops, I close the distance before her biotics can detonate. My left hand parries her wrist upward; my right hand twists the heavy pistol cleanly from her grip.]",
     next: "penthouse_disarm_strip"
   },
 
