@@ -100,6 +100,29 @@ export const nodesPart6 = {
     present: [],
     speaker: "shepard",
     text: "[The holographic light dissipates into absolute silence. Massive hydraulic airlock doors grind open before me, exposing the dark silhouette of the stealth shuttle against the void.] Hang on, Tali. I'm coming for you.",
+    next: "choice_chapter_01_complete"
+  },
+
+  "choice_chapter_01_complete": {
+    type: "choice",
+    present: [],
+    speaker: "system",
+    choices: [
+      {
+        text: "Advance to Chapter 2: Dossier: Shadow Broker",
+        targetChapter: "chapter_02_shadow_broker"
+      },
+      {
+        text: "Review Mission Archives (Chapter Select)",
+        targetNode: "return_to_terminal_ch1"
+      }
+    ]
+  },
+
+  "return_to_terminal_ch1": {
+    present: [],
+    speaker: "system",
+    text: "MISSION ACCOMPLISHED // Chapter 1: A Third Chance complete. Chapter 2: Dossier: Shadow Broker is now unlocked in the Mission Archives (ESC).",
     next: null
   }
 };

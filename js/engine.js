@@ -152,6 +152,15 @@ class VNEngine {
     this.loadScene(this.chapter.startNode);
   }
 
+  loadChapterById(chapterId) {
+    const story = stories[this.currentStoryIndex];
+    if (!story) return;
+    const ch = story.chapters.find(c => c.id === chapterId || c.data?.id === chapterId);
+    if (ch && ch.available && ch.data) {
+      this.loadChapter(ch.data);
+    }
+  }
+
   // -----------------------------------------------------------------
   // 🧮 COUNTERS: Paragon / Renegade points & temporary counters
   // -----------------------------------------------------------------
@@ -435,7 +444,7 @@ class VNEngine {
     clearInterval(this.typeInterval);
     this.isTyping = false;
     this.dom.dialogueText.textContent = this.fullText;
-    if (this.currentNode.next) {
+    if (this.currentNode.next || this.currentNode.nextChapter) {
       this.dom.advancePrompt.classList.add("visible");
     }
   }
@@ -448,6 +457,9 @@ class VNEngine {
 
     if (this.isTyping) {
       this.finishTyping();
+    } else if (this.currentNode && this.currentNode.nextChapter) {
+      audio.playSelect();
+      this.loadChapterById(this.currentNode.nextChapter);
     } else if (this.currentNode && this.currentNode.next) {
       audio.playSelect();
       this.loadScene(this.currentNode.next);
@@ -585,6 +597,10 @@ class VNEngine {
       this.readChoices.add(choice.targetNode);
     }
     this.hideChoices();
+    if (choice.targetChapter) {
+      this.loadChapterById(choice.targetChapter);
+      return;
+    }
     if (choice.targetNode) {
       this.loadScene(choice.targetNode);
     }

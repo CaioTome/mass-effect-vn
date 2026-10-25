@@ -12,6 +12,7 @@ export const chapter01 = {
   title: "A Third Chance",
   background: "assets/backgrounds/reaper_chamber.jpg",
   startNode: "awakening_01",
+  nextChapterId: "chapter_02_shadow_broker",
   nodes: {
     ...nodesPart1,
     ...nodesPart2,
