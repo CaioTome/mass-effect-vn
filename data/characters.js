@@ -28,12 +28,44 @@ export const characters = {
   "hackett": {
     name: "Steven Hackett",
     title: "Admiral of the Fleet",
-    sprite: "assets/portraits/hackett.png"
+    sprite: "assets/portraits/hackett-real.png"
+  },
+  "hackett_real": {
+    name: "Steven Hackett",
+    title: "Admiral of the Fleet",
+    sprite: "assets/portraits/hackett-real.png"
   },
   "catalyst_hackett": {
     name: "The Catalyst",
     title: "Synthesized Projection",
     sprite: "assets/portraits/hackett.png"
+  },
+
+  // Citadel & Chapter 2 Characters
+  "barla_von": {
+    name: "Barla Von",
+    title: "Financial Agent",
+    sprite: "assets/portraits/barla-von.png"
+  },
+  "kaidan": {
+    name: "Kaidan Alenko",
+    title: "Spectre / Alliance Major",
+    sprite: "assets/portraits/kaiden.png"
+  },
+  "kaiden": {
+    name: "Kaidan Alenko",
+    title: "Spectre / Alliance Major",
+    sprite: "assets/portraits/kaiden.png"
+  },
+  "james": {
+    name: "James Vega",
+    title: "N7 Candidate / Alliance Lieutenant",
+    sprite: "assets/portraits/james.png"
+  },
+  "jack": {
+    name: "Jack",
+    title: "Biotic Instructor / Alliance Specialist",
+    sprite: "assets/portraits/jack.png"
   },
 
   // System & Telemetry (No sprite on screen)

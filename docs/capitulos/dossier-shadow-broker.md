@@ -30,10 +30,18 @@ Este capítulo retrata a infiltração de John Shepard na Citadel após seu rena
   - Shepard não possui os sinais digitais de Tali, mas **carrega uma verdade explosiva e ultra-secreta que a galáxia ainda ignora:** o transporte diplomático de Rannoch foi sequestrado por uma célula de guerrilha da Cerberus.
   - Aproximando-se discretamente entre os pesquisadores, Shepard lança uma isca tática cirúrgica sobre o rapto de Tali. Abalada pela precisão da informação, Liara mantém sua compostura pública e concorda em levá-lo a um ambiente blindado e seguro.
 * **Ato 5: O Santuário no Apartamento (Impasse Armado, Renegade Disarm & Desmascaramento):**
-  - No antigo apartamento de luxo de Shepard no Silversun Strip (que ficou como herança para Tali, mas foi vendido por ela para Liara porque Tali partiria para Rannoch, a dor de lembrar John em cada cômodo era insuportável e Liara precisava desesperadamente de um refúgio seguro e impenetrável para reconstruir a rede da Shadow Broker na Citadel), as persianas blindadas descem e as comunicações são bloqueadas.
-  - Acreditando estar com uma ameaça potencial, Liara puxa sua pistola pesada M-5 Phalanx com campo biótico armado.
+  - Shepard e Liara chegam ao antigo apartamento de luxo de Shepard no Silversun Strip. As persianas blindadas descem e as comunicações são bloqueadas.
+  - Desconfiada e em alerta máximo, Liara puxa sua pistola pesada M-5 Phalanx com campo biótico armado.
   - **Renegade Interrupt `[E]`:** Em um reflexo N7 instantâneo, Shepard avança, desarma Liara e desmonta a pistola inteira em campo em menos de dois segundos, espalhando as peças inofensivas no balcão da cozinha.
-  - Shepard despressuriza os lacres pneumáticos do capacete e revela seu rosto vivo e humano. O choque emocional e as lágrimas de Liara fecham o capítulo, abrindo caminho para o *Embrace the Eternity* para validar sua consciência e planejar o resgate de Tali.
+  - Shepard despressuriza os lacres pneumáticos do capacete e revela seu rosto vivo e humano. O choque emocional e as lágrimas quebram a postura da Shadow Broker.
+  - **A Revelação do Apartamento:** Ao ver Shepard reconhecer perplexo seu antigo lar, Liara conta a história que ele desconhecia:
+    - No testamento militar de Shepard, o apartamento de luxo do Silversun Strip ficou como herança para **Tali'Zorah**.
+    - Tali vendeu a propriedade para Liara por três motivos cruciais:
+      1. Estava partindo para Rannoch para liderar a reconstrução de seu mundo natal ao lado dos Geth;
+      2. Permanecer naquele apartamento trazia uma dor insuportável, pois cada cômodo evocava a ausência de John e as memórias vivas da festa da Citadel;
+      3. Liara precisava desesperadamente de uma base fortificada e totalmente fora do radar da Citadel para reerguer a rede de espionagem da Shadow Broker.
+    - Essa revelação torna o ato prévio de Liara levar um mercenário desconhecido até ali infinitamente mais poético, tenso e carregado de vulnerabilidade.
+  - O capítulo se encerra com o convite ao *Embrace the Eternity*, onde Liara toca as têmporas de John para validar sua mente e planejar o resgate de Tali.
 
 ---
 
@@ -193,7 +201,7 @@ Rather than a desolate crime scene or a secret lair, the archives are **in full 
     - *"This pavilion is crawling with C-Sec diagnostic sensors and civilian ears. If the kidnappers realize the Broker has made contact, Tali will be dead before the hour ends. We need an off-grid clean room. Now."*
   - Disturbed, on high combat alert, but desperate to save Tali and deeply unsettled by something eerily familiar in the mercenary's bearing, Liara nods:
     - *"Follow me. Keep your hands where I can see them. One wrong twitch, and you will learn why the Shadow Broker survived the Reapers."*
-  - She escorts him off-grid to her ultimate private sanctum on the station: **Shepard's former luxury penthouse apartment in the Silversun Strip** (the property was legally left to Tali'Zorah after the war, but Tali sold it to Liara before departing for Rannoch, as living among John's memories was emotionally unbearable and Liara urgently needed an off-grid Citadel stronghold).
+  - She escorts the masked mercenary off-grid to her ultimate private sanctum on the station: **the luxury penthouse apartment in the Silversun Strip**—John Shepard's former home, though behind his mercenary visor John has no idea yet why or how Liara possesses it.
 
 ---
 
@@ -204,13 +212,11 @@ Rather than a desolate crime scene or a secret lair, the archives are **in full 
 * **Characters Present:** Shepard (POV), Dr. Liara T'Soni.
 
 ### Narrative Concept & Dramatic Climax
-Shepard and Liara arrive at the penthouse in the Silversun Strip—John's former luxury apartment from the Citadel DLC, preserved with quiet, reverent silence.
+Shepard and Liara arrive at the penthouse in the Silversun Strip—John's former luxury apartment from the Citadel DLC, preserved with quiet, reverent silence. Behind his mercenary visor, John recognizes every familiar angle with an overwhelming surge of emotion, though he maintains tactical discipline.
 
-* **The Penthouse Lore & Emotional Resonance:**
-  - In John's military will, the luxury apartment was bequeathed to **Tali'Zorah**.
-  - However, Tali could not bear the crushing grief of living alone among the physical memories of their shared life and the famous party. Preparing to leave for Rannoch to assist in her people's reconstruction, Tali sold the property to Liara.
-  - For Liara, the apartment serves a dual purpose: a heavily fortified, off-grid command sanctum for rebuilding the Shadow Broker's Citadel network, and the only place on the station where she feels intimately connected to Shepard's memory.
-  - Bringing an anonymous, armed mercenary into this deeply personal sanctuary demonstrates both the desperate urgency of Tali's peril and an unconscious, instinctual draw Liara felt toward the stranger's disciplined presence.
+* **The Penthouse Context & Narrative Staging:**
+  - Bringing an anonymous, armed Terminus mercenary into this deeply personal sanctuary demonstrates both the desperate urgency of Tali's peril and an unconscious, instinctual draw Liara felt toward the stranger's disciplined presence.
+  - At this moment, Shepard does not yet know how or why Liara possesses his former apartment—a revelation that will unfold only after his identity is revealed.
 
 * **The Sudden Standoff:**
   - The instant both cross the threshold, automated security protocols engage: heavy blast shutters slam down over the panoramic Silversun Strip windows, external airlocks deadbolt with hydraulic force, and military-grade electronic scrambling blankets the room.
@@ -237,6 +243,7 @@ Shepard and Liara arrive at the penthouse in the Silversun Strip—John's former
   - The pressurized seals disengage with a loud pneumatic hiss of venting atmosphere (`*pssshhht*`).
   - Shepard lifts off the heavy helmet and sets it down on the counter beside the disassembled pistol.
   - He exhales real, warm, unaugmented human breath.
+
 * **The Living Face & Shattered Grief:**
   - Liara looks up into his exposed face.
   - Her azure biotics extinguish instantly. Her hands begin to tremble violently. Tears immediately spring to her eyes as absolute, paralyzing shock replaces her combat focus.
@@ -244,7 +251,22 @@ Shepard and Liara arrive at the penthouse in the Silversun Strip—John's former
   - Liara whispers in shattered awe and agony:
     - *"By the Goddess... John? No... this... this is impossible! You died on the Crucible! We watched you burn! I... I put your name on the memorial wall with my own hands!"*
   - Shepard takes a soft step forward, his voice gentle, raw, and unmistakably his:
-    - *"It's really me, Liara. All flesh and blood. No Reaper shackles, no Cerberus implants. But Tali is running out of time... and I can't save her without you."*
+    - *"It's really me, Liara. All flesh and blood. No Reaper shackles, no Cerberus implants."*
+
+* **The Apartment Revelation (Liara Tells Shepard the Truth):**
+  - Shepard pauses, glancing around the familiar room—the kitchen island, the lounge where the crew held their final celebration, the wide vista of the Silversun Strip. A puzzled, somber expression crosses his face:
+    - *"Liara... this place. In my military will, filed before the final push on Earth... I left this luxury apartment to Tali. How do you have this? Why did you bring me here?"*
+  - Liara wipes tears from her face, her voice trembling as she shares the heartbreaking truth that John never knew:
+    - After the war, John's will was executed: the Silversun Strip penthouse was legally inherited by **Tali'Zorah**.
+    - However, Tali made the painful decision to sell the property to Liara for **three crucial reasons**:
+      1. **Departure to Rannoch:** Tali was leaving the Citadel to lead the historic reconstruction of Rannoch alongside the newly allied Geth. Her people needed their Admiral, and her duty called her to her homeworld.
+      2. **Unbearable Grief & Memories of John:** Remaining in the apartment was an agonizing torment. Every room, every corridor, the couch, the balcony—every corner echoed with John's presence, their quiet moments, and the memories of the Citadel party they had all shared on the eve of the Reaper war. Walking through those rooms alone felt like drowning in ghosts.
+      3. **The Shadow Broker's Rebuilding:** Liara desperately needed a heavily fortified, off-grid Citadel stronghold—completely insulated from C-Sec scanners and Council monitoring—to secretly rebuild the shattered Shadow Broker information network.
+  - **The Poetic Irony & Emotional Weight:**
+    - Liara looks at John, her voice shaking with the vulnerability of the realization:
+      - *"Do you understand what it felt like to bring an unknown Terminus mercenary here, John? This apartment was the only place left in the galaxy where I could feel your presence. It was our sanctuary... and Tali's deepest wound. I brought an armed stranger into your home because I was ready to do anything—risk anything—to find Tali. And the entire time... it was you under that armor."*
+    - Hearing of Tali's immense grief and enduring love strikes John to his core, intensifying his resolve beyond anything he felt before:
+      - *"She carried that pain all this time... and now Cerberus has her. We're going to get her back, Liara. Whatever it takes."*
 
 * **Ending Hook (Bridge to Chapter 3 / Embrace the Eternity):**
   - Shepard reaches out and gently extends his hands:
