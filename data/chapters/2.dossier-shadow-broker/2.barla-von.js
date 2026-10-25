@@ -3,18 +3,18 @@
 
 export const nodesPart2 = {
   "barla_von_arrival": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I enter the discreet financial consulting suite nestled deep within the Financial District. The air is quiet, cooled by private server racks. Behind a curved desk of polished obsidian sits Barla Von, his pressure suit hissing in rhythmic mechanical breaths.]",
+    text: "[I step into the high-end wealth management suite in the Financial District. The air is cooled to an exact chill, insulated by armored glass partitions overlooking the sprawling neon arcs of the station. Behind a massive desk of black marble sits Barla Von, his pressure suit hissing with every measured intake of breath.]",
     next: "barla_von_greet"
   },
 
   "barla_von_greet": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* I do not know what scrap or battlefield salvage you think you have to sell, mercenary, but my office handles high-yield galactic bonds, not Terminus plundered metal. State your business or return to the docks.",
+    text: "*Hiss-pant* I do not know what salvage or Terminus scrap you believe you can liquidate here, mercenary, but my agency oversees multi-billion-credit galactic portfolios. We do not barter with sellswords. State your business or return to the docks.",
     next: "choice_barla_von"
   },
 
@@ -24,79 +24,87 @@ export const nodesPart2 = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"Account 884-Omicron. Blind routing protocol through the Citadel Bank. The Broker's primary ledger.\"",
-        targetNode: "barla_choice_insider",
+        text: "\"I know who you really report to, Von. You handle covert Citadel assets for the Shadow Broker.\"",
+        targetNode: "barla_choice_broker_asset",
         effects: { paragon: 1 }
       },
       {
-        text: "\"Cut the accountant act, Von. I didn't come for bonds. I need Dr. T'Soni, and you know exactly where she is.\"",
-        targetNode: "barla_choice_direct",
+        text: "\"Cut the financial posture, Barla. I know you work for the Broker, and I need Dr. Liara T'Soni.\"",
+        targetNode: "barla_choice_direct_liara",
         effects: { renegade: 1 }
       }
     ]
   },
 
-  "barla_choice_insider": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+  "barla_choice_broker_asset": {
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[My modulator rasps low and steady.] Account 884-Omicron. Blind routing protocol through the Citadel Bank. The Shadow Broker's primary Citadel disbursement ledger. Still clearing dividends, Barla Von?",
+    text: "[My modulator rasps low, deliberate and cold.] I didn't come for investment yields, Barla. I know who you really report to. You manage off-grid financial accounts and local contacts for the Shadow Broker. And right now, I need to reach Dr. Liara T'Soni.",
     next: "barla_von_shock"
   },
 
-  "barla_choice_direct": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+  "barla_choice_direct_liara": {
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I lean over his desk, letting the armored gauntlets rest within inches of his terminal.] Cut the accountant act, Von. I didn't come for bonds. I need Dr. T'Soni, and you manage her off-grid Citadel assets.",
+    text: "[I plant my armored gauntlets firmly on the polished marble counter.] Cut the banker posture, Von. I know you've laundered operations for the Shadow Broker for over a decade. I need Dr. Liara T'Soni, and you are going to tell me where she is.",
     next: "barla_von_shock"
   },
 
   "barla_von_shock": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* By the spirits... How does an anonymous mercenary know that routing key?! That cipher is buried beneath forty layers of encrypted quantum algorithms! Who gave you that protocol?!",
+    text: "*Hiss-pant* By the spirits! Keep your voice down, you lunatic! *Hiss-pant* How does an anonymous mercenary from the Terminus know about my affiliation with the Broker?! And why in the Council's name are you tracking Dr. T'Soni? She is a renowned Prothean scholar, a war hero... a public figure with Alliance security details!",
     next: "shepard_barla_demand"
   },
 
   "shepard_barla_demand": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "Someone who knows the Broker inside and out. Where is Liara, Von? I need a clean channel with her immediately.",
+    text: "She's in danger, and so is someone she cares about. I have intelligence that cannot pass through public comms without getting people killed. Where is she, Von?",
     next: "barla_von_crisis"
   },
 
   "barla_von_crisis": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* If you truly know the network, mercenary, then you must know the Broker's local surveillance was shattered during the Reaper assault. Station relay towers collapsed. Half our listening posts on the Presidium are stone cold blind.",
+    text: "*Hiss-pant* Even if I wanted to help you, mercenary, the Broker's local surveillance grid is crippled! When the Citadel was dragged into the Sol system, relay towers collapsed across five sectors. Our listening nodes on the station are completely dark. We are blind.",
     next: "barla_von_deal_01"
   },
 
   "barla_von_deal_01": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* Dr. T'Soni moves under high security. Even I do not have a live satellite lock on her position while the relays are dead. But we can change that... if you have the stomach for field work.",
+    text: "*Hiss-pant* Dr. T'Soni moves between reconstruction sites and archive vaults under strict secrecy. My terminals cannot locate her while the network is fractured. But we can solve each other's problems... if you have the nerve for field operations.",
     next: "barla_von_deal_02"
   },
 
   "barla_von_deal_02": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "[Barla Von pulls a velvet-lined case from beneath his desk and slides two miniature carbon-fiber transceivers across the counter.] Military-grade micro-wiretaps. Sub-quantum frequency. C-Sec sweeps will never detect them.",
+    text: "[Barla Von touches a biometric switch beneath the desk. A concealed compartment opens, revealing two sleek carbon-alloy modules.] Military-grade micro-wiretaps. Quantum encrypted. C-Sec sweeps will never detect them.",
     next: "barla_von_deal_03"
   },
 
   "barla_von_deal_03": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* Plant the first in the communications junction at the Presidium Embassies. Plant the second at the public terminal in the Commons Memorial plaza. The moment both devices link, the Broker's system will triangulate Dr. T'Soni's exact location on the station.",
+    text: "*Hiss-pant* I need you to install them in two critical nexus points in a strict sequence to calibrate the triangulation algorithm: First, plant the first unit in the public data hub at the Commons Memorial plaza. Then, take the transit to the Presidium and plant the second unit at the embassy communications relay.",
+    next: "barla_von_deal_04"
+  },
+
+  "barla_von_deal_04": {
+    background: "assets/backgrounds/citadel_financial.jpg",
+    present: ["barla_von"],
+    speaker: "barla_von",
+    text: "*Hiss-pant* The moment the second wiretap syncs with the first, the Broker's subnet will lock onto Dr. T'Soni's personal omni-tool signal and feed her exact station coordinates directly to your armor's HUD.",
     next: "choice_barla_accept"
   },
 
@@ -106,12 +114,12 @@ export const nodesPart2 = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"Two relays. Consider it done, Barla. Keep your receivers tuned.\"",
+        text: "\"First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.\"",
         targetNode: "barla_accept_paragon",
         effects: { paragon: 1 }
       },
       {
-        text: "\"If those wiretaps trigger an alarm, Von, I'll come back and dismantle that respirator myself.\"",
+        text: "\"If this telemetry leads me into a C-Sec ambush, Von, you'll be answering to my shotgun.\"",
         targetNode: "barla_accept_renegade",
         effects: { renegade: 1 }
       }
@@ -119,26 +127,34 @@ export const nodesPart2 = {
   },
 
   "barla_accept_paragon": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I take the two micro-transceivers and pocket them into my belt mag-pouches.] Two relays. Consider it done, Barla. Keep your receivers tuned to the handshake signal.",
+    text: "[I secure both micro-wiretaps into my armored tactical mag-pouches.] First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.",
     next: "barla_von_depart"
   },
 
   "barla_accept_renegade": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "shepard",
-    text: "[I snatch the transceivers off the desk.] If those wiretaps trigger an alarm, Von, I'll come back and dismantle that pressure suit myself.",
+    text: "[I snatch the wiretaps off the marble desk.] If this telemetry leads me into a C-Sec ambush, Von, you'll be answering to my shotgun.",
     next: "barla_von_depart"
   },
 
   "barla_von_depart": {
-    background: "assets/backgrounds/shadow_broker_sanctum.jpg",
+    background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* The transceivers are flawless, soldier. Go to the Presidium first. The embassy relay awaits.",
-    next: "presidium_arrival"
+    text: "*Hiss-pant* The Broker values results, mercenary, not threats. Take the rapid transit to the Commons. The War Memorial plaza is your first target.",
+    next: "transit_to_commons"
+  },
+
+  "transit_to_commons": {
+    background: "assets/backgrounds/commons_memorial.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[I leave the Financial District and board the monorail speeding toward the Commons. The station's artificial twilight deepens outside the windows as the train glides toward the solemn expanse of the War Memorial.]",
+    next: "commons_arrival"
   }
 };

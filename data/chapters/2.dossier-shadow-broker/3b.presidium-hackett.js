@@ -1,0 +1,116 @@
+// data/chapters/2.dossier-shadow-broker/3b.presidium-hackett.js
+// Act 3B: Presidium Embassies (Alliance Legacy & The Podium: Jack, Kaidan, James)
+
+export const nodesPart3b = {
+  "presidium_arrival": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[The elevator opens onto the Presidium Embassy walkway. Sunlight glints across the tranquil indoor reflection lake, framed by pristine white curved arches and manicured alien gardens. Even with scaffolding lining the upper ceiling, the Presidium radiates peace and architectural magnificence.]",
+    next: "presidium_relay_approach"
+  },
+
+  "presidium_relay_approach": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[I move toward the embassy communications hub concealed behind a decorative planter. Slipping off the access grate, I snap the second micro-wiretap into the optical relay bus.]",
+    next: "presidium_relay_planted"
+  },
+
+  "presidium_relay_planted": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "system",
+    text: "SHADOW BROKER SUBNET // DUAL NODE HANDSHAKE COMPLETE. SIGNAL AT 100%. TRIANGULATING ENCRYPTED BIOMETRICS... TARGET IDENTIFIED: DR. LIARA T'SONI. LOCATION: CITADEL ARCHIVES - PRESERVATION WING (PRE-HISTORIC TELEMETRY VAULT).",
+    next: "presidium_ceremony_cue"
+  },
+
+  "presidium_ceremony_cue": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[Before I can pull back into the corridor, a crisp military trumpet sounds across the embassy terrace. Above on the diplomatic balcony, an honor guard snaps to attention. A voice resonates over the speakers: 'All personnel, stand at attention for Fleet Admiral Steven Hackett.']",
+    next: "presidium_hackett_podium"
+  },
+
+  "presidium_hackett_podium": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["hackett_real"],
+    speaker: "hackett_real",
+    text: "[Admiral Steven Hackett steps up to the central diplomatic podium, his chest adorned with the highest Alliance honors, his voice carrying unmistakable command.] 'Ambassadors, soldiers, citizens of the Citadel. Two months ago, the Reapers believed our diversity was a fatal weakness.'",
+    next: "presidium_hackett_speech_02"
+  },
+
+  "presidium_hackett_speech_02": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["hackett_real"],
+    speaker: "hackett_real",
+    text: "'They were wrong. One human proved that when krogan, turian, asari, quarian, and human stand shoulder to shoulder, nothing in this galaxy can extinguish our flame. Commander John Shepard gave everything to forge this united front. But peace is not maintained by monuments—it is defended by those who take up the mantle.'",
+    next: "presidium_hackett_calls_kaidan"
+  },
+
+  "presidium_hackett_calls_kaidan": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["hackett_real"],
+    speaker: "hackett_real",
+    text: "'To lead humanity's next generation of galactic guardians, the Council has vested authority in our first Spectre officer. I call forward Major Kaidan Alenko.'",
+    next: "presidium_kaidan_enters_podium"
+  },
+
+  "presidium_kaidan_enters_podium": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["kaidan"],
+    speaker: "kaidan",
+    text: "[Major Kaidan Alenko steps to the podium, clad in his Spectre armor and dark tactical cape. His eyes are steady, carrying the solemn weight of command.] 'Thank you, Admiral. Commander Shepard was my commanding officer, my mentor, and my brother. He taught us that being a Spectre isn't about unchecked power—it's about bearing impossible burdens so others don't have to.'",
+    next: "presidium_kaidan_calls_candidates"
+  },
+
+  "presidium_kaidan_calls_candidates": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["kaidan"],
+    speaker: "kaidan",
+    text: "'To honor John's legacy, the Alliance and the Citadel Council have authorized the expansion of our joint Spectre initiative. Today, I am proud to present the candidates entering humanity's Spectre pipeline under my direct mentorship: Lieutenant James Vega and Specialist Jack.'",
+    next: "presidium_podium_trio_reveal"
+  },
+
+  "presidium_podium_trio_reveal": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["james", "kaidan", "jack"],
+    speaker: "kaidan",
+    text: "[Kaidan gestures to both sides of the podium. James Vega takes the left flank, tall and broad-shouldered in crisp Alliance dress service blues. Jack takes the right flank, clad in custom Alliance specialist tactical leather, her biotic amp cords humming with faint indigo energy.]",
+    next: "presidium_vega_speech"
+  },
+
+  "presidium_vega_speech": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["james", "kaidan", "jack"],
+    speaker: "james",
+    text: "[Vega straightens into a razor-sharp N7 salute.] 'The Commander showed me what it means to lead from the front, loco. He put his boots on Earth when everything was burning. We're going to make sure the galaxy never forgets what he stood for. Oorah.'",
+    next: "presidium_jack_speech"
+  },
+
+  "presidium_jack_speech": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["james", "kaidan", "jack"],
+    speaker: "jack",
+    text: "[Jack crosses her tattooed arms with a sharp smirk, though her eyes carry genuine, mature warmth.] 'You all know I hate military speeches. But Shepard gave a damn when nobody else did. He turned a bunch of biotic misfits into heroes. Any bastard who threatens this peace will have to go through us first.'",
+    next: "presidium_shepard_pride"
+  },
+
+  "presidium_shepard_pride": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["james", "kaidan", "jack"],
+    speaker: "shepard",
+    text: "[Standing concealed behind the marble colonnade, watching the trio standing shoulder to shoulder on the podium, my chest swells with fierce, emotional pride. Vega making Spectre. Jack mentoring students. Kaidan commanding with honor. They survived. They are carrying the torch.]",
+    next: "presidium_shepard_farewell"
+  },
+
+  "presidium_shepard_farewell": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: [],
+    speaker: "shepard",
+    text: "[Behind my polarized visor, I whisper softly.] Stand tall, all three of you. Guard the Citadel... while I go get Tali back. [I turn away into the shadow of the colonnade and march toward the Citadel Archives.]",
+    next: "archives_arrival"
+  }
+};

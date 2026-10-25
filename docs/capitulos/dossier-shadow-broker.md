@@ -17,18 +17,20 @@ Este capítulo retrata a infiltração de John Shepard na Citadel após seu rena
   - Shepard desembarca de um cargueiro civil descaracterizado usando blindagem pesada sem insígnias, visor polarizado opaco e modulador vocal eletrônico.
   - No posto de inspeção de C-Sec, a identidade civil de contratante forjada com perfeição pelos Reapers (Catalyst) permite que ele entre sem dificuldades. Como a Citadel ainda se recupera da devastação da invasão, milhões de registros governamentais foram perdidos, servidores estão corrompidos e incontáveis cidadãos estão deslocados ou desaparecidos. A C-Sec, exausta e sobrecarregada com reconstrução e logística humanitária, opera sob protocolos mais tolerantes e flexíveis, liberando o mercenário sem complicações burocráticas.
 * **Ato 2: O Escritório de Barla Von (A Missão das Escutas):**
-  - Para localizar Liara sem acionar varreduras na extranet pública, Shepard vai ao Distrito Financeiro e aborda Barla Von, o banqueiro Volus da Shadow Broker.
-  - Barla Von revela que a rede de inteligência da Broker sofreu graves danos físicos durante a guerra e que pontos estratégicos estão no escuro. Ele faz um acordo: se Shepard instalar duas micro-escutas militares em locais-chave (no nó de comunicações diplomáticas do Presidium e no terminal público do Commons), o sistema integrará os sinais e triangulará a localização exata de Liara na estação.
-* **Ato 3: A Operação das Escutas (Presidium & Commons Memorial):**
-  - Uma missão linear, mas ricamente interativa, onde Shepard tem a liberdade de ser puramente objetivo ou explorar a profundidade emocional de cada local:
-    - **Ato 3A (Presidium - O Legado da Aliança: Hackett, Kaidan, Jack & James):** Shepard localiza o relé de comunicações das embaixadas e instala a primeira escuta. O jogador pode optar por ser rápido e furtivo (apenas plugar o dispositivo e partir) ou permanecer no mezanino para presenciar uma comovente cerimônia da Aliança: o Almirante Steven Hackett discursa sobre a coragem de Shepard e como ele uniu a galáxia. Em seguida, o Major Kaidan Alenko (Spectre) faz um tributo emocionado ao seu mentor, prometendo manter seu legado vivo ao treinar a nova geração de candidatos a Spectre da humanidade: James Vega e Jack. Shepard observa seus antigos companheiros das sombras com imenso orgulho e um doloroso aperto no peito, forçando-se a permanecer no anonimato.
-    - **Ato 3B (Commons - O Memorial dos Caídos):** Shepard vai ao terminal da praça central para fixar a segunda escuta. O jogador pode apenas plugar o transmissor e receber as coordenadas, ou se aproximar para presenciar Joker e EDI velando o nome de *Commander John Shepard* no mural de obsidiana, com a oportunidade de acionar o Paragon Interrupt `[Q]` para prestar uma homenagem silenciosa.
-    - Concluídas as duas instalações, a rede da Shadow Broker se sincroniza e revela que Liara está nos Arquivos da Citadel.
+  - Para localizar Liara sem acionar varreduras na extranet pública, Shepard vai ao Distrito Financeiro e aborda Barla Von.
+  - Barla Von reconhece a autoridade de Shepard sobre a Shadow Broker e explica que a rede local sofreu severos danos na invasão. Ele entrega duas micro-escutas militares em sequência obrigatória:
+    1. Primeiro no terminal do **Commons (Memorial dos Caídos)**;
+    2. Segundo no nó de comunicações do **Presidium (Embaixadas)**, triangulando a Broker diretamente para os Arquivos.
+* **Ato 3: A Operação das Escutas (Commons Memorial & Presidium Embassies):**
+  - Uma missão perfeitamente linear e profundamente emocional:
+    - **Ato 3A (Commons - O Memorial dos Caídos):** Shepard vai ao terminal da praça central para fixar a primeira escuta. Ele presencia Joker e EDI velando o nome de *Commander John Shepard* no mural de obsidiana, com a oportunidade de acionar o Paragon Interrupt `[Q]` para prestar uma homenagem silenciosa. Escuta 1 online (50%).
+    - **Ato 3B (Presidium - O Legado da Aliança: Hackett & Pódio [Jack, Kaidan, James]):** Shepard segue para o Presidium e instala a segunda escuta (sinal 100%). Em seguida, presencia a comovente cerimônia da Aliança: o Almirante Steven Hackett discursa sobre a coragem de Shepard e a união galáctica. Em seguida, o Major Kaidan Alenko (Spectre) sobe ao pódio acompanhado de seus novos candidatos no palco em formação de trio: **James Vega** e **Jack**. Kaidan homenageia Shepard como seu mentor e promete manter seu legado vivo. Shepard observa seus antigos companheiros das sombras com imenso orgulho e parte em direção aos Arquivos.
+    - Concluídas as duas instalações, a rede da Shadow Broker se sincroniza e revela que Liara está nos Arquivos da Citadel (logo ao lado no anel do Presidium).
 * **Ato 4: Os Arquivos da Citadel (O Lore Asari & A Isca de Tali):**
-  - Os Arquivos estão em plena reconstrução pós-guerra, com diversos historiadores Asari, curadores e pesquisadores comparando relíquias e dados históricos resgatados.
-  - **Liara T'Soni está no local em sua faceta pública:** renomada arqueóloga, especialista em Protheanos e heroína de guerra da Normandy, agindo como uma acadêmica normal e inspecionando arquivos da queda de Thessia.
-  - Shepard não possui os sinais digitais de Tali, mas **carrega uma verdade explosiva e ultra-secreta que a galáxia ainda ignora:** o transporte diplomático de Rannoch foi sequestrado por uma célula de guerrilha da Cerberus.
-  - Aproximando-se discretamente entre os pesquisadores, Shepard lança uma isca tática cirúrgica sobre o rapto de Tali. Abalada pela precisão da informação, Liara mantém sua compostura pública e concorda em levá-lo a um ambiente blindado e seguro.
+  - Os Arquivos estão em plena reconstrução pós-guerra, com diversos historiadores Asari, curadores e pesquisadores comparando relíquias e dados históricos resgatados da queda de Thessia.
+  - **Liara T'Soni está no local em sua faceta pública:** renomada arqueóloga, especialista em Protheanos e heroína de guerra da Normandy, agindo como acadêmica normal (`Dra. Liara T'Soni // Arqueóloga & Historiadora`).
+  - Shepard não possui os sinais digitais de Tali, mas **carrega uma verdade explosiva e ultra-secreta que a galáxia ainda ignora:** o transporte diplomático de Rannoch foi sequestrado por uma célula da Cerberus e Tali'Zorah é refém.
+  - Aproximando-se discretamente com um datapad, Shepard lança a isca tática e oferece ajuda. Abalada, Liara mantém sua compostura pública e convoca o mercenário para uma sala blindada e fora do radar: a cobertura no Silversun Strip.
 * **Ato 5: O Santuário no Apartamento (Impasse Armado, Renegade Disarm & Desmascaramento):**
   - Shepard e Liara chegam ao antigo apartamento de luxo de Shepard no Silversun Strip. As persianas blindadas descem e as comunicações são bloqueadas.
   - Desconfiada e em alerta máximo, Liara puxa sua pistola pesada M-5 Phalanx com campo biótico armado.
@@ -54,8 +56,8 @@ flowchart TD
     Start(["Start: Chapter 2"]) --> Act1["Act 1: Arrival at Citadel Gates<br/>(Forged Reaper Credentials & Lenient C-Sec)"]
     Act1 --> Act2["Act 2: Barla Von's Office<br/>(The Deal: Plant Covert Wiretaps)"]
     
-    Act2 --> Act3A["Act 3A: Presidium Embassies<br/>(Alliance Legacy: Hackett, Kaidan, Jack & James)"]
-    Act3A --> Act3B["Act 3B: Commons Memorial<br/>(Plant Wiretap 2 & Optional Joker/EDI Vigil)"]
+    Act2 --> Act3A["Act 3A: Commons Memorial<br/>(Plant Wiretap 1 & Joker/EDI Vigil)"]
+    Act3A --> Act3B["Act 3B: Presidium Embassies<br/>(Plant Wiretap 2 & Podium: Hackett, Kaidan, Jack & James)"]
     
     Act3B --> Act4["Act 4: Citadel Archives<br/>(Network Triangulated: Public Encounter with Liara)"]
     

@@ -13,6 +13,11 @@ export const characters = {
     title: "Shadow Broker",
     sprite: "assets/portraits/Liara.png"
   },
+  "liara_public": {
+    name: "Dr. Liara T'Soni",
+    title: "Archaeologist & Historian",
+    sprite: "assets/portraits/Liara.png"
+  },
   "garrus": {
     name: "Garrus Vakarian",
     title: "Task Force Commander",
@@ -22,6 +27,21 @@ export const characters = {
     name: "Tali'Zorah",
     title: "Quarian Admiral",
     sprite: "assets/portraits/Tali.png"
+  },
+  "joker": {
+    name: "Jeff 'Joker' Moreau",
+    title: "Flight Lieutenant",
+    isPlayer: false
+  },
+  "edi": {
+    name: "EDI",
+    title: "Enhanced Defense Intelligence",
+    isPlayer: false
+  },
+  "csec_officer": {
+    name: "C-Sec Inspector",
+    title: "Dockside Customs",
+    isPlayer: false
   },
 
   // Command & Projections

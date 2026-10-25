@@ -1,8 +1,8 @@
 // data/chapters/2.dossier-shadow-broker/index.js - Chapter 2: Dossier: Shadow Broker
 import { nodesPart1 } from "./1.citadel-gates.js";
 import { nodesPart2 } from "./2.barla-von.js";
-import { nodesPart3a } from "./3a.presidium-hackett.js";
-import { nodesPart3b } from "./3b.commons-memorial.js";
+import { nodesPart3a } from "./3a.commons-memorial.js";
+import { nodesPart3b } from "./3b.presidium-hackett.js";
 import { nodesPart4 } from "./4.citadel-archives.js";
 import { nodesPart5 } from "./5.apartment-sanctum.js";
 
