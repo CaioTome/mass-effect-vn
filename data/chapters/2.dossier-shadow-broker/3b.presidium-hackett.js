@@ -113,22 +113,6 @@ export const nodesPart3b = {
     present: ["james", "kaidan", "jack"],
     speaker: "kaidan",
     text: "[Kaidan gestures to both sides of the podium. James Vega takes the left flank, tall and broad-shouldered in crisp Alliance dress service blues. Jack takes the right flank, clad in custom Alliance specialist tactical leather, her biotic amp cords humming with faint indigo energy.]",
-    next: "presidium_vega_speech"
-  },
-
-  "presidium_vega_speech": {
-    background: "assets/backgrounds/presidium_embassy.jpg",
-    present: ["james", "kaidan", "jack"],
-    speaker: "james",
-    text: "[Vega straightens into a razor-sharp N7 salute.] 'The Commander showed me what it means to lead from the front, loco. He put his boots on Earth when everything was burning. We're going to make sure the galaxy never forgets what he stood for. Oorah.'",
-    next: "presidium_jack_speech"
-  },
-
-  "presidium_jack_speech": {
-    background: "assets/backgrounds/presidium_embassy.jpg",
-    present: ["james", "kaidan", "jack"],
-    speaker: "jack",
-    text: "[Jack crosses her tattooed arms with a sharp smirk, though her eyes carry genuine, mature warmth.] 'You all know I hate military speeches. But Shepard gave a damn when nobody else did. He turned a bunch of biotic misfits into heroes. Any bastard who threatens this peace will have to go through us first.'",
     next: "presidium_shepard_pride"
   },
 
@@ -136,7 +120,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["james", "kaidan", "jack"],
     speaker: "shepard",
-    text: "[Standing concealed behind the marble colonnade, watching the trio standing shoulder to shoulder on the podium, my chest swells with fierce, emotional pride. Vega making Spectre. Jack mentoring students. Kaidan commanding with honor. They survived. They are carrying the torch.]",
+    text: "[Standing concealed behind the marble colonnade, watching the trio standing shoulder to shoulder on the podium, my chest swells with fierce, emotional pride. Vega and Jack making Spectre. Kaidan commanding with honor. They survived. They are carrying the torch.]",
     next: "presidium_shepard_farewell"
   },
 
