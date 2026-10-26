@@ -88,7 +88,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "'To lead humanity's next generation of galactic guardians, the Council has vested authority in our first Spectre officer. I call forward Major Kaidan Alenko.'",
+    text: "'To lead humanity's next generation of galactic guardians, the Council has vested authority in our second human Spectre. I call forward Major Kaidan Alenko.'",
     next: "presidium_kaidan_enters_podium"
   },
 

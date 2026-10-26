@@ -88,7 +88,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[Liara's breath hitches sharply. Her eyes widen in stunned disbelief, and her fingers dig into the edge of the console with white-knuckle force. Her Broker network had flagged the Quarian communications silence as an anomaly, but no mercenary in the galaxy could possibly know that Cerberus was responsible or that Tali was on board.]",
+    text: "[Liara's breath catches. Her composed scholar mask shatters in a fraction of a second, her fingers gripping the edge of the terminal so hard her knuckles turn white. I can see the rapid calculations behind her eyes: she's evaluating whether I'm an extortionist, a Cerberus plant, or an actual lead. But hearing Tali's name tied to Cerberus hit a raw nerve that no amount of academic detachment can hide.]",
     next: "archives_shepard_insider"
   },
 
@@ -105,14 +105,14 @@ export const nodesPart4 = {
     present: ["liara_public"],
     speaker: "liara_public",
     text: "[A master of statecraft, Liara forces her expression into serene academic detachment before the nearby researchers turn their heads. She addresses her colleagues smoothly.] 'Pardon me, scholars. This contractor has submitted anomalous encrypted telemetry from an unmapped Terminus dig site. It requires immediate quarantine review in my private office.'",
-    next: "archives_shepard_cleanroom"
+    next: "archives_liara_cleanroom"
   },
 
-  "archives_shepard_cleanroom": {
+  "archives_liara_cleanroom": {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
-    speaker: "shepard",
-    text: "[In a guarded whisper.] This pavilion has active station microphones and civilian ears. If the kidnappers realize the Broker has made contact, Tali will be dead before the hour ends. We need an off-grid clean room. Now.",
+    speaker: "liara_public",
+    text: "[The moment the researchers turn their backs, her voice drops to a tense, razor-sharp whisper.] Not another word out here. This pavilion is crawling with C-Sec acoustic monitors and civilian ears. If Cerberus realizes someone has picked up their trail, Tali won't survive the hour.",
     next: "archives_liara_command"
   },
 
@@ -120,7 +120,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "liara_public",
-    text: "[Her eyes narrow, assessing me with unsettling, combat-hardened intensity.] Follow me. Keep your hands where I can see them. One wrong twitch, and you will learn why the Shadow Broker survived the Reapers.",
+    text: "[Her eyes narrow with lethal, combat-hardened focus as she gestures toward the private transit corridor.] Follow me to an off-grid room. Keep your hands in plain sight. If this is an ambush or a shakedown, contractor, you will learn firsthand how a member of Shepard's crew deals with threats.",
     next: "archives_to_penthouse_transit"
   },
 
