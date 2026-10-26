@@ -30,7 +30,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "The apartment is sealed. Communications are dead. Scanners are scrambled. Nobody leaves this room until I have the truth. Who contracted you? How do you know the Admiralty was taken by Cerberus? And why do you move like an N7 operator?!",
+    text: "The apartment is sealed. Communications are dead. Scanners are scrambled. Nobody leaves this room until I have the truth. Who contracted you? How do you know the Admiralty was taken by Cerberus?",
     interrupt: {
       renegade: {
         targetNode: "penthouse_renegade_disarm",
@@ -52,7 +52,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[Instead of aiming the weapon back at her, my fingers work with textbook N7 muscle memory: slide release tripped, magazine dropped into my palm, recoil guide disengaged. In two seconds flat, her M-5 Phalanx is completely field-stripped into harmless components across the kitchen counter.]",
+    text: "[Instead of aiming the weapon back at her, my fingers work with textbook N7 muscle memory: slide release tripped, magazine dropped into my palm, recoil guide disengaged. In two seconds flat, her M-5 Phalanx is completely field-stripped into harmless components across the kitchen floor.]",
     next: "penthouse_disarm_reaction"
   },
 
@@ -60,7 +60,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara stares at her empty hands, then down at the stripped barrel, spring, and slide resting on the granite counter. Her breath hitches in pure disorientation. Only one soldier in the galaxy ever handled a Phalanx with that exact muscle-memory cadence.] You... that cadence... who are you?!",
+    text: "[Liara stares at her empty hands, then down at the stripped barrel, spring, and slide resting on the granite counter. Her breath hitches in pure disorientation. Only one soldier in the galaxy ever handled a Phalanx with that exact muscle-memory cadence.] You... who are you?!",
     next: "penthouse_unmask_action"
   },
 
@@ -92,7 +92,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[I lower the cowl, stepping fully into the warm light of the penthouse. I exhale warm, real human breath. The room falls into absolute, breathless silence.]",
+    text: "[I lower the cowl, stepping fully into the light of the penthouse. The room falls into absolute, breathless silence.]",
     next: "penthouse_liara_shock"
   },
 
@@ -100,7 +100,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara freezes against the kitchen counter, her biotics collapsing. Her eyes widen in stunned, analytical disbelief as her gaze traces my face.] By the Goddess... No. No, that's impossible. Shepard? You died on the Crucible. We watched the Citadel fire! I placed your name on the memorial wall with my own hands!",
+    text: "[Liara freezes against the kitchen counter, her biotics collapsing. Her eyes widen in stunned, analytical disbelief as her gaze traces my face.] By the Goddess... No. No, that's impossible. You died on the Crucible. We watched the Citadel fire! I placed your name on the memorial wall with my own hands!",
     next: "penthouse_liara_third_chance"
   },
 
@@ -108,7 +108,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Her voice hardens with guarded skepticism, the pragmatic Shadow Broker fighting through the shock.] What is this? A clone? A Cerberus neural echo? A synthetic construct sent to destabilize the Citadel? I spent two grueling years hunting your body across the galaxy and handing your remains to the Lazarus Project just to buy you a second chance at life. I don't believe in 'third' chances, Shepard. Nobody gets a third chance.",
+    text: "[Her voice hardens with guarded skepticism, the pragmatic Shadow Broker fighting through the shock.] What is this? A clone? A Cerberus neural echo? A synthetic construct sent to destabilize the Citadel? I spent two grueling years hunting your body across the galaxy and handing your remains to the Lazarus Project just to buy you a second chance at life. I don't believe in 'third' chances. Nobody gets a third chance.",
     next: "penthouse_shepard_confirm"
   },
 
@@ -116,7 +116,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[I take a calm, deliberate step forward, keeping my hands visible and open.] It's really me, Liara. No Reaper indoctrination, no Cerberus cybernetics, and no clone. 100% mortal flesh and blood.",
+    text: "[I take a calm, deliberate step forward, keeping my hands visible and open.] It's really me, Liara. No Reaper indoctrination, no Cerberus cybernetics, and no clone.",
     next: "penthouse_apartment_inquiry"
   },
 
@@ -132,7 +132,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara crosses her arms, letting out a slow, steadying breath. The hardened armor of the Broker softens into solemn exhaustion.] Shepard... after the war ended, your will was honored to the letter. Anderson's penthouse was legally transferred to Tali. But she couldn't stay. She sold it to me before leaving the Citadel.",
+    text: "[Liara crosses her arms, letting out a slow, steadying breath. The hardened armor of the Broker softens into solemn exhaustion.] After the war ended, your will was honored to the letter. Anderson's penthouse was legally transferred to Tali. But she couldn't stay. She sold it to me before leaving the Citadel.",
     next: "penthouse_liara_revelation_02"
   },
 
@@ -156,15 +156,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[She holds my gaze with intense, piercing focus.] Do you realize the operational risk I just took? Bringing an armed, unidentified Terminus mercenary into the only sanctuary I had left... because the telemetry pointed to Tali. I was willing to compromise my entire Citadel network if it gave me one clean lead to get her back. And the entire time... it was you under that cowl.",
-    next: "penthouse_shepard_resolve"
-  },
-
-  "penthouse_shepard_resolve": {
-    background: "assets/backgrounds/shepard_apartment.jpg",
-    present: ["liara"],
-    speaker: "shepard",
-    text: "[The weight of Tali's grief and devotion hits me with overwhelming force. My fists clench tight.] She carried that pain all this time... and now Cerberus has her. We're going to get her back, Liara. Whatever it takes.",
+    text: "[She holds my gaze with intense, piercing focus.] I want to believe you. I truly do... but how? And why only now? I don't understand...",
     next: "penthouse_embrace_eternity"
   },
 
@@ -172,7 +164,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[I extend both hands toward her, palms open.] You don't have to take my word for it. No encrypted padds, no forged telemetry. Melde with me. Look into my mind, Liara. Verify for yourself who I am... and let's go bring Tali home.",
+    text: "[I extend both hands toward her, palms open.] It's complicated, but believe me. You don't have to take my word for it. Look into my mind.",
     next: "penthouse_meld_action"
   },
 
@@ -180,7 +172,15 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "[Liara steps forward, the last barrier of skepticism giving way to profound, solemn focus. She places her hands against my temples. Her eyes darken to an ethereal, radiant black as our consciousnesses link.] 'One mind... no filters. Embrace eternity... Shepard...'",
+    text: "[Liara steps forward, the last barrier of skepticism giving way to profound, solemn focus. She places her hands against my temples. Her eyes darken to an ethereal, radiant black as our consciousnesses link.] 'One mind... no filters. Embrace eternity...'",
+    next: "penthouse_meld_resolution"
+  },
+
+  "penthouse_meld_resolution": {
+    background: "assets/backgrounds/shepard_apartment.jpg",
+    present: ["liara"],
+    speaker: "liara",
+    text: "[Her eyes slowly clear from obsidian back to radiant azure as our minds part. A shiver passes through her as the full truth of my memories settles in—every doubt swept away by absolute certainty. Her voice is soft, but filled with fierce determination.] We're going to bring Tali back, Shepard.",
     next: "chapter_02_complete_hub"
   },
 
