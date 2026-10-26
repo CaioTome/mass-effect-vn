@@ -80,7 +80,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* Dr. T'Soni moves between reconstruction sites and archive vaults under strict secrecy. My terminals cannot locate her while the network is fractured. But we can solve each other's problems... if you have the nerve for field operations.",
+    text: "*Hiss-pant* Dr. T'Soni moves between reconstruction sites and archive vaults under strict secrecy. My terminals cannot pinpoint her while the local grid is fractured. But this is far bigger than one person: restoring station-wide intercept surveillance is the Broker's highest priority right now.",
     next: "barla_von_deal_02"
   },
 
@@ -88,7 +88,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "[Barla Von touches a biometric switch beneath the desk. A concealed compartment opens, revealing two sleek carbon-alloy modules.] Military-grade micro-wiretaps. Quantum encrypted. C-Sec sweeps will never detect them.",
+    text: "[Barla Von touches a biometric switch beneath the desk. A concealed compartment opens, revealing two sleek carbon-alloy modules.] Quantum-encrypted micro-wiretaps. At this very moment, dozens of our covert operatives across the Wards and lower docks are deploying identical modules. We are systematically rebuilding the Shadow Broker's eyes and ears across the entire Citadel.",
     next: "barla_von_deal_03"
   },
 
@@ -96,7 +96,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* I need you to install them in two critical nexus points in a strict sequence to calibrate the triangulation algorithm: First, plant the first unit in the public data hub at the Commons Memorial plaza. Then, take the transit to the Presidium and plant the second unit at the embassy communications relay.",
+    text: "*Hiss-pant* These two specific units link the primary administrative nexus. I need a capable operative to plant them: first, in the public data hub at the Commons Memorial plaza; second, at the Presidium embassy communications junction.",
     next: "barla_von_deal_04"
   },
 
@@ -104,7 +104,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "*Hiss-pant* The moment the second wiretap syncs with the first, the Broker's subnet will lock onto Dr. T'Soni's personal omni-tool signal and feed her exact station coordinates directly to your armor's HUD.",
+    text: "*Hiss-pant* The moment your two nodes bridge into the restored mesh, the Broker won't just lock onto Dr. T'Soni's personal omni-tool—we will have total surveillance over every Council diplomat, C-Sec official, and syndicate boss on the station. You get your target's coordinates fed straight to your HUD... and the Broker gets the Citadel back.",
     next: "choice_barla_accept"
   },
 

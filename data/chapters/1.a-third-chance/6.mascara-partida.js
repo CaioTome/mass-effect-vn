@@ -57,7 +57,7 @@ export const nodesPart6 = {
   "node_ask_about_crew": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "Doctor T'Soni commands the greatest intelligence network, she will be able to inform you far better than our tactical arrays.",
+    text: "Doctor T'Soni commands the greatest intelligence network; she will be able to inform you far better than our tactical arrays.",
     next: "choice_departure_hub"
   },
 

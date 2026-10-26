@@ -36,7 +36,7 @@ export const nodesPart2 = {
   "hackett_calm_01": {
     present: ["hackett"],
     speaker: "hackett",
-    text: "Breathe, Shepard. Your vitals are a mess. You just awoke. Stay where you are until regain your balance.",
+    text: "Breathe, Shepard. Your vitals are a mess. You just awoke. Stay where you are until you regain your balance.",
     next: "shepard_hackett_02"
   },
 

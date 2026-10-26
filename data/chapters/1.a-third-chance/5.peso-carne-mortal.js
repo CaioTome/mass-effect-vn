@@ -60,7 +60,7 @@ export const nodesPart5 = {
   "node_flesh_confident": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "Confidence supported by tactical capability. Your resolve was the defining factor that dismantled the reapers armada.",
+    text: "Confidence supported by tactical capability. Your resolve was the defining factor that dismantled the Reaper armada.",
     next: "biometrics_console"
   },
 
@@ -74,7 +74,7 @@ export const nodesPart5 = {
   "node_flesh_human": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "The essence that defined humanity resistance. A fragile biology driven by an unyielding spirit.",
+    text: "The essence that defined humanity's resistance. A fragile biology driven by an unyielding spirit.",
     next: "biometrics_console"
   }
 };

@@ -195,19 +195,19 @@ export const chapter01 = {
 Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíblia Narrativa em [`docs/planejamento.md`](docs/planejamento.md):
 
 1. **Premissa Central (A Terceira Chance):**
-   - **1ª Chance:** Soldado mortal da Aliança (Earthborn / War Hero de Elysium / Infiltrator analógico).
+   - **1ª Chance:** Soldado da Aliança (Earthborn / War Hero de Elysium / Infiltrator analógico).
    - **2ª Chance:** Arma cibernética do Projeto Lazarus (titânio e circuitos).
-   - **3ª Chance:** Homem puramente biológico gerado via síntese acelerada do Thorian com registros do Lazarus na câmara de biogestação pressurizada de um Reaper. **Sem implantes, sem coleiras cibernéticas, mortal e vulnerável.**
+   - **3ª Chance:** Homem puramente biológico gerado via síntese acelerada do Thorian com registros do Lazarus na câmara de biogestação pressurizada de um Reaper. **Sem implantes, sem coleiras cibernéticas, 100% humano.**
 2. **O Segredo da Sobrevivência & O Disfarce Mercenário:**
    - O Catalyst Paragon avisou: a Cerberus executará Tali sumariamente se souber que Shepard vive. Reapers não realizam resgates furtivos sem causar pânico galáctico.
    - Shepard opera como fantasma com blindagem mercenária anônima, capacete com visor polarizado e modulador vocal.
 3. **A Ameaça da Cerberus & Os Geth Desmilitarizados:**
    - Células de guerrilha da Cerberus nos Terminus sequestraram o Almirantado Quariano para doutrinar seus líderes e, através do respeito dos Criadores, controlar os Geth pacíficos e desmilitarizados.
    - Shepard é a única testemunha viva de que a doutrinação humana do Homem Ilusório é real (ele foi controlado na Citadel e forçado a atirar em Anderson). Seu dever moral é resgatar Tali e purgar permanentemente essa tecnologia.
-4. **Economia Dramática dos Reencontros:**
-   - **Liara T'Soni:** Choque no Sanctum a sós; confirmação telepática via *Embrace the Eternity* de que é a mente pura de John.
-   - **Garrus Vakarian:** Encontro tático tenso em meio à caçada obstinada de Garrus à Cerberus para afogar o luto pelo amigo. Cruzamento das rotas de Garrus com as migalhas digitais de Tali para achar a base.
-   - **Tali'Zorah:** O ápice emocional. O beijo sem máscara sob o sol de Rannoch, onde o sistema imune dela reconhece quimicamente o microbioma celular de John sem febre ou rejeição.
+4. **Economia Dramática dos Reencontros — O Tríptico: Mente, Corpo e Alma:**
+   - **Liara T'Soni ➔ MENTE (Mind):** Choque no Sanctum a sós; ceticismo analítico da Shadow Broker superado pela verificação telepática via *Embrace Eternity*. A mente e a consciência pura de Shepard são confirmadas sem filtros (Capítulo 2).
+   - **Garrus Vakarian ➔ CORPO (Body):** Ação visceral, combate tático e sobrevivência de trincheira. Garrus caça a Cerberus para afogar o luto pelo amigo. O reencontro ocorre no calor de uma emboscada/tiroteio, onde o corpo 100% humano do Shepard (sem armadura cibernética de titânio do Lazarus, ágil e vulnerável) é testado e reconhecido pela cadência de tiro, reflexos N7 e cobertura mútua de veteranos (Capítulo 3).
+   - **Tali'Zorah ➔ ALMA (Soul):** O ápice emocional, amor e intimidade. Diante do penhasco sob o sol de Rannoch, sem máscaras. O beijo onde o sistema imune dela reconhece quimicamente o microbioma de Shepard sem choque ou febre; o descanso do guerreiro onde a alma encontra seu lar definitivo (Capítulo 4).
 
 ---
 
@@ -224,6 +224,7 @@ Ao redigir cenas, diálogos ou nós do roteiro, o agente deve respeitar a Bíbli
 - **Finalização de Áudio/SFX na reta final:** O foco primário no momento é a robustez literária, os ramais e a estrutura de nós; a implementação detalhada de efeitos sonoros avançados (SFX) e trilha ambiente (BGM) será finalizada na reta final do projeto.
 
 ### O que NUNCA fazer:
+- **NUNCA usar clichês batidos como "corpo mortal" ou "deus sintético / cósmico":** São termos desgastados e repetitivos. Em vez disso, tratar o estado de Shepard com sobriedade através de termos naturais como **humano** (*"human"*, *"fully human"*, *"pure organic human flesh and blood"*).
 - **NUNCA usar 2ª pessoa ("You / Your") para Shepard:** Manter sempre o foco na experiência direta em 1ª pessoa ("I / My").
 - **NUNCA colocar NPCs narrando suas próprias ações de cena:** Se houver um evento visual ou transição de personagem, ela deve ser percebida e descrita da perspectiva de Shepard (`[... behind me ...]`).
 - **NUNCA usar letras amarelas para sinalizar avanço de cena:** Deixar o leitor deduzir o avanço naturalmente através do contexto narrativo.
