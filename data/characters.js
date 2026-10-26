@@ -53,7 +53,7 @@ export const characters = {
   "hackett": {
     name: "Steven Hackett",
     title: "Admiral of the Fleet",
-    sprite: "assets/portraits/hackett-real.png"
+    sprite: "assets/portraits/hackett.png"
   },
   "hackett_real": {
     name: "Steven Hackett",
