@@ -48,13 +48,13 @@ export const nodesPart3b = {
     speaker: "shepard",
     choices: [
       {
-        text: "[Ignore what Hackett is going to say and go to Liara immediately]",
+        text: "[Ignore what Hackett is going to say and go to Liara immediately.]",
         targetNode: "presidium_ignore_hackett",
         effects: { renegade: 1 }
       },
       {
-        text: "[Listen to what Hackett has to say]",
-        targetNode: "presidium_hackett_podium",
+        text: "[Listen to what Hackett has to say.]",
+        targetNode: "presidium_hackett_steps_up",
         effects: { paragon: 1 }
       }
     ]
@@ -68,11 +68,19 @@ export const nodesPart3b = {
     next: "archives_arrival"
   },
 
+  "presidium_hackett_steps_up": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["hackett_real"],
+    speaker: "shepard",
+    text: "[Admiral Steven Hackett steps up to the central diplomatic podium, his voice carrying unmistakable command across the silent courtyard.]",
+    next: "presidium_hackett_podium"
+  },
+
   "presidium_hackett_podium": {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "[Admiral Steven Hackett steps up to the central diplomatic podium, his voice carrying unmistakable command across the silent courtyard.] 'Ambassadors, soldiers, citizens of the Citadel. Two months ago, the Reapers believed our diversity was a fatal weakness.'",
+    text: "Ambassadors, soldiers, citizens of the Citadel. Two months ago, the Reapers believed our diversity was a fatal weakness.",
     next: "presidium_hackett_speech_02"
   },
 
@@ -80,7 +88,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "'They were wrong. One human proved that when krogan, turian, asari, quarian, and human stand shoulder to shoulder, nothing in this galaxy can extinguish our flame. Commander Shepard gave everything to forge this united front. But peace is not maintained by monuments—it is defended by those who take up the mantle.'",
+    text: "They were wrong. One human proved that when krogan, turian, asari, quarian, and human stand shoulder to shoulder, nothing in this galaxy can extinguish our flame. Commander Shepard gave everything to forge this united front. But peace is not maintained by monuments—it is defended by those who take up the mantle.",
     next: "presidium_hackett_calls_kaidan"
   },
 
@@ -88,7 +96,15 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["hackett_real"],
     speaker: "hackett_real",
-    text: "'To lead humanity's next generation of galactic guardians, the Council has vested authority in our second human Spectre. I call forward Major Kaidan Alenko.'",
+    text: "To lead humanity's next generation of galactic guardians, the Council has vested authority in our second human Spectre. I call forward Major Kaidan Alenko.",
+    next: "presidium_kaidan_steps_up"
+  },
+
+  "presidium_kaidan_steps_up": {
+    background: "assets/backgrounds/presidium_embassy.jpg",
+    present: ["kaidan"],
+    speaker: "shepard",
+    text: "[Major Kaidan Alenko steps to the podium, clad in his Spectre armor and dark tactical cape. His eyes are steady, carrying the solemn weight of command.]",
     next: "presidium_kaidan_enters_podium"
   },
 
@@ -96,7 +112,7 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["kaidan"],
     speaker: "kaidan",
-    text: "[Major Kaidan Alenko steps to the podium, clad in his Spectre armor and dark tactical cape. His eyes are steady, carrying the solemn weight of command.] 'Thank you, Admiral. Commander Shepard was my commanding officer, my mentor, and my brother. He taught us that being a Spectre isn't about unchecked power—it's about bearing impossible burdens so others don't have to.'",
+    text: "Thank you, Admiral. Commander Shepard was my commanding officer, my mentor, and my brother. He taught us that being a Spectre isn't about unchecked power—it's about bearing impossible burdens so others don't have to.",
     next: "presidium_kaidan_calls_candidates"
   },
 
@@ -104,14 +120,14 @@ export const nodesPart3b = {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["kaidan"],
     speaker: "kaidan",
-    text: "'To honor Shepard's legacy, the Alliance and the Citadel Council have authorized the expansion of our joint Spectre initiative. Today, I am proud to present the candidates entering humanity's Spectre pipeline under my direct mentorship: Lieutenant James Vega and Specialist Jack.'",
+    text: "To honor Shepard's legacy, the Alliance and the Citadel Council have authorized the expansion of our joint Spectre initiative. Today, I am proud to present the candidates entering humanity's Spectre pipeline under my direct mentorship: Lieutenant James Vega and Specialist Jack.",
     next: "presidium_podium_trio_reveal"
   },
 
   "presidium_podium_trio_reveal": {
     background: "assets/backgrounds/presidium_embassy.jpg",
     present: ["james", "kaidan", "jack"],
-    speaker: "kaidan",
+    speaker: "shepard",
     text: "[Kaidan gestures to both sides of the podium. James Vega takes the left flank, tall and broad-shouldered in crisp Alliance dress service blues. Jack takes the right flank, clad in custom Alliance specialist tactical leather, her biotic amp cords humming with faint indigo energy.]",
     next: "presidium_shepard_pride"
   },

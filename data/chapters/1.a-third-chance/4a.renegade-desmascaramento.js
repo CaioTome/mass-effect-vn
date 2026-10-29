@@ -55,6 +55,13 @@ export const nodesPart4a = {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
     text: "There is no deception. Rogue Cerberus splinter cells captured her alongside the Admiralty. Since the Geth are demilitarized and place blind trust in the Quarians, Cerberus will employ the Illusive Man's neural indoctrination technology on Tali to subjugate the entire synthetic consensus.",
+    next: "renegade_shepard_tim_trauma"
+  },
+
+  "renegade_shepard_tim_trauma": {
+    present: ["catalyst_hackett"],
+    speaker: "shepard",
+    text: "[A cold tremor runs down my spine. The rest of the galaxy thinks Cerberus mind-control was just mad research—because no one else survived that control room on the Citadel. I am the only living soul who felt the Illusive Man lock my nervous system like a puppet and force my own hand to shoot Admiral Anderson. That nightmare is real. And I will burn every last trace of it to ash before it touches Tali's mind.]",
     next: "choice_renegade_hub"
   },
 
@@ -65,18 +72,23 @@ export const nodesPart4a = {
     choices: [
       {
         text: "Why Hackett's face? Why use his likeness to deceive me?",
+        effects: { temp: { renegade_hub_questions: 1 } },
         targetNode: "node_renegade_why_hackett"
       },
       {
         text: "How the hell am I standing here if my body was vaporized at the Crucible?",
+        effects: { temp: { renegade_hub_questions: 1 } },
         targetNode: "node_renegade_cloning_info"
       },
       {
         text: "Why don't you resolve this yourself with the Reaper armada?",
+        effects: { temp: { renegade_hub_questions: 1 } },
         targetNode: "node_renegade_reaper_limit"
       },
       {
         text: "I don't trust a single word you say. But I'll collaborate for now... for Tali.",
+        requires: { temp: { renegade_hub_questions: 3 } },
+        showLocked: true,
         targetNode: "renegade_pact_node"
       }
     ]

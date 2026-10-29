@@ -24,12 +24,12 @@ export const nodesPart2 = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"I know who you really report to, Von. You handle covert Citadel assets for the Shadow Broker.\"",
+        text: "I know who you really report to, Von. You handle covert Citadel assets for the Shadow Broker.",
         targetNode: "barla_choice_broker_asset",
         effects: { paragon: 1 }
       },
       {
-        text: "\"Cut the financial posture, Barla. I know you work for the Broker, and I need Dr. Liara T'Soni.\"",
+        text: "Cut the financial posture, Barla. I know you work for the Broker, and I need Dr. Liara T'Soni.",
         targetNode: "barla_choice_direct_liara",
         effects: { renegade: 1 }
       }
@@ -81,6 +81,14 @@ export const nodesPart2 = {
     present: ["barla_von"],
     speaker: "barla_von",
     text: "*Hiss-pant* Dr. T'Soni moves between reconstruction sites and archive vaults under strict secrecy. My terminals cannot pinpoint her while the local grid is fractured. But this is far bigger than one person: restoring station-wide intercept surveillance is the Broker's highest priority right now.",
+    next: "barla_von_compartment"
+  },
+
+  "barla_von_compartment": {
+    background: "assets/backgrounds/citadel_financial.jpg",
+    present: ["barla_von"],
+    speaker: "shepard",
+    text: "[Barla Von reaches beneath the marble desk and touches a biometric switch. A concealed compartment slides open in front of me, revealing two sleek carbon-alloy modules.]",
     next: "barla_von_deal_02"
   },
 
@@ -88,7 +96,7 @@ export const nodesPart2 = {
     background: "assets/backgrounds/citadel_financial.jpg",
     present: ["barla_von"],
     speaker: "barla_von",
-    text: "[Barla Von touches a biometric switch beneath the desk. A concealed compartment opens, revealing two sleek carbon-alloy modules.] Quantum-encrypted micro-wiretaps. At this very moment, dozens of our covert operatives across the Wards and lower docks are deploying identical modules. We are systematically rebuilding the Shadow Broker's eyes and ears across the entire Citadel.",
+    text: "*Hiss-pant* Quantum-encrypted micro-wiretaps. At this very moment, dozens of our covert operatives across the Wards and lower docks are deploying identical modules. We are systematically rebuilding the Shadow Broker's eyes and ears across the entire Citadel.",
     next: "barla_von_deal_03"
   },
 
@@ -114,12 +122,12 @@ export const nodesPart2 = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.\"",
+        text: "First the Commons Memorial, then the Presidium relay. Keep your decoders ready, Barla.",
         targetNode: "barla_accept_paragon",
         effects: { paragon: 1 }
       },
       {
-        text: "\"If this telemetry leads me into a C-Sec ambush, Von, you'll be answering to my shotgun.\"",
+        text: "If this telemetry leads me into a C-Sec ambush, Von, you'll be answering to my gun.",
         targetNode: "barla_accept_renegade",
         effects: { renegade: 1 }
       }

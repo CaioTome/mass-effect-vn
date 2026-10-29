@@ -24,12 +24,12 @@ export const nodesPart3a = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"Plant the micro-wiretap and leave immediately.\"",
+        text: "[Plant the micro-wiretap and leave immediately.]",
         targetNode: "commons_choice_leave_quick",
         effects: { renegade: 1 }
       },
       {
-        text: "\"Stay a moment longer and observe the vigil.\"",
+        text: "[Stay a moment longer and observe the vigil.]",
         targetNode: "commons_choice_stay_longer",
         effects: { paragon: 1 }
       }
@@ -81,6 +81,14 @@ export const nodesPart3a = {
     present: ["joker", "edi"],
     speaker: "alliance_soldier",
     text: "Lieutenant Moreau. On behalf of the Alliance 5th Fleet, we wanted to express our deepest respects, sir. What you and the Normandy did over Earth—bringing Commander Shepard through the Reaper fleet to reach the beam... humanity will never forget it.",
+    next: "commons_joker_nod"
+  },
+
+  "commons_joker_nod": {
+    background: "assets/backgrounds/commons_memorial.jpg",
+    present: ["joker", "edi"],
+    speaker: "shepard",
+    text: "[Joker blinks, clearing his throat and offering the marines a tight, respectful nod.]",
     next: "commons_joker_soldier_response"
   },
 
@@ -88,7 +96,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: ["joker", "edi"],
     speaker: "joker",
-    text: "[Joker blinks, clearing his throat and offering a tight, respectful nod.] Thanks, Marines. But save the salutes for the name on that wall. The Commander took the real hits. We just flew the bus that got him to the fight.",
+    text: "Thanks, Marines. But save the salutes for the name on that wall. The Commander took the real hits. We just flew the bus that got him to the fight.",
     next: "commons_soldier_depart"
   },
 
@@ -96,7 +104,7 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: ["joker", "edi"],
     speaker: "alliance_soldier",
-    text: "Understood, sir. But you got him there. We stand guard so his peace holds. Semper Fi, Lieutenant. [The marines salute once more before returning to their post.]",
+    text: "Understood, sir. But you got him there. We stand guard so his peace holds. Semper Fi, Lieutenant.",
     next: "commons_shepard_grief"
   },
 
@@ -104,9 +112,11 @@ export const nodesPart3a = {
     background: "assets/backgrounds/commons_memorial.jpg",
     present: ["joker", "edi"],
     speaker: "shepard",
-    text: "[A heavy ache tightens in my throat. Watching Joker, EDI, and the Alliance standing firm in the peace we fought so hard to buy... I want nothing more than to step forward and embrace them. But Tali is in chains, and Cerberus is listening. I have to finish this first.]",
+    text: "[The marines salute once more before returning to their post. A heavy ache tightens in my throat. Watching Joker, EDI, and the Alliance standing firm in the peace we fought so hard to buy... I want nothing more than to step forward and embrace them. But Tali is in chains, and Cerberus is listening. I have to finish this first.]",
     interrupt: {
       paragon: {
+        icon: "assets/icons/paragon.png",
+        label: "Salute the Fallen [Paragon]",
         targetNode: "commons_paragon_salute",
         effects: { paragon: 2 }
       }

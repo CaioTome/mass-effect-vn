@@ -6,13 +6,20 @@ export const nodesPart4b = {
     present: ["hackett"],
     speaker: "shepard",
     text: "What about me, Admiral? You speak of galactic reconstruction, but I remember burning to ash at the Crucible. How am I drawing breath right now? And why have you kept me locked inside a Reaper?",
+    next: "normal_catalyst_shift"
+  },
+
+  "normal_catalyst_shift": {
+    present: ["catalyst_hackett"],
+    speaker: "shepard",
+    text: "[Hackett's holographic projection doesn't flinch. The human warmth leaves his features, and his voice shifts into a serene, polyphonic resonance.]",
     next: "normal_catalyst_reveal_01"
   },
 
   "normal_catalyst_reveal_01": {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
-    text: "[Hackett's holographic projection doesn't flinch. The human warmth leaves his features, and his voice shifts into a serene, polyphonic resonance.] Your biological telemetry and emotional responses are completely within predicted simulations, Shepard. Steven Hackett is not aboard this vessel.",
+    text: "Your biological telemetry and emotional responses are completely within predicted simulations, Shepard. Steven Hackett is not aboard this vessel.",
     next: "normal_shepard_shock"
   },
 
@@ -72,14 +79,18 @@ export const nodesPart4b = {
     choices: [
       {
         text: "Who took Tali? What do they intend to do with her?",
+        effects: { temp: { normal_crisis_questions: 1 } },
         targetNode: "node_normal_cerberus_plan"
       },
       {
         text: "Why don't the Reapers or the Alliance storm their facility?",
+        effects: { temp: { normal_crisis_questions: 1 } },
         targetNode: "node_normal_stealth_reason"
       },
       {
         text: "I've heard enough. I won't let Cerberus touch her. Where do I begin?",
+        requires: { temp: { normal_crisis_questions: 2 } },
+        showLocked: true,
         targetNode: "node_normal_lead_to_liara"
       }
     ]
@@ -89,6 +100,13 @@ export const nodesPart4b = {
     present: ["catalyst_hackett"],
     speaker: "catalyst_hackett",
     text: "Cerberus remnants operating clandestine sleeper cells. With the Geth voluntarily demilitarized and integrated into Quarian society, Cerberus intends to utilize the mind-control technology the Illusive Man refined during the war to enslave Tali and the Admiralty. If they succeed, they will control the entire synthetic network through the unquestioned trust the Geth place in their Creators.",
+    next: "node_normal_cerberus_trauma"
+  },
+
+  "node_normal_cerberus_trauma": {
+    present: ["catalyst_hackett"],
+    speaker: "shepard",
+    text: "[A cold tremor runs down my spine. To the Council and the Alliance, Cerberus mind-control was just theoretical madness—because no one else walked out of the Citadel control room alive. I am the only living witness who felt the Illusive Man paralyze my nervous system and force my own finger to pull the trigger on Admiral Anderson. That horror is real. And I will purge every last server and prototype of it before it touches Tali.]",
     next: "choice_normal_crisis_hub"
   },
 

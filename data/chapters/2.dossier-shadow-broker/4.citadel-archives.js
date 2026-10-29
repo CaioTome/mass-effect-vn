@@ -56,12 +56,12 @@ export const nodesPart4 = {
     speaker: "shepard",
     choices: [
       {
-        text: "\"Dr. T'Soni, I have private encrypted telemetry. The Quarian shuttle didn't crash—Tali was abducted by Cerberus.\"",
+        text: "Dr. T'Soni, I recovered black-box telemetry from an unmapped Terminus sector. Vessel registry... vas Normandy. Read the pad.",
         targetNode: "archives_deliver_bait_paragon",
         effects: { paragon: 1 }
       },
       {
-        text: "\"Drop the academic pretense, Liara. The Admiralty didn't vanish in an accident—Cerberus has Tali, and we're out of time.\"",
+        text: "Don't say a word aloud, Doctor. Look at the encrypted screen on this datapad before C-Sec monitors flag us.",
         targetNode: "archives_deliver_bait_renegade",
         effects: { renegade: 1 }
       }
@@ -72,7 +72,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[I slide an encrypted datapad smoothly onto her console, keeping my voice low and calm.] Dr. T'Soni. The Quarian diplomatic shuttle from Rannoch didn't suffer a drive-core rupture in the Terminus. It was ambushed and boarded by Cerberus black-ops. Tali'Zorah has been abducted... and I am here to help you get her back.",
+    text: "[I slide an encrypted datapad smoothly onto her console, angling the polarized screen so only her eyes can read the decrypted dossier: TALI'ZORAH & QUARIAN ADMIRALTY // ABDUCTED BY CERBERUS.] Dr. T'Soni. I recovered black-box telemetry from an unmapped Terminus sector. Vessel registry... vas Normandy. It wasn't a drive-core rupture. Read the screen.",
     next: "archives_liara_shock"
   },
 
@@ -80,7 +80,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[I press the encrypted datapad firmly onto her console, leaning in close so my modulated whisper carries only to her.] Cut the polite scholar routine, Liara. The Quarian diplomatic shuttle didn't suffer an accident. Cerberus boarded the craft and took Tali'Zorah. I know what they're planning... and we don't have time to play academic games.",
+    text: "[I press the encrypted datapad flat onto her console, shielding the polarized display from the surrounding scholars so only she sees the flashing header: TALI'ZORAH & QUARIAN ADMIRALTY // ABDUCTED BY CERBERUS.] Don't say a word aloud, Doctor. The Rannoch shuttle didn't suffer an accident. Read the screen before C-Sec acoustic monitors flag us.",
     next: "archives_liara_shock"
   },
 
@@ -88,7 +88,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "[Liara's breath catches. Her composed scholar mask shatters in a fraction of a second, her fingers gripping the edge of the terminal so hard her knuckles turn white. I can see the rapid calculations behind her eyes: she's evaluating whether I'm an extortionist, a Cerberus plant, or an actual lead. But hearing Tali's name tied to Cerberus hit a raw nerve that no amount of academic detachment can hide.]",
+    text: "[Liara's breath catches as her eyes scan the encrypted text on the pad. Her composed scholar mask shatters for a fraction of a second, her fingers gripping the edge of the terminal so hard her knuckles turn white. I can see the rapid calculations behind her eyes: evaluating whether I'm an extortionist, a trap, or a genuine lead. Seeing Tali's name next to Cerberus hit a raw nerve that no academic detachment can hide.]",
     next: "archives_shepard_insider"
   },
 
@@ -96,7 +96,15 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "shepard",
-    text: "The Admiralty Board has been dark for 96 hours. The Council thinks it's a comms breakdown. But Cerberus doesn't kidnap Quarian admirals for ransom, Liara. They're deploying the Illusive Man's neural indoctrination tech to subjugate the Geth consensus. We are running out of time.",
+    text: "[I tap the secondary file on the datapad display—the neural schematic from Cronos Station—keeping my modulated voice barely above a breath.] Ninety-six hours dark. The Council thinks it's a comms breakdown. You and I both know what that schematic on the screen means for the Geth consensus if we don't move now.",
+    next: "archives_liara_composure_action"
+  },
+
+  "archives_liara_composure_action": {
+    background: "assets/backgrounds/citadel_archives.jpg",
+    present: ["liara_public"],
+    speaker: "shepard",
+    text: "[A master of statecraft, Liara locks down the datapad screen and forces her expression into serene academic detachment before the nearby researchers turn their heads. She addresses her colleagues smoothly.]",
     next: "archives_liara_composure"
   },
 
@@ -104,23 +112,7 @@ export const nodesPart4 = {
     background: "assets/backgrounds/citadel_archives.jpg",
     present: ["liara_public"],
     speaker: "liara_public",
-    text: "[A master of statecraft, Liara forces her expression into serene academic detachment before the nearby researchers turn their heads. She addresses her colleagues smoothly.] 'Pardon me, scholars. This contractor has submitted anomalous encrypted telemetry from an unmapped Terminus dig site. It requires immediate quarantine review in my private office.'",
-    next: "archives_liara_cleanroom"
-  },
-
-  "archives_liara_cleanroom": {
-    background: "assets/backgrounds/citadel_archives.jpg",
-    present: ["liara_public"],
-    speaker: "liara_public",
-    text: "[The moment the researchers turn their backs, her voice drops to a tense, razor-sharp whisper.] Not another word out here. This pavilion is crawling with C-Sec acoustic monitors and civilian ears. If Cerberus realizes someone has picked up their trail, Tali won't survive the hour.",
-    next: "archives_liara_command"
-  },
-
-  "archives_liara_command": {
-    background: "assets/backgrounds/citadel_archives.jpg",
-    present: ["liara_public"],
-    speaker: "liara_public",
-    text: "[Her eyes narrow with lethal, combat-hardened focus as she gestures toward the private transit corridor.] Follow me to an off-grid room. Keep your hands in plain sight. If this is an ambush or a shakedown, contractor, you will learn firsthand how a member of Shepard's crew deals with threats.",
+    text: "Pardon me, scholars. This contractor has submitted anomalous encrypted telemetry from an unmapped Terminus dig site. It requires immediate quarantine review in my private office. Follow me, contractor.",
     next: "archives_to_penthouse_transit"
   },
 
