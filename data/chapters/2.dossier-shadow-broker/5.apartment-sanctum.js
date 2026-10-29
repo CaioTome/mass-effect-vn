@@ -222,7 +222,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "shepard",
-    text: "[Everything rushes between us in a silent torrent—the Crucible's fire, the Thorian chamber inside the Reaper, the absence of any cybernetic implants, and the raw, unshakable terror of losing Tali. Slowly, Liara's eyes clear from obsidian back to radiant azure as our minds part. Every trace of doubt is swept away, replaced by absolute certainty.]",
+    text: "[Everything rushes between us in a silent torrent—the Crucible's fire, the Thorian chamber inside the Reaper, the absence of any cybernetic implants, and the raw, unshakable terror of losing Tali. Slowly, Liara's eyes clear from obsidian back to radiant azure as our minds part.]",
     next: "penthouse_meld_resolution"
   },
 
@@ -230,7 +230,7 @@ export const nodesPart5 = {
     background: "assets/backgrounds/shepard_apartment.jpg",
     present: ["liara"],
     speaker: "liara",
-    text: "It really is you... We're going to bring Tali back, Shepard.",
+    text: "We're going to bring Tali back, Shepard.",
     next: "chapter_02_complete_hub"
   },
 
